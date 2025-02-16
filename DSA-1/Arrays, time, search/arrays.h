@@ -1,19 +1,19 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
-#include <random>   // библиотека для генерации случайных чисел
+#include <random>   // Р±РёР±Р»РёРѕС‚РµРєР° РґР»СЏ РіРµРЅРµСЂР°С†РёРё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР»
 #include <fstream>
 using namespace std;
 
 template <typename T>
 T* createAndFillArray(size_t size, T min_value, T max_value) {
     random_device rd;
-    mt19937 gen(rd());  // Генератор случайных чисел
+    mt19937 gen(rd());  // Р“РµРЅРµСЂР°С‚РѕСЂ СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР»
     uniform_int_distribution<> distr(min_value, max_value);
 
-    T* array = new T[size];  // Создание массива
+    T* array = new T[size];  // РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР°
 
     for (size_t i = 0; i < size; ++i) {
-        array[i] = distr(gen);  // Заполнение массива случайными числами
+        array[i] = distr(gen);  // Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
     }
 
     return array;
@@ -23,9 +23,9 @@ T* createAndFillArray(size_t size, T min_value, T max_value) {
 template <typename T>
 T* MonotonicallyIncreasingArray(size_t size, T min_value, T max_value) {
     random_device rd;
-    mt19937 gen(rd());  // Генератор случайных чисел
+    mt19937 gen(rd());  // Р“РµРЅРµСЂР°С‚РѕСЂ СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР»
     uniform_int_distribution<> distr(min_value, max_value);
-    T* array = new T[size];  // Создание массива
+    T* array = new T[size];  // РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР°
     array[0] = distr(gen);
     for (size_t i = 1; i < size; ++i) {
         array[i] = array[i-1] + distr(gen)/10;
@@ -49,7 +49,7 @@ template <typename T>
 bool is_sorted(T* array, size_t size) {
     for (size_t i = 1; i < size; ++i) {
         if (array[i] < array[i - 1]) {
-            return false;  // Если порядок нарушен
+            return false;  // Р•СЃР»Рё РїРѕСЂСЏРґРѕРє РЅР°СЂСѓС€РµРЅ
         }
     }
     return true;
@@ -59,9 +59,9 @@ template <typename T>
 int sequential_search(T* array, size_t size, T value) {
     for (size_t i = 0; i < size; ++i) {
         if (array[i] == value) {
-            return i;  // Индекс найденного элемента
+            return i;  // РРЅРґРµРєСЃ РЅР°Р№РґРµРЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
             cout << "YES\N";
         }
     }
-    return -1;  // Если элемент не найден
+    return -1;  // Р•СЃР»Рё СЌР»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ
 }

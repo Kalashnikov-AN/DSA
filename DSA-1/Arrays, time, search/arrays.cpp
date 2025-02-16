@@ -1,4 +1,4 @@
-#include <iostream>
-#include <random>   // библиотека для генерации случайных чисел
+п»ї#include <iostream>
+#include <random>   // Р±РёР±Р»РёРѕС‚РµРєР° РґР»СЏ РіРµРЅРµСЂР°С†РёРё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР»
 using namespace std;
 
