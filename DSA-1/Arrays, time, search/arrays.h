@@ -29,7 +29,7 @@ T* MonotonicallyIncreasingArray(size_t size, T min_value, T max_value) {
     array[0] = distr(gen);
     for (size_t i = 1; i < size; ++i) {
         array[i] = array[i-1] + distr(gen)/10;
-       // cout << array[i] << "\n";
+      
     }
     return array;
 }
@@ -60,8 +60,10 @@ int sequential_search(T* array, size_t size, T value) {
     for (size_t i = 0; i < size; ++i) {
         if (array[i] == value) {
             return i;  // Индекс найденного элемента
-            cout << "YES\N";
+            
         }
     }
     return -1;  // Если элемент не найден
 }
+
+void test_is_sorted();
