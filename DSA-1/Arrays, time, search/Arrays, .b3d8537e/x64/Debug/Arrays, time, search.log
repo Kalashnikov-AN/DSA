@@ -1,6 +1,4 @@
 ﻿  Arrays, time, search.cpp
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(24,11): warning C4305: инициализация: усечение из "__int64" в "int"
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(24,13): warning C4309: инициализация: усечение константного значения
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(62,20): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "Arrays,%20time,%20search.cpp")
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(62,20):
@@ -26,6 +24,4 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp
               Func=main::<lambda_1>
           ]
   
-  arrays.cpp
-  Создание кода...
   Arrays, time, search.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\x64\Debug\Arrays, time, search.exe

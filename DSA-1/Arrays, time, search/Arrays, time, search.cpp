@@ -2,26 +2,25 @@
 #include <iostream>
 #include "arrays.h"
 #include <chrono>
-using namespace std::chrono;
+using namespace chrono;
 using namespace std;
 
 template <typename Func>
 int measure_time(Func func) {
-	using namespace std::chrono;
 
 	auto t0 = steady_clock::now();  // начало измерения времени
 	func();                         // выполнение функции
 	auto t1 = steady_clock::now();  // конец измерения времени
 
 	auto delta = duration_cast<milliseconds>(t1 - t0);  // время в миллисекундах
-	std::cout << "Time delta (milliseconds): " << delta.count() << std::endl;
+	cout << "Time (milliseconds): " << delta.count() << endl;
 	return delta.count();
 }
 
 int main()
 {
 	test_is_sorted();
-	int size = 10000000000;
+	int size = 1000000000;
 	const int MIN_VALUE = 0;
 	const int MAX_VALUE = 10000000;
 	int total_time = 0;
