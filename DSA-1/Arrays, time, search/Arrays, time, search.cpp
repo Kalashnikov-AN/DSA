@@ -5,6 +5,7 @@
 using namespace chrono;
 using namespace std;
 
+/// Возвращает время выполнения функции func
 template <typename Func>
 int measure_time(Func func) { // в параметре можно использовать std::function из <functional>
 
@@ -19,11 +20,11 @@ int measure_time(Func func) { // в параметре можно использ
 
 int main()
 {
-	test_is_sorted();
-	int size = 10000000;
-	const int MIN_VALUE = 0;
-	const int MAX_VALUE = 10000000;
-	int total_time = 0;
+	test_is_sorted(); // тест функции сортировки
+	int size = 10000000; // размер массива
+	const int MIN_VALUE = 0; // минимальное значение элемента
+	const int MAX_VALUE = 10000000; // максимальное значение элемента
+	int total_time = 0; // сумма всех измерений времени
 	//int* array = createAndFillArray<int>(size, MIN_VALUE, MAX_VALUE);
 	//random_device rd;
 	//mt19937 gen(rd());  // Генератор случайных чисел
