@@ -3,21 +3,24 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(62,20): warning
   (компиляция исходного файла "Arrays,%20time,%20search.cpp")
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(62,20):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(51,16):
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(49,16):
           выполняется компиляция ссылки на экземпляр шаблон функции "int sequential_search<int>(T *,size_t,T)"
           with
           [
               T=int
           ]
   
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(18,20): warning C4244: return: преобразование "_Rep" в "int", возможна потеря данных
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(18,20): warning C4244:         with
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(18,20): warning C4244:         [
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(18,20): warning C4244:             _Rep=__int64
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(18,20): warning C4244:         ]
-      C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(18,20):
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(66,12): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "Arrays,%20time,%20search.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(17,20): warning C4244: return: преобразование "_Rep" в "int", возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(17,20): warning C4244:         with
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(17,20): warning C4244:         [
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(17,20): warning C4244:             _Rep=__int64
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(17,20): warning C4244:         ]
+      C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(17,20):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(50,17):
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(48,17):
           выполняется компиляция ссылки на экземпляр шаблон функции "int measure_time<main::<lambda_1>>(Func)"
           with
           [
