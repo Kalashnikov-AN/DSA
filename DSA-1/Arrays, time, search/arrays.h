@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿// Автор: Калашников А.Н.
+#pragma once
 #include <iostream>
 #include <random>   // библиотека для генерации случайных чисел
 #include <fstream>
@@ -64,9 +65,10 @@ bool is_sorted(T* array, size_t size) {
     return true; // Если массив отсортирован
 }
 
-/// Возвращает индекс найденного алгоритмом последовательного поиска элемента value в массиве array типа T* размера size
+/// Если элемент value найден алгоритмом последовательного поиска - возвращает индекс элемента в массиве array типа T* размера size
+/// Если не найден - возвращает индекс на 1 больше крайнего индекса массива
 template <typename T>
-int sequential_search(T* array, size_t size, T value) {
+size_t sequential_search(T* array, size_t size, T value) {
     for (size_t i = 0; i < size; ++i) {
         if (array[i] == value) { // Если элемент массива соответствует искомому
             return i;  // Возвращаем индекс найденного элемента

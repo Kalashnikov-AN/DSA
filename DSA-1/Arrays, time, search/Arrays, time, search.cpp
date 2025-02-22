@@ -1,4 +1,5 @@
-﻿#include <random>
+﻿// Автор: Калашников А.Н.
+#include <random>
 #include <iostream>
 #include "arrays.h"
 #include <chrono>
@@ -21,36 +22,39 @@ int measure_time(Func func) { // в параметре можно использ
 int main()
 {
 	test_is_sorted(); // тест функции сортировки
-	int size = 10000000; // размер массива
+	int size = 1'000'000'000; // размер массива
 	const int MIN_VALUE = 0; // минимальное значение элемента
-	const int MAX_VALUE = 10000000; // максимальное значение элемента
+	const int MAX_VALUE = 1'000'000'000; // максимальное значение элемента
 	int total_time = 0; // сумма всех измерений времени
-	//int* array = createAndFillArray<int>(size, MIN_VALUE, MAX_VALUE);
-	//random_device rd;
-	//mt19937 gen(rd());  // Генератор случайных чисел
-	//uniform_int_distribution<> distr(10000, size); // равномерное распределение
-	//for (int i = 0; i < 100; i++) {
-	//	
-	//	int value_to_search1 = array[distr(gen)];
-	//	total_time += measure_time([&]() { // фактический параметр - анонимная функция(всё, что внутри скобок)
-	//	int index = sequential_search<int>(array, size, value_to_search1);
-
-	//	});
-	//}
-	//cout << "average time in ms for usual array = " << total_time / 100.0;
-	//total_time = 0;
-	int* monotonic_array = MonotonicallyIncreasingArray<int>(size, MIN_VALUE, MAX_VALUE);
+	unsigned long long* array = createAndFillArray<unsigned long long>(size, MIN_VALUE, MAX_VALUE); // Массив из случайных чисел
+	// Объект для доступа к аппаратному или программному источнику случайности
+	// нужен для инициализации генератора случайных чисел
 	random_device rd;
 	mt19937 gen(rd());  // Генератор случайных чисел
-	uniform_int_distribution<> distr(10000, size); // равномерное распределение
-	//uniform_int_distribution<> distr(10000, size); // равномерное распределение
+	uniform_int_distribution<> distr(0, MAX_VALUE); // равномерное распределение
+
+	// Проводим 100 измерений
 	for (int i = 0; i < 100; i++) {
-		int value_to_search1 = monotonic_array[distr(gen)];
+		unsigned long long value_to_search = distr(gen); // случайное число, которое будем искать в массиве
 		total_time += measure_time([&]() { // фактический параметр - анонимная функция(всё, что внутри скобок)
-			int index = sequential_search<int>(monotonic_array, size, value_to_search1);
+		size_t index = sequential_search<unsigned long long>(array, size, value_to_search);
+		});
+	}
+	cout << "average time in ms for usual array = " << total_time / 100.0; // среднее время выполнения среди 100 измерений
+
+	total_time = 0;
+	// Монотонно возрастающий массив из случайных чисел
+	unsigned long long* monotonic_array = MonotonicallyIncreasingArray<unsigned long long>(size, MIN_VALUE, MAX_VALUE);
+
+	// Проводим 100 измерений
+	for (int i = 0; i < 100; i++) {
+		unsigned long long value_to_search = distr(gen); // случайное число, которое будем искать в массиве
+		total_time += measure_time([&]() { // фактический параметр - анонимная функция(всё, что внутри скобок)
+			size_t index = sequential_search<unsigned long long>(monotonic_array, size, value_to_search);
 			});
 	}
-	cout << "average time in ms for monotonically increasing array = " << total_time / 100.0;
+	// среднее время выполнения среди 100 измерений
+	cout << "average time in ms for monotonically increasing array = " << total_time / 100.0; 
 }
 
 
