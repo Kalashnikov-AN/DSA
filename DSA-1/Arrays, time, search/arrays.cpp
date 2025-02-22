@@ -40,3 +40,4 @@ void test_is_sorted() {
     assert(is_sorted(arr_with_duplicates, 5) == true);
 
 }
+
