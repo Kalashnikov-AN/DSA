@@ -1,0 +1,8 @@
+﻿  Stack Overflow.cpp
+  Создание кода
+C:\Users\huuma\Documents\DSA\DSA-1\Stack Overflow\Stack Overflow.cpp(13): warning C4717: recursiveFunction: рекурсия на всех путях выполнения, функция вызовет переполнение стека
+  3 of 13 functions (23.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Stack Overflow.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-1\Stack Overflow\x64\Release\Stack Overflow.exe

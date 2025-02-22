@@ -1,0 +1,3 @@
+﻿  Stack Overflow.cpp
+C:\Users\huuma\Documents\DSA\DSA-1\Stack Overflow\Stack Overflow.cpp(14,1): warning C4717: recursiveFunction: рекурсия на всех путях выполнения, функция вызовет переполнение стека
+  Stack Overflow.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-1\Stack Overflow\x64\Debug\Stack Overflow.exe
