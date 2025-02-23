@@ -41,3 +41,57 @@ void test_is_sorted() {
 
 }
 
+/// Функция тестирования последовательного поиска
+void test_sequential_search() {
+
+    int arr1[] = { 10, 20, 30, 40, 50 };
+    size_t size1 = 5;
+
+    // Тест 1: Элемент находится в середине
+    assert(sequential_search(arr1, size1, 30) == 2);
+
+    // Тест 2: Элемент в начале
+    assert(sequential_search(arr1, size1, 10) == 0);
+
+    // Тест 3: Элемент в конце
+    assert(sequential_search(arr1, size1, 50) == 4);
+
+    // Тест 4: Элемента нет в массиве (меньше всех)
+    assert(sequential_search(arr1, size1, 5) == size1);
+
+    // Тест 5: Элемента нет в массиве (больше всех)
+    assert(sequential_search(arr1, size1, 60) == size1);
+
+    // Тест 6: Элемента нет в массиве (входит в диапазон существующих)
+    assert(sequential_search(arr1, size1, 35) == size1);
+
+    // Тест 7: Поиск в массиве из одного элемента (найден)
+    int arr2[] = { 100 };
+    assert(sequential_search(arr2, 1, 100) == 0);
+
+    // Тест 8: Поиск в массиве из одного элемента (не найден)
+    assert(sequential_search(arr2, 1, 200) == 1);
+
+}
+
+/// Тест функции бинарного поиска
+void test_binary_search() {
+    int sorted_array[] = { 1, 3, 5, 7, 9, 11, 13, 15 };
+    size_t size_test = 8;
+    // Тест 1: Элемент в середине
+    assert(binary_search_recursive<int>(sorted_array, 0, size_test -1, 7) == 3);
+
+    // Тест 2: Первый элемент
+    assert(binary_search_recursive<int>(sorted_array, 0, size_test - 1, 1) == 0);
+
+    // Тест 3: Последний элемент
+    assert(binary_search_recursive<int>(sorted_array, 0, size_test - 1, 15) == 7);
+
+    // Тест 4: Отсутствующий элемент
+    assert(binary_search_recursive<int>(sorted_array, 0, size_test - 1, 8) == -1);
+
+    // Тест 5: Поиск в массиве из одного элемента
+    int one_element_array[] = { 42 };
+    assert(binary_search_recursive<int>(one_element_array, 0, 0, 42) == 0);
+    assert(binary_search_recursive<int>(one_element_array, 0, 0, 0) == -1);
+}

@@ -81,13 +81,11 @@ size_t sequential_search(T* array, size_t size, T value) {
 /// Шаблонная рекурсивная функция бинарного поиска
 /// Возвращает индекс элемента, если он найден, иначе -1
 template <typename T>
-int binary_search_recursive(T* array, size_t left, size_t right, T value) {
+int binary_search_recursive(T* array, long long left, long long right, T value) {
     if (left > right) {
         return -1; // Базовый случай: элемент не найден
     }
-
-    size_t mid = left + (right - left) / 2; // Избегаем переполнения
-
+    long long mid = left + (right - left) / 2.0; // Избегаем переполнения
     if (array[mid] == value) {
         return mid; // Найден элемент
     }
@@ -101,3 +99,9 @@ int binary_search_recursive(T* array, size_t left, size_t right, T value) {
 
 /// Тест функции сортировки массива is_sorted
 void test_is_sorted();
+
+/// Функция тестирования последовательного поиска
+void test_sequential_search();
+
+/// Тест функции бинарного поиска
+void test_binary_search();
