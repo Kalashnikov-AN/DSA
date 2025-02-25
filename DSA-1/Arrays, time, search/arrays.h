@@ -83,7 +83,7 @@ size_t sequential_search(T* array, size_t size, T value) {
 template <typename T>
 int binary_search_recursive(T* array, long long left, long long right, T value) {
     if (left > right) {
-        return -1; // Базовый случай: элемент не найден
+        return -1; // Элемент не найден
     }
     long long mid = left + (right - left) / 2.0; // Избегаем переполнения
     if (array[mid] == value) {

@@ -1,4 +1,6 @@
 ﻿  Arrays, time, search.cpp
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(27,11): warning C4305: инициализация: усечение из "__int64" в "int"
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(27,13): warning C4309: инициализация: усечение константного значения
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244: аргумент: преобразование "T" в "_Ty", возможна потеря данных
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244:         with
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244:         [

@@ -24,7 +24,7 @@ int main()
 	test_is_sorted(); // тест функции сортировки
 	test_sequential_search(); // тест функции последовательного поиска
 	test_binary_search(); // тест функции бинарного поиска
-	int size = 1'000'000'000; // размер массива
+	int size = 5'000'000'000; // размер массива
 	const int MIN_VALUE = 0; // минимальное значение элемента
 	const int MAX_VALUE = 1'000'000'000; // максимальное значение элемента
 	int total_time = 0; // сумма всех измерений времени
@@ -35,40 +35,40 @@ int main()
 	mt19937 gen(rd());  // Генератор случайных чисел
 	uniform_int_distribution<> distr(0, MAX_VALUE); // равномерное распределение
 
-	// Проводим 100 измерений
-	for (int i = 0; i < 100; i++) {
+	// Проводим 10000 измерений
+	for (int i = 0; i < 10000; i++) {
 		unsigned long long value_to_search = distr(gen); // случайное число, которое будем искать в массиве
 		total_time += measure_time([&]() { // фактический параметр - анонимная функция(всё, что внутри скобок)
 		size_t index = sequential_search<unsigned long long>(array, size, value_to_search);
 		});
 	}
-	cout << "average time in ms for usual array = " << total_time / 100.0 << "\n"; // среднее время выполнения среди 100 измерений
+	cout << "average time in ms for usual array = " << total_time / 10000.0 << "\n"; // среднее время выполнения среди 100 измерений
 	delete[] array;
 
 	total_time = 0;
 	// Монотонно возрастающий массив из случайных чисел
 	unsigned long long* monotonic_array = MonotonicallyIncreasingArray<unsigned long long>(size, MIN_VALUE, MAX_VALUE);
 
-	// Проводим 100 измерений
-	for (int i = 0; i < 100; i++) {
+	// Проводим 10000 измерений
+	for (int i = 0; i < 10000; i++) {
 		unsigned long long value_to_search = distr(gen); // случайное число, которое будем искать в массиве
 		total_time += measure_time([&]() { // фактический параметр - анонимная функция(всё, что внутри скобок)
 			size_t index = sequential_search<unsigned long long>(monotonic_array, size, value_to_search);
 			});
 	}
-	// среднее время выполнения среди 100 измерений
-	cout << "average time in ms for monotonically increasing array(sequential search) = " << total_time / 100.0 << "\n";
+	// среднее время выполнения среди 10000 измерений
+	cout << "average time in ms for monotonically increasing array(sequential search) = " << total_time / 10000.0 << "\n";
 
 	total_time = 0;
-	// Проводим 100 измерений
-	for (int i = 0; i < 100; i++) {
+	// Проводим 10000 измерений для бинарного поиска
+	for (int i = 0; i < 10000; i++) {
 		unsigned long long value_to_search = distr(gen); // случайное число, которое будем искать в массиве
 		total_time += measure_time([&]() { // фактический параметр - анонимная функция(всё, что внутри скобок)
 			size_t index = binary_search_recursive<unsigned long long>(monotonic_array, 0, size-1, value_to_search);
 			});
-	}
-	// среднее время выполнения среди 100 измерений
-	cout << "average time in ms for monotonically increasing array(binary search) = " << total_time / 100.0;
+	} 
+	// среднее время выполнения среди 10000 измерений для бинарного поиска
+	cout << "average time in ms for monotonically increasing array(binary search) = " << total_time / 10000.0;
 	delete[] monotonic_array;
 }
 
