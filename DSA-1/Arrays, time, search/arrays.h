@@ -36,7 +36,7 @@ T* MonotonicallyIncreasingArray(size_t size, T min_value, T max_value) {
     array[0] = distr(gen); // Нулевой элемент создаём случайным образом
     for (size_t i = 1; i < size; ++i) {
         // Заполнение массива случайными числами
-        array[i] = array[i-1] + distr(gen)/10; // для монотонного возрастания к каждому следующему элементу прибавляем distr(gen)/10
+        array[i] = array[i-1] + distr(gen)/1000; // для монотонного возрастания к каждому следующему элементу прибавляем distr(gen)/10
       
     }
     return array;
@@ -81,19 +81,110 @@ size_t sequential_search(T* array, size_t size, T value) {
 /// Шаблонная рекурсивная функция бинарного поиска
 /// Возвращает индекс элемента, если он найден, иначе -1
 template <typename T>
-int binary_search_recursive(T* array, long long left, long long right, T value) {
+long long binary_search_recursive(T* array, long long left, long long right, T value) {
     if (left > right) {
         return -1; // Элемент не найден
     }
     long long mid = left + (right - left) / 2.0; // Избегаем переполнения
     if (array[mid] == value) {
         return mid; // Найден элемент
+        
     }
     else if (array[mid] < value) {
         return binary_search_recursive(array, mid + 1, right, value); // Ищем в правой части
     }
     else {
         return binary_search_recursive(array, left, mid - 1, value); // Ищем в левой части
+    }
+}
+
+// Функция для слияния двух отсортированных подмассивов
+template <typename T>
+void merge(T* arr, size_t left, size_t mid, size_t right) {
+    size_t n1 = mid - left + 1;
+    size_t n2 = right - mid;
+
+    T* leftArr = new T[n1];
+    T* rightArr = new T[n2];
+
+    for (int i = 0; i < n1; i++)
+        leftArr[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        rightArr[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (leftArr[i] <= rightArr[j]) {
+            arr[k] = leftArr[i];
+            i++;
+        }
+        else {
+            arr[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = leftArr[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = rightArr[j];
+        j++;
+        k++;
+    }
+
+    delete[] leftArr;
+    delete[] rightArr;
+}
+
+// Функция сортировки слиянием
+template <typename T>
+void mergeSort(T* arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+
+        merge(arr, left, mid, right);
+    }
+}
+
+/// =====================
+/// Сортировка пузырьком (Bubble Sort)
+/// Временная сложность: O(n^2)
+/// Дополнительная память: O(1)
+/// =====================
+template <typename T>
+void bubbleSort(T* array, size_t size) {
+    for (size_t i = 0; i < size - 1; i++) {
+        for (size_t j = 0; j < size - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                swap(array[j], array[j + 1]);
+            }
+        }
+    }
+}
+
+/// =====================
+/// Сортировка вставками (Insertion Sort)
+/// Временная сложность: O(n^2)
+/// Дополнительная память: O(1)
+/// =====================
+template <typename T>
+void insertionSort(T* array, size_t size) {
+    for (size_t i = 1; i < size; i++) {
+        T key = array[i];
+        size_t j = i;
+        while (j > 0 && array[j - 1] > key) {
+            array[j] = array[j - 1];
+            j--;
+        }
+        array[j] = key;
     }
 }
 

@@ -1,6 +1,4 @@
 ﻿  Arrays, time, search.cpp
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(27,11): warning C4305: инициализация: усечение из "__int64" в "int"
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(27,13): warning C4309: инициализация: усечение константного значения
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244: аргумент: преобразование "T" в "_Ty", возможна потеря данных
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244:         with
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244:         [
@@ -57,7 +55,7 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning
   (компиляция исходного файла "Arrays,%20time,%20search.cpp")
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(50,40):
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(57,40):
           выполняется компиляция ссылки на экземпляр шаблон функции "T *MonotonicallyIncreasingArray<unsigned __int64>(size_t,T,T)"
           with
           [
@@ -79,14 +77,24 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(88,19): warning
   (компиляция исходного файла "Arrays,%20time,%20search.cpp")
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(88,19):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(67,19):
-          выполняется компиляция ссылки на экземпляр шаблон функции "int binary_search_recursive<unsigned __int64>(T *,__int64,__int64,T)"
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(74,19):
+          выполняется компиляция ссылки на экземпляр шаблон функции "__int64 binary_search_recursive<unsigned __int64>(T *,__int64,__int64,T)"
           with
           [
               T=unsigned __int64
           ]
   
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(90,16): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
-  (компиляция исходного файла "Arrays,%20time,%20search.cpp")
+  arrays.cpp
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(88,19): warning C4244: инициализация: преобразование "double" в "__int64", возможна потеря данных
+  (компиляция исходного файла "arrays.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(88,19):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.cpp(86,5):
+          выполняется компиляция ссылки на экземпляр шаблон функции "__int64 binary_search_recursive<int>(T *,__int64,__int64,T)"
+          with
+          [
+              T=int
+          ]
   
+  Создание кода...
   Arrays, time, search.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\x64\Debug\Arrays, time, search.exe
