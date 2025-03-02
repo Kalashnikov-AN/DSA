@@ -11,7 +11,7 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning
   (компиляция исходного файла "Arrays,%20time,%20search.cpp")
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(29,30):
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(37,30):
           выполняется компиляция ссылки на экземпляр шаблон функции "T *createAndFillArray<unsigned __int64>(size_t,T,T)"
           with
           [
@@ -36,47 +36,39 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(19,20): warning C4244:         ]
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(19,20):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(39,17):
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(43,21):
           выполняется компиляция ссылки на экземпляр шаблон функции "int measure_time<main::<lambda_1>>(Func)"
           with
           [
               Func=main::<lambda_1>
           ]
   
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244: аргумент: преобразование "T" в "_Ty", возможна потеря данных
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244:         with
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244:         [
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244:             T=unsigned __int64
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244:         ]
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244:         and
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244:         [
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244:             _Ty=int
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning C4244:         ]
-  (компиляция исходного файла "Arrays,%20time,%20search.cpp")
-      C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49):
+  arrays.cpp
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.cpp(114,32): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.cpp(121,32): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.cpp(127,32): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.cpp(133,32): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.cpp(140,33): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(131,25): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "arrays.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(131,25):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(47,40):
-          выполняется компиляция ссылки на экземпляр шаблон функции "T *MonotonicallyIncreasingArray<unsigned __int64>(size_t,T,T)"
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.cpp(114,9):
+          выполняется компиляция ссылки на экземпляр шаблон функции "void mergeSort<int>(T *,int,int)"
           with
           [
-              T=unsigned __int64
+              T=int
+          ]
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(171,9):
+          выполняется компиляция ссылки на экземпляр шаблон функции "void merge<T>(T *,size_t,size_t,size_t)"
+          with
+          [
+              T=int
           ]
   
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244: аргумент: преобразование "T" в "_Ty", возможна потеря данных
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244:         with
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244:         [
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244:             T=unsigned __int64
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244:         ]
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244:         and
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244:         [
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244:             _Ty=int
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,38): warning C4244:         ]
-  (компиляция исходного файла "Arrays,%20time,%20search.cpp")
-  
-  arrays.cpp
   Создание кода
-  15 of 53 functions (28.3%) were compiled, the rest were copied from previous compilation.
-    7 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  48 of 68 functions (70.6%) were compiled, the rest were copied from previous compilation.
+    24 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   Arrays, time, search.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\x64\Release\Arrays, time, search.exe

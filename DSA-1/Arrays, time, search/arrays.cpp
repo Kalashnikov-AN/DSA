@@ -104,3 +104,184 @@ void test_binary_search() {
 size_t shellGap(size_t size, size_t prevGap) {
     return prevGap == 0 ? size / 2 : prevGap / 2;
 }
+
+// Тесты для mergeSort
+void testMergeSort() {
+    size_t size = 9;
+    // Тест 1: уже отсортированный массив
+    {
+        int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        mergeSort(arr, 0, size - 1);
+        assert(is_sorted(arr, size));
+       
+    }
+    // Тест 2: обратный порядок
+    {
+        int arr[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+        mergeSort(arr, 0, size - 1);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 3: случайный порядок
+    {
+        int arr[] = { 5, 3, 8, 1, 2, 9, 7, 6, 4 };
+        mergeSort(arr, 0, size - 1);
+        assert(is_sorted(arr, size));;
+    }
+    // Тест 4: массив с повторяющимися элементами
+    {
+        int arr[] = { 4, 2, 5, 2, 3, 4, 1, 2, 3 };
+        mergeSort(arr, 0, size - 1);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 5: массив из одного элемента
+    {
+        int arr[] = { 42 };
+        size_t size1 = 1;
+        mergeSort(arr, 0, size1 - 1);
+        assert(is_sorted(arr, size1));
+    }
+}
+
+// Тесты для bubbleSort
+void testBubbleSort() {
+    size_t size = 9;
+    // Тест 1: уже отсортированный массив
+    {
+        int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        bubbleSort(arr, size);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 2: обратный порядок
+    {
+        int arr[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+        bubbleSort(arr, size);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 3: случайный порядок
+    {
+        int arr[] = { 5, 3, 8, 1, 2, 9, 7, 6, 4 };
+        bubbleSort(arr, size);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 4: массив с дубликатами
+    {
+        int arr[] = { 4, 2, 5, 2, 3, 4, 1, 2, 3 };
+        bubbleSort(arr, size);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 5: массив из одного элемента
+    {
+        int arr[] = { 42 };
+        size_t size1 = 1;
+        bubbleSort(arr, size1);
+        assert(is_sorted(arr, size1));
+    }
+}
+
+// Тесты для insertionSort
+void testInsertionSort() {
+    size_t size = 9;
+    // Тест 1: уже отсортированный массив
+    {
+        int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        insertionSort(arr, size);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 2: обратный порядок
+    {
+        int arr[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+        insertionSort(arr, size);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 3: случайный порядок
+    {
+        int arr[] = { 5, 3, 8, 1, 2, 9, 7, 6, 4 };
+        insertionSort(arr, size);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 4: массив с повторяющимися элементами
+    {
+        int arr[] = { 4, 2, 5, 2, 3, 4, 1, 2, 3 };
+        insertionSort(arr, size);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 5: массив из одного элемента
+    {
+        int arr[] = { 42 };
+        size_t size1 = 1;
+        insertionSort(arr, size1);
+        assert(is_sorted(arr, size1));
+    }
+}
+
+// Тесты для shellSort
+void testShellSort() {
+    size_t size = 9;
+    // Тест 1: уже отсортированный массив
+    {
+        int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        shellSort(arr, size, shellGap);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 2: обратный порядок
+    {
+        int arr[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+        shellSort(arr, size, shellGap);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 3: случайный порядок
+    {
+        int arr[] = { 5, 3, 8, 1, 2, 9, 7, 6, 4 };
+        shellSort(arr, size, shellGap);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 4: массив с дубликатами
+    {
+        int arr[] = { 4, 2, 5, 2, 3, 4, 1, 2, 3 };
+        shellSort(arr, size, shellGap);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 5: массив из одного элемента
+    {
+        int arr[] = { 42 };
+        size_t size1 = 1;
+        shellSort(arr, size1, shellGap);
+        assert(is_sorted(arr, size1));
+    }
+}
+
+// Тесты для quickSort
+void testQuickSort() {
+    size_t size = 9;
+    // Тест 1: уже отсортированный массив
+    {
+        int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };    
+        quickSort(arr, 0, size - 1);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 2: обратный порядок
+    {
+        int arr[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+        quickSort(arr, 0, size - 1);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 3: случайный порядок
+    {
+        int arr[] = { 5, 3, 8, 1, 2, 9, 7, 6, 4 };
+        quickSort(arr, 0, size - 1);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 4: массив с повторяющимися элементами
+    {
+        int arr[] = { 4, 2, 5, 2, 3, 4, 1, 2, 3 };
+        quickSort(arr, 0, size - 1);
+        assert(is_sorted(arr, size));
+    }
+    // Тест 5: массив из одного элемента
+    {
+        int arr[] = { 42 };
+        size_t size1 = 1;
+        quickSort(arr, 0, size1 - 1);
+        assert(is_sorted(arr, size1));
+    }
+}
