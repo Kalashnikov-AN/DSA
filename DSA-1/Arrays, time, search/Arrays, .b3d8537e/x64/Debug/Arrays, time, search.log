@@ -1,4 +1,5 @@
 ﻿  Arrays, time, search.cpp
+  arrays.cpp
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244: аргумент: преобразование "T" в "_Ty", возможна потеря данных
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244:         with
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(15,49): warning C4244:         [
@@ -55,7 +56,7 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49): warning
   (компиляция исходного файла "Arrays,%20time,%20search.cpp")
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(34,49):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(57,40):
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(59,40):
           выполняется компиляция ссылки на экземпляр шаблон функции "T *MonotonicallyIncreasingArray<unsigned __int64>(size_t,T,T)"
           with
           [
@@ -77,14 +78,13 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(88,19): warning
   (компиляция исходного файла "Arrays,%20time,%20search.cpp")
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(88,19):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(74,19):
+          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp(76,19):
           выполняется компиляция ссылки на экземпляр шаблон функции "__int64 binary_search_recursive<unsigned __int64>(T *,__int64,__int64,T)"
           with
           [
               T=unsigned __int64
           ]
   
-  arrays.cpp
 C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(88,19): warning C4244: инициализация: преобразование "double" в "__int64", возможна потеря данных
   (компиляция исходного файла "arrays.cpp")
       C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(88,19):

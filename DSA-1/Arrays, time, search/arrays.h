@@ -141,7 +141,9 @@ void merge(T* arr, size_t left, size_t mid, size_t right) {
     delete[] rightArr;
 }
 
-// Функция сортировки слиянием
+/// Сортировка слиянием массива arr с левой границей left и правой границей right
+/// Временная сложность: O(n log n) для всех классов входных данных
+/// Дополнительная память: O(n)
 template <typename T>
 void mergeSort(T* arr, int left, int right) {
     if (left < right) {
@@ -154,11 +156,10 @@ void mergeSort(T* arr, int left, int right) {
     }
 }
 
-/// =====================
-/// Сортировка пузырьком (Bubble Sort)
-/// Временная сложность: O(n^2)
+
+/// Сортировка пузырьком массива array размера size
+/// Временная сложность: O(n) для лучшего случая, O(n^2) - для среднего и худшего случая
 /// Дополнительная память: O(1)
-/// =====================
 template <typename T>
 void bubbleSort(T* array, size_t size) {
     for (size_t i = 0; i < size - 1; i++) {
@@ -170,11 +171,9 @@ void bubbleSort(T* array, size_t size) {
     }
 }
 
-/// =====================
-/// Сортировка вставками (Insertion Sort)
-/// Временная сложность: O(n^2)
+/// Сортировка вставками массива array размера size
+/// Временная сложность: O(n) для лучшего случая, O(n^2) - для среднего и худшего случая
 /// Дополнительная память: O(1)
-/// =====================
 template <typename T>
 void insertionSort(T* array, size_t size) {
     for (size_t i = 1; i < size; i++) {
@@ -187,6 +186,56 @@ void insertionSort(T* array, size_t size) {
         array[j] = key;
     }
 }
+
+/// Сортировка Шелла массива array размера size, изменение шага сортировки осуществляется в функции gapFunction
+/// Временная сложность: O(n log n) в лучшем случае, O(n(log(n))^2) - в среднем и худшем случае
+/// Дополнительная память: O(1)
+template <typename T>
+void shellSort(T* array, size_t size, size_t(*gapFunction)(size_t, size_t)) {
+    for (size_t gap = gapFunction(size, 0); gap > 0; gap = gapFunction(size, gap)) {
+        for (size_t i = gap; i < size; i++) {
+            T temp = array[i];
+            size_t j = i;
+            while (j >= gap && array[j - gap] > temp) {
+                array[j] = array[j - gap];
+                j -= gap;
+            }
+            array[j] = temp;
+        }
+    }
+}
+
+/// Функция для разбиения массива array с нижней границей low и верхней границей high относительно опорного элемента
+template <typename T>
+size_t partition(T* array, size_t low, size_t high) {
+    T pivot = array[high];
+    size_t i = low;
+
+    for (size_t j = low; j < high; j++) {
+        if (array[j] < pivot) {
+            swap(array[i], array[j]);
+            i++;
+        }
+    }
+    swap(array[i], array[high]);
+    return i;
+}
+
+/// Быстрая сортировка массива array с нижней границей low и верхней границей high
+/// Временная сложность: O(n log n) в лучшем и среднем случае, O(n^2) - в худшем случае
+/// Дополнительная память: O(log n) 
+template <typename T>
+void quickSort(T* array, size_t low, size_t high) {
+    if (low < high) {
+        size_t pi = partition(array, low, high);
+        if (pi > 0) quickSort(array, low, pi - 1);
+        quickSort(array, pi + 1, high);
+    }
+}
+
+
+/// Последовательность Шелла (обычная) - шаг уменьшается в 2 раза
+size_t shellGap(size_t size, size_t prevGap);
 
 /// Тест функции сортировки массива is_sorted
 void test_is_sorted();

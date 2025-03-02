@@ -99,3 +99,8 @@ void test_binary_search() {
     assert(binary_search_recursive<int>(one_element_array, 0, 0, 42) == 0);
     assert(binary_search_recursive<int>(one_element_array, 0, 0, 0) == -1);
 }
+
+/// Последовательность Шелла (обычная) - шаг уменьшается в 2 раза
+size_t shellGap(size_t size, size_t prevGap) {
+    return prevGap == 0 ? size / 2 : prevGap / 2;
+}

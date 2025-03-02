@@ -43,7 +43,9 @@ int main()
 		});
 	}
 	cout << "Массив\n";
-	insertionSort(array, 1000);
+	quickSort(array, 0, 1000);
+	//shellSort<unsigned long long>(array, 1000, shellGap);
+	//insertionSort<unsigned long long>(array, 1000);
 	//bubbleSort(array, 1000);
 	//mergeSort(array, 0, 999);
 	for (int i = 0; i < 1000; i++) {
