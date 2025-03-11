@@ -104,6 +104,39 @@ void test_binary_search() {
 size_t shellGap(size_t size, size_t prevGap) {
     return prevGap == 0 ? size / 2 : prevGap / 2;
 }
+size_t fibonacciGap(size_t size, size_t prevGap) {
+    // Если это первый вызов (нет предыдущего шага)
+    if (prevGap == 0) {
+        size_t a = 1, b = 2;
+        // Продолжаем, пока следующее число меньше размера массива
+        while (b < size) {
+            size_t next = a + b;
+            if (next >= size)
+                break;
+            a = b;
+            b = next;
+        }
+        return b;
+    }
+    else {
+        // Если предыдущий шаг уже 1, то завершаем сортировку
+        if (prevGap == 1) {
+            return 0;
+        }
+        // Найти предыдущее число Фибоначчи в последовательности.
+        size_t a = 1, b = 2; // Снова начинаем с a=1, b=2
+        // Пока b меньше prevGap, продвигаемся в последовательности
+        while (b < prevGap) {
+            size_t next = a + b;
+            a = b;
+            b = next;
+        }
+        // Если b совпадает с prevGap, то предыдущим будет a
+        // Если prevGap не является точным элементом последовательности (не должно быть),
+        // возвращаем наибольшее число, меньшее prevGap.
+        return a;
+    }
+}
 
 // Тесты для mergeSort
 void testMergeSort() {

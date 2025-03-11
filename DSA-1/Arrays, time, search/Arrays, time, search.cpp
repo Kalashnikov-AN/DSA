@@ -30,7 +30,7 @@ int main()
 	testInsertionSort();
 	testShellSort();
 	testQuickSort();
-	int size = 1'000'000'000;//'000; // размер массива
+	int size = 1'000'000;//'000;//'000;//'000; // размер массива
 	const int MIN_VALUE = 0; // минимальное значение элемента
 	const int MAX_VALUE = 1'000'000; // максимальное значение элемента
 	int total_time = 0; // сумма всех измерений времени
@@ -42,11 +42,11 @@ int main()
 	mt19937 gen(rd());  // Генератор случайных чисел
 	uniform_int_distribution<> distr(0, MAX_VALUE); // равномерное распределение
 	total_time_sort += measure_time([&]() {
-				sort(&array[0], &array[size]);
+				shellSort(array, size, fibonacciGap);
 				});
-	/*for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++) {
 		cout << array[i] << " " << i << "\n";
-	}*/
+	}
 	// Проводим 10000 измерений для последовательного
 	//cout << "start of cycle";
 	//for (int i = 0; i < 10; i++) {

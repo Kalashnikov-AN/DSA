@@ -253,6 +253,8 @@ void quickSort(T* array, size_t low, size_t high) {
 /// Последовательность Шелла (обычная) - шаг уменьшается в 2 раза
 size_t shellGap(size_t size, size_t prevGap);
 
+size_t fibonacciGap(size_t size, size_t prevGap);
+
 /// Тест функции сортировки массива is_sorted
 void test_is_sorted();
 
