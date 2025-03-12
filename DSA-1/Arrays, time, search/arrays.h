@@ -113,7 +113,7 @@ long long binary_search_recursive(T* array, long long left, long long right, T v
 Для реализованных алгоритмов. Сравните форму кривой с классом сложности BigO для среднего случая.
 Добавьте график времени работы для функции сортировки массива из стандартной библиотеки. Напишите, какой алгоритм эта функция реализует.
 Учитывайте замечания к измерению времени работы функций из предыдущих заданий и лекций.*/
-
+//todo: O(?)
 // Функция для слияния двух отсортированных подмассивов
 template <typename T>
 void merge(T* arr, size_t left, size_t mid, size_t right) {
@@ -122,7 +122,8 @@ void merge(T* arr, size_t left, size_t mid, size_t right) {
 
     T* leftArr = new T[n1];
     T* rightArr = new T[n2];
-
+    //todo: memcpy or copy
+    //todo: size_t
     for (int i = 0; i < n1; i++)
         leftArr[i] = arr[left + i];
     for (int j = 0; j < n2; j++)
@@ -140,7 +141,7 @@ void merge(T* arr, size_t left, size_t mid, size_t right) {
         }
         k++;
     }
-
+    //todo: memcpy or copy
     while (i < n1) {
         arr[k] = leftArr[i];
         i++;
@@ -160,6 +161,7 @@ void merge(T* arr, size_t left, size_t mid, size_t right) {
 /// Сортировка слиянием массива arr с левой границей left и правой границей right
 /// Временная сложность: O(n log n) для всех классов входных данных
 /// Дополнительная память: O(n)
+/// //todo: SIZE_T
 template <typename T>
 void mergeSort(T* arr, int left, int right) {
     if (left < right) {
@@ -172,7 +174,7 @@ void mergeSort(T* arr, int left, int right) {
     }
 }
 
-
+//TODO: возр. или убыв.
 /// Сортировка пузырьком массива array размера size
 /// Временная сложность: O(n) для лучшего случая, O(n^2) - для среднего и худшего случая
 /// Дополнительная память: O(1)
@@ -224,7 +226,7 @@ void shellSort(T* array, size_t size, size_t(*gapFunction)(size_t, size_t)) {
 /// Функция для разбиения массива array с нижней границей low и верхней границей high относительно опорного элемента
 template <typename T>
 size_t partition(T* array, size_t low, size_t high) {
-    T pivot = array[high];
+    T pivot = array[high]; //todo: больше вариантов, чтобы не попасть на наибольший
     size_t i = low;
 
     for (size_t j = low; j < high; j++) {
