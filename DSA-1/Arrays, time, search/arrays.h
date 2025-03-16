@@ -3,6 +3,7 @@
 #include <iostream>
 #include <random>   // библиотека для генерации случайных чисел
 #include <fstream>
+#include <algorithm> // Для max и min
 using namespace std;
 
 /// Возвращает массив типа T* размера size с минимальным значением min_value и максимальным max_value
@@ -113,8 +114,10 @@ long long binary_search_recursive(T* array, long long left, long long right, T v
 Для реализованных алгоритмов. Сравните форму кривой с классом сложности BigO для среднего случая.
 Добавьте график времени работы для функции сортировки массива из стандартной библиотеки. Напишите, какой алгоритм эта функция реализует.
 Учитывайте замечания к измерению времени работы функций из предыдущих заданий и лекций.*/
-//todo: O(?)
+
 // Функция для слияния двух отсортированных подмассивов
+/// Временная сложность: O(n) для всех классов входных данных
+/// Дополнительная память: O(n)
 template <typename T>
 void merge(T* arr, size_t left, size_t mid, size_t right) {
     size_t n1 = mid - left + 1;
@@ -122,14 +125,10 @@ void merge(T* arr, size_t left, size_t mid, size_t right) {
 
     T* leftArr = new T[n1];
     T* rightArr = new T[n2];
-    //todo: memcpy or copy
-    //todo: size_t
-    for (int i = 0; i < n1; i++)
-        leftArr[i] = arr[left + i];
-    for (int j = 0; j < n2; j++)
-        rightArr[j] = arr[mid + 1 + j];
-
-    int i = 0, j = 0, k = left;
+    // Копируем элементы в левый и правый временные массивы с помощью copy
+    copy(arr + left, arr + left + n1, leftArr);
+    copy(arr + mid + 1, arr + mid + 1 + n2, rightArr);
+    size_t i = 0, j = 0, k = left;
     while (i < n1 && j < n2) {
         if (leftArr[i] <= rightArr[j]) {
             arr[k] = leftArr[i];
@@ -141,31 +140,25 @@ void merge(T* arr, size_t left, size_t mid, size_t right) {
         }
         k++;
     }
-    //todo: memcpy or copy
-    while (i < n1) {
-        arr[k] = leftArr[i];
-        i++;
-        k++;
-    }
+    // Копируем оставшиеся элементы из leftArr, если они есть
+    copy(leftArr + i, leftArr + n1, arr + k);
+    // Обновляем k после копирования leftArr 
+     k += (n1 - i);
 
-    while (j < n2) {
-        arr[k] = rightArr[j];
-        j++;
-        k++;
-    }
+    // Копируем оставшиеся элементы из rightArr, если они есть
+    copy(rightArr + j, rightArr + n2, arr + k);
 
     delete[] leftArr;
     delete[] rightArr;
 }
 
-/// Сортировка слиянием массива arr с левой границей left и правой границей right
+/// Сортировка слиянием массива arr с левой границей left и правой границей right по неубыванию
 /// Временная сложность: O(n log n) для всех классов входных данных
 /// Дополнительная память: O(n)
-/// //todo: SIZE_T
 template <typename T>
-void mergeSort(T* arr, int left, int right) {
+void mergeSort(T* arr, size_t left, size_t right) {
     if (left < right) {
-        int mid = left + (right - left) / 2;
+        size_t mid = left + (right - left) / 2;
 
         mergeSort(arr, left, mid);
         mergeSort(arr, mid + 1, right);
@@ -174,8 +167,8 @@ void mergeSort(T* arr, int left, int right) {
     }
 }
 
-//TODO: возр. или убыв.
-/// Сортировка пузырьком массива array размера size
+
+/// Сортировка пузырьком массива array размера size по неубыванию
 /// Временная сложность: O(n) для лучшего случая, O(n^2) - для среднего и худшего случая
 /// Дополнительная память: O(1)
 template <typename T>
@@ -189,7 +182,7 @@ void bubbleSort(T* array, size_t size) {
     }
 }
 
-/// Сортировка вставками массива array размера size
+/// Сортировка вставками массива array размера size по неубыванию
 /// Временная сложность: O(n) для лучшего случая, O(n^2) - для среднего и худшего случая
 /// Дополнительная память: O(1)
 template <typename T>
@@ -205,7 +198,7 @@ void insertionSort(T* array, size_t size) {
     }
 }
 
-/// Сортировка Шелла массива array размера size, изменение шага сортировки осуществляется в функции gapFunction
+/// Сортировка Шелла массива array размера size по неубыванию, изменение шага сортировки осуществляется в функции gapFunction
 /// Временная сложность: O(n log n) в лучшем случае, O(n(log(n))^2) - в среднем и худшем случае
 /// Дополнительная память: O(1)
 template <typename T>
@@ -224,9 +217,21 @@ void shellSort(T* array, size_t size, size_t(*gapFunction)(size_t, size_t)) {
 }
 
 /// Функция для разбиения массива array с нижней границей low и верхней границей high относительно опорного элемента
+/// Временная сложность: O(n) для всех классов входных данных
+/// Дополнительная память: O(1)
 template <typename T>
 size_t partition(T* array, size_t low, size_t high) {
-    T pivot = array[high]; //todo: больше вариантов, чтобы не попасть на наибольший
+    size_t mid = (low + high) / 2;
+    if (array[low] > array[mid])
+        swap(array[low], array[mid]);
+    if (array[low] > array[high])
+        swap(array[low], array[high]);
+    if (array[mid] > array[high])
+        swap(array[mid], array[high]);
+    // Теперь array[mid] является медианой
+    swap(array[mid], array[high]);
+    
+    T pivot = array[high];
     size_t i = low;
 
     for (size_t j = low; j < high; j++) {
@@ -239,7 +244,7 @@ size_t partition(T* array, size_t low, size_t high) {
     return i;
 }
 
-/// Быстрая сортировка массива array с нижней границей low и верхней границей high
+/// Быстрая сортировка массива array с нижней границей low и верхней границей high по неубыванию
 /// Временная сложность: O(n log n) в лучшем и среднем случае, O(n^2) - в худшем случае
 /// Дополнительная память: O(log n) 
 template <typename T>
