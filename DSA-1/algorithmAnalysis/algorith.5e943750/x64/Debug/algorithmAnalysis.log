@@ -1,3 +1,3 @@
 ﻿  algorithmAnalysis.cpp
-C:\Users\huuma\Documents\DSA\DSA-1\algorithmAnalysis\algorithmAnalysis.cpp(87,25): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-1\algorithmAnalysis\algorithmAnalysis.cpp(19,25): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
   algorithmAnalysis.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-1\algorithmAnalysis\x64\Debug\algorithmAnalysis.exe
