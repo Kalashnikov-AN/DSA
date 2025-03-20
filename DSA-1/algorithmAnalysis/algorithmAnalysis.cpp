@@ -11,14 +11,14 @@ int main() {
     testFindClosestElement();
 
     
-    const size_t n = 1000000; 
-    int* largeArray = new int[n];
+    const size_t n = 1'000'000; 
+    float* largeArray = new float[n];
 
     // Заполняем массив значениями от 0 до n-1.
     for (size_t i = 0; i < n; i++) {
         largeArray[i] = i;
     }
-    int x = n / 3; 
+    float x = n / 3;
   
     cout << "Найденный элемент: " << findClosestElement(largeArray, n, x) << endl;
 

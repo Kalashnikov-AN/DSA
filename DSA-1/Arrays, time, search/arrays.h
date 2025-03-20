@@ -129,7 +129,7 @@ void merge(T* arr, size_t left, size_t mid, size_t right) {
 
     T* leftArr = new T[n1];
     T* rightArr = new T[n2];
-    // Копируем элементы в левый и правый временные массивы с помощью copy
+    // Копируем элементы в левый и правый временные массивы с помощью copy //todo: коммент про ячейки
     copy(arr + left, arr + left + n1, leftArr);
     copy(arr + mid + 1, arr + mid + 1 + n2, rightArr);
     size_t i = 0, j = 0, k = left;
