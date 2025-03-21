@@ -43,17 +43,4 @@ C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\Arrays, time, search.cpp
               Func=main::<lambda_1>
           ]
   
-  arrays.cpp
-C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(93,19): warning C4244: инициализация: преобразование "double" в "__int64", возможна потеря данных
-  (компиляция исходного файла "arrays.cpp")
-      C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.h(93,19):
-      контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\arrays.cpp(86,5):
-          выполняется компиляция ссылки на экземпляр шаблон функции "__int64 binary_search_recursive<int>(T *,__int64,__int64,T)"
-          with
-          [
-              T=int
-          ]
-  
-  Создание кода...
   Arrays, time, search.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-1\Arrays, time, search\x64\Debug\Arrays, time, search.exe
