@@ -1,3 +1,4 @@
+// Автор: Калашников А.Н.
 #include <iostream>
 #include <cassert>
 #include "dynArray.h"
@@ -46,6 +47,8 @@ void runTests() {
     for (int i = 0; i < 8; i++) {
         arr.pop_back();
     }
+    
+    // Количество элементов массива уменьшилось
     assert(arr.size() == 2);
 
     // Поскольку после удаления большого количества элементов резерв памяти мог уменьшиться
@@ -61,6 +64,40 @@ void runTests() {
     catch (const out_of_range&) {
        
     }
+
+    // Создание массива и добавление элементов
+    DynamicArray<int> arrClear(5);
+    arrClear.push_back(10);
+    arrClear.push_back(20);
+    arrClear.push_back(30);
+
+    // Проверка начального состояния
+    assert(arrClear.size() == 3);
+    assert(arrClear.capacity() >= 3);
+
+    // Вызов clear()
+    arrClear.clear();
+
+    // Проверка состояния после очистки
+    assert(arrClear.size() == 0);
+
+    // Попытка доступа по индексу должна вызвать исключение
+    try {
+        int value = arrClear[0];
+        assert(false); // не должно достигаться
+    }
+    catch (const out_of_range&) {
+        // Ожидаемое поведение
+    }
+    
+    // Повторный вызов clear() не должен вызывать ошибок
+    arrClear.clear();
+    assert(arrClear.size() == 0);
+
+    // Повторное добавление элементов после очистки
+    arrClear.push_back(42);
+    assert(arrClear.size() == 1);
+    assert(arrClear[0] == 42);
 
     cout << "Все тесты пройдены успешно" << endl;
 }

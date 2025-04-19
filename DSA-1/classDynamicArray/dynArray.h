@@ -1,5 +1,7 @@
+// Автор: Калашников А.Н.
 #pragma once
 #include <stdexcept>
+#include <iostream>
 using namespace std;
 
 /// Тесты для методов класса DynamicArray
@@ -99,11 +101,23 @@ public:
         _capacity = newCapacity;
     }
 
+    /// Выполняет полную очистку хранимых данных, но оставляет сам объект 
+    void clear() {
+        // Если буфер уже nullptr — значит уже очищено, ничего не делаем
+        if (_data) {
+            delete[] _data;
+            _data = nullptr;
+        }
+        _size = 0;
+        _capacity = 1;
+        _data = new T[_capacity];
+    }
+
     /// Добавление элемента value в конец массива 
     void push_back(const T& value) {
-        if (_size == _capacity) { // Если массив заполнен, увеличиваем емкость
-            reserve(_capacity * 2);
-        }
+        if (_size == _capacity) { // Если массив заполнен
+            reserve(_capacity * 2); // Резервированная память увеличивается сразу в 2 раза
+        }                           // чтобы не пришлось выделять память при создании каждого следующего элемента
         _data[_size++] = value;
     }
 
@@ -112,9 +126,9 @@ public:
         if (_size == 0)
             throw underflow_error("Массив пуст");
         --_size;
-        // При удалении большого количества элементов можно уменьшать резерв памяти
+        // Если занято менее 1/4 выделенной памяти
         if (_size > 0 && _size < _capacity / 4) {
-            reserve(_capacity / 2);
+            reserve(_capacity / 2); // Резервированная память уменьшается сразу в 2 раза
         }
     }
 

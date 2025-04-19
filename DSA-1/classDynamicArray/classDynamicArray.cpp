@@ -1,4 +1,5 @@
-﻿#include <locale>
+﻿// Автор: Калашников А.Н.
+#include <locale>
 #include "dynArray.h"
 using namespace std;
 
