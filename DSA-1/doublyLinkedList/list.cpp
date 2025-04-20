@@ -1,4 +1,4 @@
-// Автор: Калашников А.Н.
+п»ї// РђРІС‚РѕСЂ: РљР°Р»Р°С€РЅРёРєРѕРІ Рђ.Рќ.
 #include <iostream>
 #include <cassert>
 #include <stdexcept>
@@ -8,12 +8,12 @@ using namespace std;
 template <typename T>
 using List = DoublyLinkedList<T>;
 
-/// Тест вставки элементов в начало/конец и проверки размера.
+/// РўРµСЃС‚ РІСЃС‚Р°РІРєРё СЌР»РµРјРµРЅС‚РѕРІ РІ РЅР°С‡Р°Р»Рѕ/РєРѕРЅРµС† Рё РїСЂРѕРІРµСЂРєРё СЂР°Р·РјРµСЂР°.
 void test_insert_and_size() {
     List<int> lst;
     assert(lst.size() == 0);
 
-    // Вставка в начало и конец
+    // Р’СЃС‚Р°РІРєР° РІ РЅР°С‡Р°Р»Рѕ Рё РєРѕРЅРµС†
     lst.insert_front(10);
     assert(lst[0] == 10);
     assert(lst.size() == 1);
@@ -21,12 +21,12 @@ void test_insert_and_size() {
 
     lst.insert_back(20);
     assert(lst.size() == 2);
-    // проверяем порядок: head->10, tail->20
+    // РїСЂРѕРІРµСЂСЏРµРј РїРѕСЂСЏРґРѕРє: head->10, tail->20
     assert(lst.find(10)->next->data == 20);
     assert(lst.find(20)->prev->data == 10);
 }
 
-/// Тест удаления элементов с начала и конца списка
+/// РўРµСЃС‚ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ СЃ РЅР°С‡Р°Р»Р° Рё РєРѕРЅС†Р° СЃРїРёСЃРєР°
 void test_remove_front_and_back() {
     List<int> lst;
     lst.insert_back(1);
@@ -34,20 +34,20 @@ void test_remove_front_and_back() {
     lst.insert_back(3);
     assert(lst.size() == 3);
 
-    // Удаление с начала
-    lst.remove_front(); // уберёт 1
+    // РЈРґР°Р»РµРЅРёРµ СЃ РЅР°С‡Р°Р»Р°
+    lst.remove_front(); // СѓР±РµСЂС‘С‚ 1
     assert(lst.size() == 2);
     assert(lst.find(1) == nullptr);
     assert(lst.find(2)->prev == nullptr);
 
-    // Удаление с конца
-    lst.remove_back(); // уберёт 3
+    // РЈРґР°Р»РµРЅРёРµ СЃ РєРѕРЅС†Р°
+    lst.remove_back(); // СѓР±РµСЂС‘С‚ 3
     assert(lst.size() == 1);
     assert(lst.find(3) == nullptr);
     assert(lst.find(2)->next == nullptr);
 
-    // Удаление из пустого — underflow_error
-    lst.remove_front(); // теперь пусто
+    // РЈРґР°Р»РµРЅРёРµ РёР· РїСѓСЃС‚РѕРіРѕ вЂ” underflow_error
+    lst.remove_front(); // С‚РµРїРµСЂСЊ РїСѓСЃС‚Рѕ
     bool underflow = false;
     try {
         lst.remove_front();
@@ -58,7 +58,7 @@ void test_remove_front_and_back() {
     assert(underflow);
 }
 
-/// Тест удаления конкретного узла
+/// РўРµСЃС‚ СѓРґР°Р»РµРЅРёСЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СѓР·Р»Р°
 void test_remove_node() {
     DoublyLinkedList<char> lst;
     lst.insert_back('a');
@@ -66,57 +66,57 @@ void test_remove_node() {
     lst.insert_back('c');
     assert(lst.size() == 3);
 
-    // Удаление конкретного узла 'b'
+    // РЈРґР°Р»РµРЅРёРµ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СѓР·Р»Р° 'b'
     auto nodeB = lst.find('b');
     lst.remove(nodeB);
     assert(lst.size() == 2);
     assert(lst.find('b') == nullptr);
-    // Проверьте связь a <-> c
+    // РџСЂРѕРІРµСЂСЊС‚Рµ СЃРІСЏР·СЊ a <-> c
     auto nodeA = lst.find('a');
     auto nodeC = lst.find('c');
     assert(nodeA->next == nodeC);
     assert(nodeC->prev == nodeA);
 }
 
-/// Тест конкатенации двух списков и очистки
+/// РўРµСЃС‚ РєРѕРЅРєР°С‚РµРЅР°С†РёРё РґРІСѓС… СЃРїРёСЃРєРѕРІ Рё РѕС‡РёСЃС‚РєРё
 void test_concatenate_and_clear() {
     List<int> a, b;
     for (int i = 1; i <= 3; ++i) a.insert_back(i);
     for (int i = 4; i <= 6; ++i) b.insert_back(i);
     assert(a.size() == 3 && b.size() == 3);
 
-    // Конкатенация b в a
+    // РљРѕРЅРєР°С‚РµРЅР°С†РёСЏ b РІ a
     a.concatenate(b);
     assert(a.size() == 6);
     for (int i = 1; i <= 6; ++i) {
         assert(a.find(i) != nullptr);
     }
-    // b должен быть очищен
+    // b РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕС‡РёС‰РµРЅ
     assert(b.size() == 0);
 
-    // Очистка a
+    // РћС‡РёСЃС‚РєР° a
     a.clear();
     assert(a.size() == 0);
     assert(a.find(1) == nullptr);
 }
 
-/// Тест конструктора копирования
+/// РўРµСЃС‚ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 void test_copy_constructor() {
     List<int> a;
     for (int i = 1; i <= 5; ++i) a.insert_back(i);
     List<int> b(a);
-    // Проверяем, что b содержит ту же последовательность
+    // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ b СЃРѕРґРµСЂР¶РёС‚ С‚Сѓ Р¶Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ
     assert(b.size() == a.size());
     for (int i = 1; i <= 5; ++i)
         assert(b.find(i) != nullptr && b.find(i)->data == i);
-    // Изменение a не меняет b (глубокое копирование)
-    a.remove_front();  // удаляем 1
+    // РР·РјРµРЅРµРЅРёРµ a РЅРµ РјРµРЅСЏРµС‚ b (РіР»СѓР±РѕРєРѕРµ РєРѕРїРёСЂРѕРІР°РЅРёРµ)
+    a.remove_front();  // СѓРґР°Р»СЏРµРј 1
     assert(a.size() == 4);
     assert(b.size() == 5);
     assert(b.find(1) != nullptr);
 }
 
-/// Тест оператора присваивания копированием
+/// РўРµСЃС‚ РѕРїРµСЂР°С‚РѕСЂР° РїСЂРёСЃРІР°РёРІР°РЅРёСЏ РєРѕРїРёСЂРѕРІР°РЅРёРµРј
 void test_copy_assignment() {
     List<string> a;
     a.insert_back("one");
@@ -130,64 +130,64 @@ void test_copy_assignment() {
     assert(b.size() == 2);
 }
 
-/// Тест конструктора перемещения
+/// РўРµСЃС‚ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° РїРµСЂРµРјРµС‰РµРЅРёСЏ
 void test_move_constructor() {
     List<int> a;
     for (int i = 42; i <= 45; ++i) a.insert_back(i);
     List<int> b(move(a));
-    // b получил данные
+    // b РїРѕР»СѓС‡РёР» РґР°РЅРЅС‹Рµ
     assert(b.size() == 4);
     for (int i = 42; i <= 45; ++i)
         assert(b.find(i));
-    // a должен быть пуст
+    // a РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїСѓСЃС‚
     assert(a.size() == 0);
 }
 
-/// Тест оператора присваивания перемещением
+/// РўРµСЃС‚ РѕРїРµСЂР°С‚РѕСЂР° РїСЂРёСЃРІР°РёРІР°РЅРёСЏ РїРµСЂРµРјРµС‰РµРЅРёРµРј
 void test_move_assignment() {
     List<char> a;
     a.insert_back('x');
     a.insert_back('y');
     List<char> b;
     b.insert_back('z');
-    // превращаем a в rvalue
+    // РїСЂРµРІСЂР°С‰Р°РµРј a РІ rvalue
     b = move(a); 
-    // b получил x,y
+    // b РїРѕР»СѓС‡РёР» x,y
     assert(b.size() == 2);
     assert(b.find('x') && b.find('y'));
-    // a пуст
+    // a РїСѓСЃС‚
     assert(a.size() == 0);
 }
 
-/// Тесты для методов node_at и []
+/// РўРµСЃС‚С‹ РґР»СЏ РјРµС‚РѕРґРѕРІ node_at Рё []
 void test_node_at_and_indexing() {
     DoublyLinkedList<int> lst;
-    // Заполним список значениями 5, 10, 15, 20
+    // Р—Р°РїРѕР»РЅРёРј СЃРїРёСЃРѕРє Р·РЅР°С‡РµРЅРёСЏРјРё 5, 10, 15, 20
     lst.insert_back(5);
     lst.insert_back(10);
     lst.insert_back(15);
     lst.insert_back(20);
 
-    // Размер
+    // Р Р°Р·РјРµСЂ
     assert(lst.size() == 4);
 
-    // node_at: корректные индексы
+    // node_at: РєРѕСЂСЂРµРєС‚РЅС‹Рµ РёРЅРґРµРєСЃС‹
     assert(lst.node_at(0) && lst.node_at(0)->data == 5);
     assert(lst.node_at(1) && lst.node_at(1)->data == 10);
     assert(lst.node_at(2) && lst.node_at(2)->data == 15);
     assert(lst.node_at(3) && lst.node_at(3)->data == 20);
 
-    // node_at: несуществующие индексы
+    // node_at: РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ РёРЅРґРµРєСЃС‹
     assert(lst.node_at(4) == nullptr);
     assert(lst.node_at(100) == nullptr);
 
-    // operator[] чтение и изменение
+    // operator[] С‡С‚РµРЅРёРµ Рё РёР·РјРµРЅРµРЅРёРµ
     assert(lst[0] == 5);
     assert(lst[3] == 20);
     lst[2] = 99;
     assert(lst[2] == 99);
 
-    // operator[] выход за границу => исключение
+    // operator[] РІС‹С…РѕРґ Р·Р° РіСЂР°РЅРёС†Сѓ => РёСЃРєР»СЋС‡РµРЅРёРµ
     bool caught = false;
     try {
         int x = lst[4];
@@ -197,7 +197,8 @@ void test_node_at_and_indexing() {
     }
     assert(caught);
 
-    // const доступ
+
+    // const РґРѕСЃС‚СѓРї
     const DoublyLinkedList<int>& clst = lst;
     assert(clst[0] == 5);
     assert(clst[2] == 99);
@@ -212,23 +213,23 @@ void test_node_at_and_indexing() {
 
 }
 
-/// Тест для метода at
+/// РўРµСЃС‚ РґР»СЏ РјРµС‚РѕРґР° at
 void test_at_methods() {
     DoublyLinkedList<string> lst;
     lst.insert_back("a");
     lst.insert_back("b");
     lst.insert_back("c");
 
-    // at чтение
+    // at С‡С‚РµРЅРёРµ
     assert(lst.at(0) == "a");
     assert(lst.at(1) == "b");
     assert(lst.at(2) == "c");
 
-    // at запись
+    // at Р·Р°РїРёСЃСЊ
     lst.at(1) = "beta";
     assert(lst.at(1) == "beta");
 
-    // at выход за границу
+    // at РІС‹С…РѕРґ Р·Р° РіСЂР°РЅРёС†Сѓ
     bool caught = false;
     try {
         string s = lst.at(3);
@@ -238,7 +239,7 @@ void test_at_methods() {
     }
     assert(caught);
 
-    // константная версия
+    // РєРѕРЅСЃС‚Р°РЅС‚РЅР°СЏ РІРµСЂСЃРёСЏ
     const DoublyLinkedList<string>& clst = lst;
     assert(clst.at(0) == "a");
     assert(clst.at(1) == "beta");
@@ -252,15 +253,15 @@ void test_at_methods() {
     assert(caught);
 }
 
-/// Тест: вставка по индексу в пустой список
+/// РўРµСЃС‚: РІСЃС‚Р°РІРєР° РїРѕ РёРЅРґРµРєСЃСѓ РІ РїСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє
 void test_insert_at_empty() {
     DoublyLinkedList<int> lst;
-    // вставка по индексу 0 в пустой список эквивалентна insert_front
+    // РІСЃС‚Р°РІРєР° РїРѕ РёРЅРґРµРєСЃСѓ 0 РІ РїСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє СЌРєРІРёРІР°Р»РµРЅС‚РЅР° insert_front
     lst.insert_at(0, 42);
     assert(lst.size() == 1);
     assert(lst[0] == 42);
 
-    // попытка вставить по индексу > size должна бросить исключение
+    // РїРѕРїС‹С‚РєР° РІСЃС‚Р°РІРёС‚СЊ РїРѕ РёРЅРґРµРєСЃСѓ > size РґРѕР»Р¶РЅР° Р±СЂРѕСЃРёС‚СЊ РёСЃРєР»СЋС‡РµРЅРёРµ
     bool caught = false;
     try {
         lst.insert_at(2, 100);
@@ -271,32 +272,32 @@ void test_insert_at_empty() {
     assert(caught);
 }
 
-/// Тест: вставка в начало, середину и конец
+/// РўРµСЃС‚: РІСЃС‚Р°РІРєР° РІ РЅР°С‡Р°Р»Рѕ, СЃРµСЂРµРґРёРЅСѓ Рё РєРѕРЅРµС†
 void test_insert_at_various_positions() {
     DoublyLinkedList<string> lst;
     lst.insert_back("A");
     lst.insert_back("C");
 
-    // вставка в начало
+    // РІСЃС‚Р°РІРєР° РІ РЅР°С‡Р°Р»Рѕ
     lst.insert_at(0, "X"); // X, A, C
     assert(lst.size() == 3);
     assert(lst[0] == "X");
     assert(lst[1] == "A");
 
-    // вставка в середину
+    // РІСЃС‚Р°РІРєР° РІ СЃРµСЂРµРґРёРЅСѓ
     lst.insert_at(2, "Y"); // X, A, Y, C
     assert(lst.size() == 4);
     assert(lst[2] == "Y");
     assert(lst[3] == "C");
 
-    // вставка в конец (index == size)
+    // РІСЃС‚Р°РІРєР° РІ РєРѕРЅРµС† (index == size)
     lst.insert_at(lst.size(), "Z"); // X, A, Y, C, Z
     assert(lst.size() == 5);
     assert(lst[4] == "Z");
 
 }
 
-/// Тест: удаление по индексу в разных позициях
+/// РўРµСЃС‚: СѓРґР°Р»РµРЅРёРµ РїРѕ РёРЅРґРµРєСЃСѓ РІ СЂР°Р·РЅС‹С… РїРѕР·РёС†РёСЏС…
 void test_remove_at_various_positions() {
     DoublyLinkedList<char> lst;
     lst.insert_back('a');
@@ -304,17 +305,17 @@ void test_remove_at_various_positions() {
     lst.insert_back('c');
     lst.insert_back('d'); // a, b, c, d
 
-    // удаление первого
+    // СѓРґР°Р»РµРЅРёРµ РїРµСЂРІРѕРіРѕ
     lst.remove_at(0); // b, c, d
     assert(lst.size() == 3);
     assert(lst[0] == 'b');
 
-    // удаление последнего
+    // СѓРґР°Р»РµРЅРёРµ РїРѕСЃР»РµРґРЅРµРіРѕ
     lst.remove_at(lst.size() - 1); // b, c
     assert(lst.size() == 2);
     assert(lst[1] == 'c');
 
-    // удаление в середине
+    // СѓРґР°Р»РµРЅРёРµ РІ СЃРµСЂРµРґРёРЅРµ
     lst.insert_back('e'); // b, c, e
     lst.insert_back('f'); // b, c, e, f
     lst.remove_at(2);     // b, c, f
@@ -322,7 +323,7 @@ void test_remove_at_various_positions() {
     assert(lst[2] == 'f');
 }
 
-/// Тест: удаление по неверному индексу
+/// РўРµСЃС‚: СѓРґР°Р»РµРЅРёРµ РїРѕ РЅРµРІРµСЂРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ
 void test_remove_at_out_of_range() {
     DoublyLinkedList<double> lst;
     lst.insert_back(1.1);
