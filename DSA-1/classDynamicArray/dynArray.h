@@ -7,6 +7,12 @@ using namespace std;
 /// Тесты для методов класса DynamicArray
 void runTests();
 
+void test_push_pop_front();
+
+void test_insert_at();
+
+void test_remove_at();
+
 /// Класс динамический массив из элементов типа T
 template <typename T>
 class DynamicArray {
@@ -130,6 +136,69 @@ public:
         if (_size > 0 && _size < _capacity / 4) {
             reserve(_capacity / 2); // Резервированная память уменьшается сразу в 2 раза
         }
+    }
+
+    /**
+    * @brief Добавление элемента в начало
+    * @param value значение для вставки
+    * Complexity: O(n)
+    */
+    void push_front(const T& value) {
+        if (_size == _capacity) reserve(_capacity * 2);
+        // сдвинуть вправо
+        for (size_t i = _size; i > 0; --i)
+            _data[i] = _data[i - 1];
+        _data[0] = value;
+        ++_size;
+    }
+
+    /**
+     * @brief Удаление элемента из начала
+     * Complexity: O(n)
+     */
+    void pop_front() {
+        if (_size == 0) throw underflow_error("Array is empty");
+        // сдвинуть влево
+        for (size_t i = 1; i < _size; ++i)
+            _data[i - 1] = _data[i];
+        --_size;
+        if (_size > 0 && _size < _capacity / 4) reserve(_capacity / 2);
+    }
+
+    /**
+     * @brief Вставка элемента по индексу (0-based)
+     * @param index позиция (0..size)
+     * @param value значение для вставки
+     * @throw out_of_range если индекс > size
+     * Complexity: O(n)
+     */
+    void insert_at(size_t index, const T& value) {
+        if (index > _size) throw out_of_range("Index out of range");
+        if (index == 0) return push_front(value);
+        if (index == _size) return push_back(value);
+        if (_size == _capacity) reserve(_capacity * 2);
+        // сдвинуть часть массива
+        for (size_t i = _size; i > index; --i)
+            _data[i] = _data[i - 1];
+        _data[index] = value;
+        ++_size;
+    }
+
+    /**
+     * @brief Удаление элемента по индексу (0-based)
+     * @param index позиция (0..size-1)
+     * @throw out_of_range если индекс >= size
+     * Complexity: O(n)
+     */
+    void remove_at(size_t index) {
+        if (index >= _size) throw out_of_range("Index out of range");
+        if (index == 0) return pop_front();
+        if (index == _size - 1) return pop_back();
+        // сдвинуть оставшуюся часть
+        for (size_t i = index + 1; i < _size; ++i)
+            _data[i - 1] = _data[i];
+        --_size;
+        if (_size > 0 && _size < _capacity / 4) reserve(_capacity / 2);
     }
 
     /// Доступ по индексу
