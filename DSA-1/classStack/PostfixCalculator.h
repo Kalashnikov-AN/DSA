@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "stack.h"
 #include <sstream>
 #include <stdexcept>
@@ -8,27 +8,27 @@ using namespace std;
 
 class PostfixCalculator {
 private:
-    stack<double> operandStack; // Стек для хранения операндов
+    stack<double> operandStack; // РЎС‚РµРє РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РѕРїРµСЂР°РЅРґРѕРІ
 
-    // Проверка, является ли токен оператором
+    // РџСЂРѕРІРµСЂРєР°, СЏРІР»СЏРµС‚СЃСЏ Р»Рё С‚РѕРєРµРЅ РѕРїРµСЂР°С‚РѕСЂРѕРј
     bool isOperator(const string& token) const {
         return token == "+" || token == "-" || token == "*" || token == "/";
     }
 
-    // Выполнение операции
+    // Р’С‹РїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С†РёРё
     double applyOperator(const string& op, double a, double b) {
         if (op == "+") return a + b;
         if (op == "-") return a - b;
         if (op == "*") return a * b;
         if (op == "/") {
-            if (b == 0) throw runtime_error("Деление на ноль");
+            if (b == 0) throw runtime_error("Р”РµР»РµРЅРёРµ РЅР° РЅРѕР»СЊ");
             return a / b;
         }
-        throw invalid_argument("Неизвестный оператор");
+        throw invalid_argument("РќРµРёР·РІРµСЃС‚РЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ");
     }
 
 public:
-    // Вычисление постфиксного выражения
+    // Р’С‹С‡РёСЃР»РµРЅРёРµ РїРѕСЃС‚С„РёРєСЃРЅРѕРіРѕ РІС‹СЂР°Р¶РµРЅРёСЏ
     double evaluate(const string& expression) {
         operandStack.clear();
         istringstream iss(expression);
@@ -37,7 +37,7 @@ public:
         while (iss >> token) {
             if (isOperator(token)) {
                 if (operandStack.size() < 2) {
-                    throw runtime_error("Недостаточно операндов");
+                    throw runtime_error("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РѕРїРµСЂР°РЅРґРѕРІ");
                 }
                 double b = operandStack.pop();
                 double a = operandStack.pop();
@@ -45,23 +45,23 @@ public:
                 operandStack.push(result);
             }
             else {
-                // Пробуем преобразовать токен в число
+                // РџСЂРѕР±СѓРµРј РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ С‚РѕРєРµРЅ РІ С‡РёСЃР»Рѕ
                 try {
                     size_t pos;
-                    double num = stod(token, &pos); //todo: разобрать в stod
+                    double num = stod(token, &pos); //todo: СЂР°Р·РѕР±СЂР°С‚СЊ РІ stod
                     if (pos != token.size()) {
-                        throw invalid_argument("Ошибка в числе");
+                        throw invalid_argument("РћС€РёР±РєР° РІ С‡РёСЃР»Рµ");
                     }
                     operandStack.push(num);
                 }
                 catch (...) {
-                    throw invalid_argument("Недопустимый токен: " + token);
+                    throw invalid_argument("РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С‚РѕРєРµРЅ: " + token);
                 }
             }
         }
 
         if (operandStack.size() != 1) {
-            throw runtime_error("Некорректное выражение");
+            throw runtime_error("РќРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ");
         }
 
         return operandStack.peek();
