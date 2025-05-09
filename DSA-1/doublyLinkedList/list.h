@@ -127,7 +127,7 @@ public:
     /// Удаление первого элемента (O(1))
     void remove_front() {
         if (!head)
-            throw underflow_error("Список пуст");
+            return;
         Node* to_delete = head;
         head = head->next;
         if (head)

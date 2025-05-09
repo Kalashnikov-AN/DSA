@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "findClosest.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\algorithmAnalysis\\findClosest.cpp",
               "RelativeToolTip": "findClosest.cpp",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-19T03:33:23.726Z",
               "EditorCaption": ""
@@ -47,8 +47,7 @@
               "RelativeToolTip": "findClosest.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-19T03:33:04.736Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T03:33:04.736Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "algorithmAnalysis.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-18T14:49:13.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T14:49:13.499Z"
             }
           ]
         }

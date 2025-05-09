@@ -1,0 +1,246 @@
+﻿  PostfixCalculator.cpp
+  classStack.cpp
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,21): error C2143: синтаксическая ошибка: отсутствие ";" перед "<"
+  (компиляция исходного файла "PostfixCalculator.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,21):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(7,7):
+          при компиляции шаблона класса "stack"
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,5): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,29): error C2238: непредвиденные лексемы перед ";"
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(20,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(20,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(26,13): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(26,13): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(33,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(33,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(39,13): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(39,13): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(46,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(46,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(55,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(55,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(61,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(61,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(66,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(66,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(71,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(71,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(76,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(76,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(81,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(81,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "PostfixCalculator.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,21): error C2143: синтаксическая ошибка: отсутствие ";" перед "<"
+  (компиляция исходного файла "classStack.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,21):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(7,7):
+          при компиляции шаблона класса "stack"
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,5): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,29): error C2238: непредвиденные лексемы перед ";"
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(20,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(20,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(26,13): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(26,13): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(33,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(33,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(39,13): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(39,13): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(46,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(46,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(55,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(55,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(61,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(61,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(66,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(66,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(71,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(71,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(76,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(76,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(81,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "classStack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(81,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "classStack.cpp")
+  
+  stack.cpp
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,21): error C2143: синтаксическая ошибка: отсутствие ";" перед "<"
+  (компиляция исходного файла "stack.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,21):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(7,7):
+          при компиляции шаблона класса "stack"
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,5): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(9,29): error C2238: непредвиденные лексемы перед ";"
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(20,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(20,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(26,13): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(26,13): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(33,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(33,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(39,13): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(39,13): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(46,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(46,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(52,19): error C3861: underflow_error: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(52,34):
+      "underflow_error": объявление функции должно быть доступно, так как ни один из аргументов не зависит от параметра шаблона
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(55,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(55,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(61,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(61,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(66,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(66,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(71,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(71,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(76,16): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(76,16): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(81,9): error C3861: list: идентификатор не найден
+  (компиляция исходного файла "stack.cpp")
+  
+C:\Users\huuma\Documents\DSA\DSA-1\classStack\stack.h(81,9): error C2065: list: необъявленный идентификатор
+  (компиляция исходного файла "stack.cpp")
+  
+  Создание кода...
