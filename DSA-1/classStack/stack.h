@@ -1,8 +1,9 @@
-﻿
-#pragma once
-
+﻿#pragma once
+#include "C:\Users\huuma\Documents\DSA\DSA-1\doublyLinkedList\list.h"
 using namespace std;
+// Автор: Калашников А.Н.
 
+/// Класс стека элементов типа T
 template <typename T>
 class stack {
 private:
@@ -12,41 +13,28 @@ public:
     /// Конструктор по умолчанию
     stack() = default;
 
-    /// Деструктор по умолчанию (очистка списка происходит автоматически)
+    /// Деструктор по умолчанию 
     ~stack() = default;
 
-    /// Конструктор копирования
-    stack(const stack& other) {
-        list = other.list;
-    }
+    /// Конструктор копирования, other - копируемый объект
+    stack(const stack& other) = default;
 
-    /// Оператор присваивания копированием
-    stack& operator=(const stack& other) {
-        if (this != &other) {
-            list = other.list;
-        }
-        return *this;
-    }
+    /// Оператор присваивания копированием, other - копируемый объект, возвращает ссылку на измённый исходный объект
+    stack& operator=(const stack& other) = default;
 
-    /// Конструктор перемещения
-    stack(stack&& other) noexcept {
-        list = move(other.list);
-    }
+    /// Конструктор перемещения, other - rvalue ссылка на перемещаемый объект
+    stack(stack&& other) noexcept = default;
 
-    /// Оператор присваивания перемещением
-    stack& operator=(stack&& other) noexcept {
-        if (this != &other) {
-            list = move(other.list);
-        }
-        return *this;
-    }
+    /// Оператор присваивания перемещением, other - rvalue ссылка на перемещаемый объект, возвращает ссылку на измённый исходный объект
+    stack& operator=(stack&& other) noexcept = default;
 
-    /// Добавление элемента на вершину стека (O(1))
-    void push(const T& value) {
+
+    /// Добавление элемента value на вершину стека 
+    void push(const T value) {
         list.insert_front(value);
     }
 
-    /// Удаление элемента с вершины стека (O(1))
+    /// Удаленяет элемент с вершины стека и возвращает его после удаления 
     T pop() {
         if (isEmpty()) {
             throw underflow_error("Стек пуст");
@@ -56,30 +44,31 @@ public:
         return value; // Возвращаем значение
     }
 
-    /// Доступ к элементу на вершине стека (O(1))
-    T& peek() {
+    /// Доступ к элементу на вершине стека 
+    T peek() {
         return list.at(0);
     }
 
-    /// Константный доступ к элементу на вершине стека (O(1))
-    const T& peek() const {
+    /// Константный доступ к элементу на вершине стека 
+    const T peek() const {
         return list.at(0);
     }
 
-    /// Проверка на пустоту стека (O(1))
+    /// Проверка на пустоту стека 
     bool isEmpty() const {
         return list.size() == 0;
     }
 
-    /// Размер стека (O(1))
+    /// Возвращает размер стека 
     size_t size() const {
         return list.size();
     }
 
-    /// Очистка стека (O(n))
+    /// Очистка стека 
     void clear() {
         list.clear();
     }
 };
 
+/// Тесты для класса стека
 void test();

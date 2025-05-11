@@ -1,7 +1,7 @@
-﻿
-#include <iostream>
+﻿#include <iostream>
 #include "stack.h"
 #include "PostfixCalculator.h"
+// Автор: Калашников А.Н.
 
 int main()
 {

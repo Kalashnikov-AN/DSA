@@ -2,17 +2,19 @@
 #include <iostream>
 #include "PostfixCalculator.h"
 using namespace std;
+// Автор: Калашников А.Н.
 
+/// Тесты методов класса постфиксного калькулятора
 void testCalculator() {
     PostfixCalculator calc;
 
-    // Тестирование базовых операций
+    // Тестирование всех операций в простых выражениях
     assert(calc.evaluate("3 4 +") == 7);
     assert(calc.evaluate("5 2 -") == 3);
     assert(calc.evaluate("6 3 *") == 18);
     assert(calc.evaluate("8 4 /") == 2);
 
-    // Комбинированные выражения
+    // Сложные выражения
     assert(calc.evaluate("5 1 2 + 4 * + 3 -") == 14); // 5 + (1+2)*4 -3 = 14
     assert((calc.evaluate("10 6 9 3 + -11 * / *") - -5/11) < 0.0000001); // 10 * (6 / ((9+3)*-11)) = -5/11
 
@@ -45,5 +47,5 @@ void testCalculator() {
         assert(string(e.what()) == "Недопустимый токен: x");
     }
 
-    cout << "Все тесты калькулятора пройдены\n";
+    cout << "Все тесты стекового калькулятора пройдены\n";
 }

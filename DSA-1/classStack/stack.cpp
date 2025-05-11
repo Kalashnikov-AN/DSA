@@ -2,7 +2,9 @@
 #include <cassert>
 #include <iostream>
 using namespace std;
+// Автор: Калашников А.Н.
 
+/// Тесты для класса стека
 void test()
 {
 	// Вызываем конструктор по умолчанию 
@@ -43,13 +45,13 @@ void test()
 	assert(stack3.peek() == stack1.peek());
 
 	// Конструктор перемещения
-	stack<int> stack4(std::move(stack3));
-	assert(stack4.size() == 2); // Предположим, что stack3 имел 2 элемента
+	stack<int> stack4(move(stack3));
+	assert(stack4.size() == 2); // stack3 имел 2 элемента
 	assert(stack3.size() == 0); // После перемещения исходный стек должен быть пуст
 
 	// Оператор присваивания перемещением
 	stack<int> stack5;
-	stack5 = std::move(stack4);
+	stack5 = move(stack4);
 	assert(stack5.size() == 2);
 	assert(stack4.size() == 0);
 

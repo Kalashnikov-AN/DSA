@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|solutionrelative:PostfixCalculator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|solutionrelative:PostfixCalculator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|solutionrelative:stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\stack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|solutionrelative:stack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\classStack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|solutionrelative:classStack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\stack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|solutionrelative:stack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|solutionrelative:PostfixCalculator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0101B4EF-D76D-4108-B64A-73311836641B}|classStack.vcxproj|solutionrelative:PostfixCalculator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,55 +30,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "PostfixCalculator.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.cpp",
               "RelativeDocumentMoniker": "PostfixCalculator.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.cpp",
               "RelativeToolTip": "PostfixCalculator.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-09T12:32:57.159Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PostfixCalculator.h",
-              "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.h",
-              "RelativeDocumentMoniker": "PostfixCalculator.h",
-              "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.h",
-              "RelativeToolTip": "PostfixCalculator.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-09T12:32:30.117Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "stack.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\stack.cpp",
               "RelativeDocumentMoniker": "stack.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\stack.cpp",
               "RelativeToolTip": "stack.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-09T05:32:09.28Z"
+              "WhenOpened": "2025-05-11T13:27:40.339Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "stack.h",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\stack.h",
               "RelativeDocumentMoniker": "stack.h",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\stack.h",
               "RelativeToolTip": "stack.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-08T03:39:22.365Z",
               "EditorCaption": ""
@@ -86,6 +74,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "PostfixCalculator.h",
+              "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.h",
+              "RelativeDocumentMoniker": "PostfixCalculator.h",
+              "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\PostfixCalculator.h",
+              "RelativeToolTip": "PostfixCalculator.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-09T12:32:30.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "classStack.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classStack\\classStack.cpp",
               "RelativeDocumentMoniker": "classStack.cpp",
@@ -93,7 +94,8 @@
               "RelativeToolTip": "classStack.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-08T03:38:04.167Z"
+              "WhenOpened": "2025-05-08T03:38:04.167Z",
+              "EditorCaption": ""
             }
           ]
         }
