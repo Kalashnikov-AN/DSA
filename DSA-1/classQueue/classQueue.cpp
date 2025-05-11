@@ -1,5 +1,6 @@
 ﻿#include "queue.h"
 #include <iostream>
+// Автор: Калашников А.Н.
 
 int main()
 {
