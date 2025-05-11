@@ -79,7 +79,7 @@ void testQueue() {
     assert(q5.size() == 2); // q3 имел 2 элемента
     assert(q3.isEmpty()); // После перемещения исходная очередь должна быть пуста
 
-    // Тест 7: Строки
+    // Строки
     Queue<string> strQueue;
     strQueue.enqueue("Hello");
     strQueue.enqueue("World");
