@@ -1,11 +1,11 @@
-#include <cassert>
+п»ї#include <cassert>
 #include <iostream>
 #include "BinarySearchTree.h"
 
 using namespace std;
 
 /**
- * @brief Тестирование метода insert()
+ * @brief РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° insert()
  */
 void test_insert() {
     BinarySearchTree<int> bst;
@@ -20,7 +20,7 @@ void test_insert() {
     assert(bst.get_root()->left->value == 5);
     assert(bst.get_root()->right->value == 15);
 
-    // Проверим, что дубликаты не вставляются
+    // РџСЂРѕРІРµСЂРёРј, С‡С‚Рѕ РґСѓР±Р»РёРєР°С‚С‹ РЅРµ РІСЃС‚Р°РІР»СЏСЋС‚СЃСЏ
     bst.insert(10);
     assert(bst.size() == 3);
 
@@ -28,7 +28,7 @@ void test_insert() {
 }
 
 /**
- * @brief Тестирование метода size()
+ * @brief РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° size()
  */
 void test_size() {
     BinarySearchTree<int> bst;
@@ -45,7 +45,7 @@ void test_size() {
 }
 
 /**
- * @brief Тестирование метода height()
+ * @brief РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° height()
  */
 void test_height() {
     BinarySearchTree<int> bst;
@@ -54,7 +54,7 @@ void test_height() {
     bst.insert(10);
     assert(bst.height() == 1);
 
-    // создаём вырожденное дерево (цепочка вправо)
+    // СЃРѕР·РґР°С‘Рј РІС‹СЂРѕР¶РґРµРЅРЅРѕРµ РґРµСЂРµРІРѕ (С†РµРїРѕС‡РєР° РІРїСЂР°РІРѕ)
     bst.insert(20);
     bst.insert(30);
     bst.insert(40);
@@ -64,7 +64,7 @@ void test_height() {
 }
 
 /**
- * @brief Тестирование метода remove()
+ * @brief РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° remove()
  */
 void test_remove() {
     BinarySearchTree<int> bst;
@@ -74,19 +74,19 @@ void test_remove() {
     bst.insert(12);
     bst.insert(18);
 
-    // Удаление листа
+    // РЈРґР°Р»РµРЅРёРµ Р»РёСЃС‚Р°
     bst.remove(12);
     assert(bst.size() == 4);
 
-    // Удаление узла с одним потомком
+    // РЈРґР°Р»РµРЅРёРµ СѓР·Р»Р° СЃ РѕРґРЅРёРј РїРѕС‚РѕРјРєРѕРј
     bst.remove(18);
     assert(bst.size() == 3);
 
-    // Удаление узла с двумя потомками
+    // РЈРґР°Р»РµРЅРёРµ СѓР·Р»Р° СЃ РґРІСѓРјСЏ РїРѕС‚РѕРјРєР°РјРё
     bst.remove(10);
     assert(bst.size() == 2);
 
-    // Удаление несуществующего значения
+    // РЈРґР°Р»РµРЅРёРµ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ Р·РЅР°С‡РµРЅРёСЏ
     bst.remove(100);
     assert(bst.size() == 2);
 
@@ -94,7 +94,7 @@ void test_remove() {
 }
 
 /**
- * @brief Тестирование метода clear() и empty()
+ * @brief РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° clear() Рё empty()
  */
 void test_clear_empty() {
     BinarySearchTree<int> bst;
@@ -113,7 +113,7 @@ void test_clear_empty() {
 }
 
 /**
- * @brief Тестирование метода successor()
+ * @brief РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° successor()
  */
 void test_successor() {
     BinarySearchTree<int> bst;
@@ -131,7 +131,7 @@ void test_successor() {
     succ = bst.successor(25);
     assert(succ && succ->value == 30);
 
-    // successor максимального элемента = nullptr
+    // successor РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° = nullptr
     succ = bst.successor(40);
     assert(succ == nullptr);
 
@@ -139,7 +139,7 @@ void test_successor() {
 }
 
 /**
- * @brief Тестирование метода search()
+ * @brief РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РјРµС‚РѕРґР° search()
  */
 void test_search() {
     BinarySearchTree<int> bst;

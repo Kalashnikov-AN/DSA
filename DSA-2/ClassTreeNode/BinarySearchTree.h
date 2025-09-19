@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <algorithm>  
 #include <stdexcept>
@@ -16,26 +16,26 @@ void test_search();
 
 
 /**
- * @brief Класс бинарного дерева поиска (BST).
- * Содержит методы вставки, удаления, поиска и работы с деревом.
+ * @brief РљР»Р°СЃСЃ Р±РёРЅР°СЂРЅРѕРіРѕ РґРµСЂРµРІР° РїРѕРёСЃРєР° (BST).
+ * РЎРѕРґРµСЂР¶РёС‚ РјРµС‚РѕРґС‹ РІСЃС‚Р°РІРєРё, СѓРґР°Р»РµРЅРёСЏ, РїРѕРёСЃРєР° Рё СЂР°Р±РѕС‚С‹ СЃ РґРµСЂРµРІРѕРј.
  */
 template<typename T>
 class BinarySearchTree {
 private:
-    TreeNode<T>* root; ///< Корень дерева
+    TreeNode<T>* root; ///< РљРѕСЂРµРЅСЊ РґРµСЂРµРІР°
 
 public:
-    /// Конструктор: инициализирует пустое дерево
+    /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ: РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїСѓСЃС‚РѕРµ РґРµСЂРµРІРѕ
     BinarySearchTree() : root(nullptr) {}
 
-    /// Деструктор: очищает дерево
+    /// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ: РѕС‡РёС‰Р°РµС‚ РґРµСЂРµРІРѕ
     ~BinarySearchTree() {
         clear();
     }
 
     /**
-     * @brief Вставка значения в дерево.
-     * @complexity O(h), где h — высота дерева.
+     * @brief Р’СЃС‚Р°РІРєР° Р·РЅР°С‡РµРЅРёСЏ РІ РґРµСЂРµРІРѕ.
+     * @complexity O(h), РіРґРµ h вЂ” РІС‹СЃРѕС‚Р° РґРµСЂРµРІР°.
      */
     void insert(const T& value) {
         if (!root) {
@@ -55,7 +55,7 @@ public:
                 curr = curr->right;
             }
             else {
-                return; // дубликаты игнорируем
+                return; // РґСѓР±Р»РёРєР°С‚С‹ РёРіРЅРѕСЂРёСЂСѓРµРј
             }
         }
 
@@ -66,14 +66,14 @@ public:
     }
 
     /**
-     * @brief Удаление значения из дерева.
-     * @complexity O(h), где h — высота дерева.
+     * @brief РЈРґР°Р»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ РёР· РґРµСЂРµРІР°.
+     * @complexity O(h), РіРґРµ h вЂ” РІС‹СЃРѕС‚Р° РґРµСЂРµРІР°.
      */
     void remove(const T& value) {
         TreeNode<T>* parent = nullptr;
         TreeNode<T>* curr = root;
 
-        // Ищем узел
+        // РС‰РµРј СѓР·РµР»
         while (curr && curr->value != value) {
             parent = curr;
             if (value < curr->value)
@@ -82,16 +82,16 @@ public:
                 curr = curr->right;
         }
 
-        if (!curr) return; // элемент не найден
+        if (!curr) return; // СЌР»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ
 
-        // Случай 1: узел без потомков
+        // РЎР»СѓС‡Р°Р№ 1: СѓР·РµР» Р±РµР· РїРѕС‚РѕРјРєРѕРІ
         if (!curr->left && !curr->right) {
             if (!parent) root = nullptr;
             else if (parent->left == curr) parent->left = nullptr;
             else parent->right = nullptr;
             delete curr;
         }
-        // Случай 2: один потомок
+        // РЎР»СѓС‡Р°Р№ 2: РѕРґРёРЅ РїРѕС‚РѕРјРѕРє
         else if (!curr->left || !curr->right) {
             TreeNode<T>* child = curr->left ? curr->left : curr->right;
             if (!parent) root = child;
@@ -99,17 +99,17 @@ public:
             else parent->right = child;
             delete curr;
         }
-        // Случай 3: два потомка
+        // РЎР»СѓС‡Р°Р№ 3: РґРІР° РїРѕС‚РѕРјРєР°
         else {
-            // ищем потомка (минимум в правом поддереве)
+            // РёС‰РµРј РїРѕС‚РѕРјРєР° (РјРёРЅРёРјСѓРј РІ РїСЂР°РІРѕРј РїРѕРґРґРµСЂРµРІРµ)
             TreeNode<T>* succParent = curr;
             TreeNode<T>* succ = curr->right;
             while (succ->left) {
                 succParent = succ;
                 succ = succ->left;
             }
-            curr->value = succ->value; // копируем значение
-            // удаляем потомка
+            curr->value = succ->value; // РєРѕРїРёСЂСѓРµРј Р·РЅР°С‡РµРЅРёРµ
+            // СѓРґР°Р»СЏРµРј РїРѕС‚РѕРјРєР°
             if (succParent->left == succ) succParent->left = succ->right;
             else succParent->right = succ->right;
             delete succ;
@@ -117,8 +117,8 @@ public:
     }
 
     /**
-     * @brief Подсчёт количества узлов.
-     * @complexity O(n), где n — количество узлов.
+     * @brief РџРѕРґСЃС‡С‘С‚ РєРѕР»РёС‡РµСЃС‚РІР° СѓР·Р»РѕРІ.
+     * @complexity O(n), РіРґРµ n вЂ” РєРѕР»РёС‡РµСЃС‚РІРѕ СѓР·Р»РѕРІ.
      */
     int size() const {
         if (!root) return 0;
@@ -135,7 +135,7 @@ public:
     }
 
     /**
-     * @brief Определение высоты дерева.
+     * @brief РћРїСЂРµРґРµР»РµРЅРёРµ РІС‹СЃРѕС‚С‹ РґРµСЂРµРІР°.
      * @complexity O(n).
      */
     int height() const {
@@ -171,7 +171,7 @@ public:
 
 
     /**
-     * @brief Проверка, пустое ли дерево.
+     * @brief РџСЂРѕРІРµСЂРєР°, РїСѓСЃС‚РѕРµ Р»Рё РґРµСЂРµРІРѕ.
      * @complexity O(1).
      */
     bool empty() const {
@@ -179,7 +179,7 @@ public:
     }
 
     /**
-     * @brief Получение указателя на корень дерева.
+     * @brief РџРѕР»СѓС‡РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°.
      * @complexity O(1).
      */
     TreeNode<T>* get_root() const {
@@ -187,7 +187,7 @@ public:
     }
 
     /**
-     * @brief Очистка дерева (удаление всех узлов).
+     * @brief РћС‡РёСЃС‚РєР° РґРµСЂРµРІР° (СѓРґР°Р»РµРЅРёРµ РІСЃРµС… СѓР·Р»РѕРІ).
      * @complexity O(n).
      */
     void clear() {
@@ -204,9 +204,9 @@ public:
     }
 
     /**
-     * @brief Поиск successor (следующего большего элемента).
-     * @param value значение, для которого ищем successor
-     * @return указатель на successor или nullptr
+     * @brief РџРѕРёСЃРє successor (СЃР»РµРґСѓСЋС‰РµРіРѕ Р±РѕР»СЊС€РµРіРѕ СЌР»РµРјРµРЅС‚Р°).
+     * @param value Р·РЅР°С‡РµРЅРёРµ, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РёС‰РµРј successor
+     * @return СѓРєР°Р·Р°С‚РµР»СЊ РЅР° successor РёР»Рё nullptr
      * @complexity O(h).
      */
     TreeNode<T>* successor(const T& value) const {
@@ -234,27 +234,27 @@ public:
     }
 
 /**
- * @brief Поиск ключа в бинарном дереве поиска (BST).
- * @return указатель на найденный узел или nullptr
- * O(h), где h — высота дерева
- *   худший случай: O(n) (вырожденное дерево),
+ * @brief РџРѕРёСЃРє РєР»СЋС‡Р° РІ Р±РёРЅР°СЂРЅРѕРј РґРµСЂРµРІРµ РїРѕРёСЃРєР° (BST).
+ * @return СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°Р№РґРµРЅРЅС‹Р№ СѓР·РµР» РёР»Рё nullptr
+ * O(h), РіРґРµ h вЂ” РІС‹СЃРѕС‚Р° РґРµСЂРµРІР°
+ *   С…СѓРґС€РёР№ СЃР»СѓС‡Р°Р№: O(n) (РІС‹СЂРѕР¶РґРµРЅРЅРѕРµ РґРµСЂРµРІРѕ),
  */
 TreeNode<T>* search(const T& key) {
     TreeNode<T>* curr = root;
 
     while (curr) {
         if (key == curr->value) {
-            return curr; // нашли узел
+            return curr; // РЅР°С€Р»Рё СѓР·РµР»
         }
         else if (key < curr->value) {
-            curr = curr->left; // идём в левое поддерево
+            curr = curr->left; // РёРґС‘Рј РІ Р»РµРІРѕРµ РїРѕРґРґРµСЂРµРІРѕ
         }
         else {
-            curr = curr->right; // идём в правое поддерево
+            curr = curr->right; // РёРґС‘Рј РІ РїСЂР°РІРѕРµ РїРѕРґРґРµСЂРµРІРѕ
         }
     }
 
-    return nullptr; // элемент не найден
+    return nullptr; // СЌР»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ
 }
 
 
