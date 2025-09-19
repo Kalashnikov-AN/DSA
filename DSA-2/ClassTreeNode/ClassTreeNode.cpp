@@ -2,6 +2,7 @@
 #include <iostream>
 #include "TreeNode.h"
 #include "TreeNodeFunctions.h"
+#include "BinarySearchTree.h"
 using namespace std;
 
 int main()
@@ -14,6 +15,11 @@ int main()
 	root->right = new TreeNode<int>(12);
 	root->right->left = new TreeNode<int>(10);
 	root->right->right = new TreeNode<int>(14);
+	TreeNode<int>* test = new TreeNode<int>(2);
+	TreeNode<int>* copy = root->right;
+	test = root->right;
+	print_tree(test);
+	print_tree(copy);
 	print_tree(root, 10);
 	preorder_print<int>(root);
 	// Просматриваем содержимое двух узлов дерева в качестве примера 
@@ -25,7 +31,20 @@ int main()
 	cout << endl;
 	cout << depth(root);
 	delete_tree(root);
-
+	test_traversals();
+	test_search();
+	test_search_any();
+	test_count_nodes();
+	test_depth();
+	test_print_tree();
+	test_delete_tree();
+	test_insert();
+	test_size();
+	test_height();
+	test_remove();
+	test_clear_empty();
+	test_successor();
+	test_search();
 	/* 
 	Дерево является строгим, т.к. у каждого узла либо 0, либо 2 потомка.
 

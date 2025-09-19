@@ -18,12 +18,21 @@
     <ClCompile Include="ClassTreeNode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="TreeNodeFunctions.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="BinarySearchTree.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TreeNode.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="TreeNodeFunctions.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="BinarySearchTree.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
