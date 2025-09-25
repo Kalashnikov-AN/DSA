@@ -1,11 +1,12 @@
-﻿#include <cassert>
+﻿//Автор: Калашников А.Н.
+#include <cassert>
 #include <iostream>
 #include "BinarySearchTree.h"
 
 using namespace std;
 
 /**
- * @brief Тестирование метода insert()
+ *  Тестирование метода insert()
  */
 void test_insert() {
     BinarySearchTree<int> bst;
@@ -28,7 +29,7 @@ void test_insert() {
 }
 
 /**
- * @brief Тестирование метода size()
+ *  Тестирование метода size()
  */
 void test_size() {
     BinarySearchTree<int> bst;
@@ -45,7 +46,7 @@ void test_size() {
 }
 
 /**
- * @brief Тестирование метода height()
+ *  Тестирование метода height()
  */
 void test_height() {
     BinarySearchTree<int> bst;
@@ -64,7 +65,7 @@ void test_height() {
 }
 
 /**
- * @brief Тестирование метода remove()
+ *  Тестирование метода remove()
  */
 void test_remove() {
     BinarySearchTree<int> bst;
@@ -94,7 +95,7 @@ void test_remove() {
 }
 
 /**
- * @brief Тестирование метода clear() и empty()
+ *  Тестирование метода clear() и empty()
  */
 void test_clear_empty() {
     BinarySearchTree<int> bst;
@@ -113,7 +114,7 @@ void test_clear_empty() {
 }
 
 /**
- * @brief Тестирование метода successor()
+ *  Тестирование метода successor()
  */
 void test_successor() {
     BinarySearchTree<int> bst;
@@ -139,7 +140,7 @@ void test_successor() {
 }
 
 /**
- * @brief Тестирование метода search()
+ *  Тестирование метода search()
  */
 void test_search() {
     BinarySearchTree<int> bst;

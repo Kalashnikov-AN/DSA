@@ -31,7 +31,12 @@ int main()
 	cout << endl;
 	cout << depth(root);
 	delete_tree(root);
-	test_traversals();
+	//test_traversals();
+	test_preorder();
+	test_inorder();
+	test_postorder();
+	test_bfs();
+	test_preorder_iterative();
 	test_search();
 	test_search_any();
 	test_count_nodes();
