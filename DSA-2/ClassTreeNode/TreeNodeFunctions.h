@@ -128,14 +128,15 @@ void postorder_apply(TreeNode<T>* node, function<void(T&)> func) {
  */
 template<typename T>
 void bfs(TreeNode<T>* root, vector<T>& result) {
-    if (!root) return;
+    if (!root) return; // если дерева не существует - ничего не возвращаем
     queue<TreeNode<T>*> q;
-    q.push(root);
-    while (!q.empty()) {
-        TreeNode<T>* node = q.front(); q.pop();
-        result.push_back(node->value);
-        if (node->left) q.push(node->left);
-        if (node->right) q.push(node->right);
+    q.push(root); // добавляем в очередь корень
+    while (!q.empty()) { // если очередь не пуста
+        TreeNode<T>* node = q.front(); q.pop(); // запоминаем начальный элемент очереди, затем удаляем
+        result.push_back(node->value); // заносим значение начального элемента в вектор
+        if (node->left) q.push(node->left); // если у узла есть потомок слева - заносим его в очередь
+        if (node->right) q.push(node->right); // если у узла есть потомок справа - заносим его в очередь
+        // левый обработается раньше, т.к. используем очередь
     }
 }
 
@@ -145,14 +146,15 @@ void bfs(TreeNode<T>* root, vector<T>& result) {
  */
 template<typename T>
 void preorder_iterative(TreeNode<T>* root, vector<T>& result) {
-    if (!root) return;
-    stack<TreeNode<T>*> st;
-    st.push(root);
-    while (!st.empty()) {
-        TreeNode<T>* node = st.top(); st.pop();
-        result.push_back(node->value);
-        if (node->right) st.push(node->right); // сначала правый, чтобы левый обработался раньше
-        if (node->left) st.push(node->left);
+    if (!root) return; // если дерева не существует - ничего не возвращаем
+    stack<TreeNode<T>*> st; 
+    st.push(root); // если дерево существует - сначала добавляем в стэк корень
+    while (!st.empty()) { // пока стэк не пуст
+        TreeNode<T>* node = st.top(); st.pop(); // запоминаем верхний элемент стэка, затем удаляем
+        result.push_back(node->value); // заносим значение верхнего элемента в вектор 
+        if (node->right) st.push(node->right); // если у узла есть потомок справа - заносим его в стэк
+        if (node->left) st.push(node->left); // если у узла есть потомок слева - заносим его в стэк 
+        // левый обработается раньше, т.к. используем стэк
     }
 }
 
@@ -170,13 +172,13 @@ template<typename T>
 TreeNode<T>* search_any(TreeNode<T>* root, const T& key) {
     if (!root) return nullptr;
 
-    if (root->value == key) return root; // нашли!
+    if (root->value == key) return root; // нашли
 
     // ищем в левом поддереве
     TreeNode<T>* leftResult = search_any(root->left, key);
     if (leftResult) return leftResult;
 
-    // если не нашли слева → ищем справа
+    // если не нашли слева - ищем справа
     return search_any(root->right, key);
 }
 
@@ -256,3 +258,6 @@ void test_inorder();
 void test_postorder();
 void test_bfs();
 void test_preorder_iterative();
+void test_preorder_apply();
+void test_inorder_apply();
+void test_postorder_apply();

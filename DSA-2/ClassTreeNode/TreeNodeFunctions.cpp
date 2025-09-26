@@ -273,13 +273,12 @@ void test_bfs() {
     root->right->right = new TreeNode<int>(7);
     res.clear();
     bfs(root, res);
-    assert((res == vector<int>{4, 10, 1, 3, 2, 5, 7}));
+    assert((res == vector<int>{4, 10, 2, 1, 3, 5, 7}));
     delete_tree(root);
 
     cout << "Тест bfs пройден!\n";
 }
 
-//todo: bfs и dfs
 
 
 // Тест Preorder Traversal (итеративный)
@@ -334,6 +333,155 @@ void test_preorder_iterative() {
     delete_tree(root);
 
     cout << "Тест preorder_iterative пройден!\n";
+}
+
+void test_preorder_apply() {
+    vector<int> res;
+
+    // 1. Пустое дерево
+    preorder_apply<int>(nullptr, [&](int& v) { res.push_back(v); });
+    assert(res.empty());
+
+    // 2. Один узел
+    TreeNode<int>* root = new TreeNode<int>(10);
+    res.clear();
+    preorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{10}));
+    delete_tree(root);
+
+    // 3. Вырожденное дерево (вправо)
+    root = new TreeNode<int>(1);
+    root->right = new TreeNode<int>(2);
+    root->right->right = new TreeNode<int>(3);
+    res.clear();
+    preorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{1, 2, 3}));
+    delete_tree(root);
+
+    // 4. Маленькое сбалансированное дерево
+    root = new TreeNode<int>(2);
+    root->left = new TreeNode<int>(1);
+    root->right = new TreeNode<int>(3);
+    res.clear();
+    preorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{2, 1, 3}));
+    delete_tree(root);
+
+    // 5. Дерево среднего размера
+    //       4
+    //     /   \
+    //    2     6
+    //   / \   / \
+    //  1   3 5   7
+    root = new TreeNode<int>(4);
+    root->left = new TreeNode<int>(2);
+    root->right = new TreeNode<int>(6);
+    root->left->left = new TreeNode<int>(1);
+    root->left->right = new TreeNode<int>(3);
+    root->right->left = new TreeNode<int>(5);
+    root->right->right = new TreeNode<int>(7);
+    res.clear();
+    preorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{4, 2, 1, 3, 6, 5, 7}));
+    delete_tree(root);
+
+    cout << "✅ Тест preorder_apply пройден!\n";
+}
+
+void test_inorder_apply() {
+    vector<int> res;
+
+    // 1. Пустое дерево
+    inorder_apply<int>(nullptr, [&](int& v) { res.push_back(v); });
+    assert(res.empty());
+
+    // 2. Один узел
+    TreeNode<int>* root = new TreeNode<int>(10);
+    res.clear();
+    inorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{10}));
+    delete_tree(root);
+
+    // 3. Вырожденное дерево (влево)
+    root = new TreeNode<int>(3);
+    root->left = new TreeNode<int>(2);
+    root->left->left = new TreeNode<int>(1);
+    res.clear();
+    inorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{1, 2, 3}));
+    delete_tree(root);
+
+    // 4. Маленькое сбалансированное дерево
+    root = new TreeNode<int>(2);
+    root->left = new TreeNode<int>(1);
+    root->right = new TreeNode<int>(3);
+    res.clear();
+    inorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{1, 2, 3}));
+    delete_tree(root);
+
+    // 5. Дерево среднего размера
+    root = new TreeNode<int>(4);
+    root->left = new TreeNode<int>(2);
+    root->right = new TreeNode<int>(6);
+    root->left->left = new TreeNode<int>(1);
+    root->left->right = new TreeNode<int>(3);
+    root->right->left = new TreeNode<int>(5);
+    root->right->right = new TreeNode<int>(7);
+    res.clear();
+    inorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{1, 2, 3, 4, 5, 6, 7}));
+    delete_tree(root);
+
+    cout << "✅ Тест inorder_apply пройден!\n";
+}
+
+void test_postorder_apply() {
+    vector<int> res;
+
+    // 1. Пустое дерево
+    postorder_apply<int>(nullptr, [&](int& v) { res.push_back(v); });
+    assert(res.empty());
+
+    // 2. Один узел
+    TreeNode<int>* root = new TreeNode<int>(42);
+    res.clear();
+    postorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{42}));
+    delete_tree(root);
+
+    // 3. Вырожденное дерево (вправо)
+    root = new TreeNode<int>(1);
+    root->right = new TreeNode<int>(2);
+    root->right->right = new TreeNode<int>(3);
+    res.clear();
+    postorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{3, 2, 1}));
+    delete_tree(root);
+
+    // 4. Маленькое сбалансированное дерево
+    root = new TreeNode<int>(2);
+    root->left = new TreeNode<int>(1);
+    root->right = new TreeNode<int>(3);
+    res.clear();
+    postorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{1, 3, 2}));
+    delete_tree(root);
+
+    // 5. Дерево среднего размера
+    root = new TreeNode<int>(4);
+    root->left = new TreeNode<int>(2);
+    root->right = new TreeNode<int>(6);
+    root->left->left = new TreeNode<int>(1);
+    root->left->right = new TreeNode<int>(3);
+    root->right->left = new TreeNode<int>(5);
+    root->right->right = new TreeNode<int>(7);
+    res.clear();
+    postorder_apply(root, [&](int& v) { res.push_back(v); });
+    assert((res == vector<int>{1, 3, 2, 5, 7, 6, 4}));
+    delete_tree(root);
+
+    cout << "✅ Тест postorder_apply пройден!\n";
 }
 
 
@@ -407,8 +555,7 @@ void test_delete_tree() {
  * 5. Дерево с дубликатами
  */
 void test_search_any() {
-    cout << "=== test_search_any ===\n";
-
+    
     /// 1. Пустое дерево
     TreeNode<int>* root1 = nullptr;
     assert(search_any(root1, 5) == nullptr);
