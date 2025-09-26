@@ -37,6 +37,9 @@ int main()
 	test_postorder();
 	test_preorder_iterative();
 	test_bfs();
+	test_preorder_apply();
+	test_inorder_apply();
+	test_postorder_apply();
 	test_search();
 	test_search_any();
 	test_count_nodes();
