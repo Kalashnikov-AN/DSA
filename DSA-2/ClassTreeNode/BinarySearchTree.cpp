@@ -32,7 +32,7 @@ void test_insert() {
     bst2.insert(9);
     bst2.insert(8);
     bst2.insert(7);
-    assert(bst2.height() == 4); // цепочка вниз
+    assert(bst2.height() == 3); 
 
     // 5) Более сложное дерево
     BinarySearchTree<int> bst3;
@@ -41,7 +41,7 @@ void test_insert() {
     assert(bst3.size() == 7);
     assert(bst3.get_root()->left->right->value == 40);
 
-    cout << "test_insert passed\n";
+    cout << "test_insert пройден!\n";
 }
 
 /**
@@ -70,13 +70,13 @@ void test_remove() {
     bst.remove(15);
     assert(bst.size() == 2);
 
-    // 5) Удаление узла с двумя потомками
+    // 5) Удаление узла с двумя потомками (удаление корня вырожденного дерева)
     bst.insert(20);
     bst.insert(25);
     bst.remove(10); // корень с двумя детьми
     assert(bst.size() == 3);
 
-    cout << "test_remove passed\n";
+    cout << "test_remove пройден!\n";
 }
 
 /**
@@ -88,18 +88,19 @@ void test_successor() {
     // 1) Пустое дерево
     assert(bst.successor(10) == nullptr);
 
-    // 2) Одно узловое дерево
+    // 2) Дерево с одним узлом
     bst.insert(5);
     assert(bst.successor(5) == nullptr);
 
-    // 3) Линейное дерево вправо
+    // 3) Вырожденное дерево
     bst.insert(10);
     bst.insert(15);
     assert(bst.successor(10)->value == 15);
+    bst.clear();
 
-    // 4) Сбалансированное дерево
-    bst.insert(20);
+    // 4) Совершенное дерево
     bst.insert(25);
+    bst.insert(20);
     bst.insert(30);
     TreeNode<int>* succ = bst.successor(20);
     assert(succ && succ->value == 25);
@@ -108,7 +109,7 @@ void test_successor() {
     succ = bst.successor(30);
     assert(succ == nullptr);
 
-    cout << "test_successor passed\n";
+    cout << "test_successor пройден!\n";
 }
 
 /**
@@ -136,14 +137,14 @@ void test_search() {
     found = bst.search(100);
     assert(found == nullptr);
 
-    // 5) Сбалансированное дерево
+    // 5) Совершенное дерево
     BinarySearchTree<int> bst2;
     for (int v : {10, 5, 15, 3, 7, 12, 18})
         bst2.insert(v);
     found = bst2.search(7);
     assert(found && found->value == 7);
 
-    cout << "test_search passed\n";
+    cout << "test_search пройден!\n";
 }
 
 
@@ -152,16 +153,19 @@ void test_search() {
  */
 void test_size() {
     BinarySearchTree<int> bst;
+    // Пустое дерево
     assert(bst.size() == 0);
 
+    // Дерево из одного узла
     bst.insert(1);
     assert(bst.size() == 1);
 
     bst.insert(2);
     bst.insert(3);
+    // Вырожденное дерево
     assert(bst.size() == 3);
 
-    cout << "test_size passed\n";
+    cout << "test_size пройден!\n";
 }
 
 /**
@@ -169,37 +173,43 @@ void test_size() {
  */
 void test_height() {
     BinarySearchTree<int> bst;
-    assert(bst.height() == 0);
+    // Пустое дерево
+    assert(bst.height() == -1);
 
+    // Дерево из одного узла
     bst.insert(10);
-    assert(bst.height() == 1);
+    assert(bst.height() == 0);
 
     // создаём вырожденное дерево (цепочка вправо)
     bst.insert(20);
     bst.insert(30);
     bst.insert(40);
-    assert(bst.height() == 4);
+    assert(bst.height() == 3);
 
-    cout << "test_height passed\n";
+    cout << "test_height пройден!\n";
 }
 
 /**
  *  Тестирование метода clear() и empty()
  */
 void test_clear_empty() {
+    // Пустое дерево
     BinarySearchTree<int> bst;
     assert(bst.empty());
 
+    // Вырожденное дерево
     bst.insert(1);
     bst.insert(2);
     bst.insert(3);
     assert(!bst.empty());
 
+    // Тест метода clear
     bst.clear();
+    // Снова пустое дерево после вызова метода очистки clear
     assert(bst.empty());
     assert(bst.size() == 0);
 
-    cout << "test_clear_empty passed\n";
+    cout << "test_clear_empty пройден!\n";
 }
 
 

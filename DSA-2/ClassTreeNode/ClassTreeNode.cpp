@@ -10,28 +10,28 @@ int main()
 	setlocale(LC_ALL, "Russian");
 
 	// корень дерева 
-	TreeNode<int> *root = new TreeNode<int>(10);
-	root->left = new TreeNode<int>(8); // выделяем память динамически под 5 узлов
-	root->right = new TreeNode<int>(12);
-	root->right->left = new TreeNode<int>(10);
-	root->right->right = new TreeNode<int>(14);
-	TreeNode<int>* test = new TreeNode<int>(2);
-	TreeNode<int>* copy = root->right;
-	test = root->right;
-	print_tree(test);
-	print_tree(copy);
-	print_tree(root, 10);
-	preorder_print<int>(root);
-	// Просматриваем содержимое двух узлов дерева в качестве примера 
-	cout << ("Корень дерева = ") << root->value;
-	cout << endl; 
-	cout << ("Корень дерева -> направо -> направо =  ") << root->right->right->value;
-	cout << endl;
-	cout << count_nodes<int>(root);
-	cout << endl;
-	cout << depth(root);
-	delete_tree(root);
-	//test_traversals();
+	//TreeNode<int> *root = new TreeNode<int>(10);
+	//root->left = new TreeNode<int>(8); // выделяем память динамически под 5 узлов
+	//root->right = new TreeNode<int>(12);
+	//root->right->left = new TreeNode<int>(10);
+	//root->right->right = new TreeNode<int>(14);
+	//TreeNode<int>* test = new TreeNode<int>(2);
+	//TreeNode<int>* copy = root->right;
+	//test = root->right;
+	//print_tree(test);
+	//print_tree(copy);
+	//print_tree(root, 10);
+	//preorder_print<int>(root);
+	//// Просматриваем содержимое двух узлов дерева в качестве примера 
+	//cout << ("Корень дерева = ") << root->value;
+	//cout << endl; 
+	//cout << ("Корень дерева -> направо -> направо =  ") << root->right->right->value;
+	//cout << endl;
+	//cout << count_nodes<int>(root);
+	//cout << endl;
+	//cout << depth(root);
+	//delete_tree(root);
+
 	test_preorder();
 	test_inorder();
 	test_postorder();

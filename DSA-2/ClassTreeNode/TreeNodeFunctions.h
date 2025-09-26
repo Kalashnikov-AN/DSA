@@ -213,8 +213,8 @@ void delete_tree(TreeNode<T>*& root) {
  *  O(n)
  */
 template<typename T>
-int count_nodes(TreeNode<T>* root) {
-    int count = 0;
+size_t count_nodes(TreeNode<T>* root) {
+    size_t count = 0;
     preorder_apply<T>(root, [&](T&) { count++; });
     return count;
 }
@@ -226,7 +226,7 @@ int count_nodes(TreeNode<T>* root) {
  */
 template<typename T>
 int depth(TreeNode<T>* root) {
-    if (!root) return 0;
+    if (!root) return -1;
     int leftDepth = depth(root->left);
     int rightDepth = depth(root->right);
     return 1 + max(leftDepth, rightDepth);
@@ -246,7 +246,6 @@ void print_tree(TreeNode<T>* root, int indent = 0) {
     if (root->left) print_tree(root->left, indent + 4);
 }
 
-void test_traversals();
 void test_search();
 void test_count_nodes();
 void test_depth();

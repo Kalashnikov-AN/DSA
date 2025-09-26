@@ -125,7 +125,7 @@ public:
      *  Подсчёт количества узлов.
      *  O(n), где n — количество узлов.
      */
-    int size() const {
+    size_t size() const {
         return count_nodes(root);
     }
 
@@ -168,31 +168,31 @@ public:
      * @return указатель на successor или nullptr
      */
     TreeNode<T>* successor(const T& value) const {
-        TreeNode<T>* curr = root;
-        TreeNode<T>* succ = nullptr;
-
+        TreeNode<T>* curr = root; // начинаем поиск с корня дерева
+        TreeNode<T>* succ = nullptr; // переменная для хранения возможного след. наибольшего
+        // спускаемся по дереву
         while (curr) {
-            if (value < curr->value) {
-                succ = curr;
-                curr = curr->left;
+            if (value < curr->value) { // значение текущего узла больше value
+                succ = curr; // значит узел может подходить для след. наибольшего
+                curr = curr->left; // но возможно есть узел со значением еще меньше
             }
-            else if (value > curr->value) {
-                curr = curr->right;
+            else if (value > curr->value) { // если значение текущего узла меньше value
+                curr = curr->right; // идем вправо, т.к. нам нужен узел со значением > value
             }
-            else {
-                if (curr->right) {
-                    TreeNode<T>* tmp = curr->right;
-                    while (tmp->left) tmp = tmp->left;
-                    return tmp;
+            else { // если значение текущего узла = value
+                if (curr->right) { 
+                    TreeNode<T>* tmp = curr->right; // спускаемся вправо на один уровень
+                    while (tmp->left) tmp = tmp->left; // идём влево до конца
+                    return tmp; // возвращаем след. наибольший
                 }
-                break;
+                break; // выходим из цикла
             }
         }
-        return succ;
+        return succ; // возвращаем след. наибольший по окончании выполнения цикла while
     }
 
 /**
- *  Поиск ключа в бинарном дереве поиска (BST).
+ *  Поиск узла со значением key в бинарном дереве поиска (BST).
  * O(h), где h — высота дерева
  * худший случай: O(n) (вырожденное дерево),
  * @return указатель на найденный узел или nullptr
