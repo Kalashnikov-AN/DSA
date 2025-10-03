@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ClassHeap.cpp" />
+    <ClCompile Include="Heap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Heap.h" />

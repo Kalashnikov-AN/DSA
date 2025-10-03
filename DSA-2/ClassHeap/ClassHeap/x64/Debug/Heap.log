@@ -1,17 +1,26 @@
 ﻿  ClassHeap.cpp
-C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(136,24): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(134,24): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "ClassHeap.cpp")
-      C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(136,24):
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(134,24):
       контекст создания экземпляра шаблона (сначала самый старый)
           C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\ClassHeap.cpp(17,15):
           выполняется компиляция ссылки на экземпляр класс шаблон функции "Heap<int>"
-          C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(133,9):
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(131,9):
           во время компиляции функции-члена класс шаблон "int Heap<int>::find(const T &) const"
           with
           [
               T=int
           ]
-              C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\ClassHeap.cpp(18,5):
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\ClassHeap.cpp(19,5):
               см. первую ссылку на Heap<int>::find "main"
+  
+C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(74,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "ClassHeap.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(74,20):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\Heap.h(72,9):
+          во время компиляции функции-члена класс шаблон "Heap<int>::Heap(const DynamicArray<int> &)"
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\ClassHeap.cpp(17,17):
+              см. первую ссылку на Heap<int>::Heap "main"
   
   Heap.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-2\ClassHeap\x64\Debug\ClassHeap.exe

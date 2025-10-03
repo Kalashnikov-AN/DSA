@@ -1,36 +1,32 @@
 // Автор: Калашников А.Н.
-// Реализация шаблонного класса Heap (минимальная куча)
-// Внутреннее хранение: DynamicArray<T>
-
 #pragma once
 #include <stdexcept>
 #include <iostream>
 #include "C:\Users\huuma\Documents\DSA\DSA-1\classDynamicArray\dynArray.h"
 
+
 using namespace std;
 
 /**
- * @class Heap
- * @brief Шаблонный класс для реализации минимальной кучи (min-heap).
- *
+ * Шаблонный класс для реализации минимальной кучи (min-heap).
  * Хранение осуществляется в объекте DynamicArray<T>.
- * Свойство min-heap: значение в каждом узле <= значений его потомков.
+ * Значение в каждом узле <= значений его потомков.
  */
 template <typename T>
 class Heap {
 private:
-    DynamicArray<T> data;  ///< массив для хранения элементов кучи
+    DynamicArray<T> data;  /// Динамический массив для хранения элементов кучи
 
     /**
-     * @brief Просеивание вверх (восстановление свойства кучи при вставке).
-     * @complexity O(log n)
+     *  Просеивание вверх (восстановление свойства кучи при вставке).
+     *  O(log n)
      */
     void bubble_up(size_t index) {
-        while (index > 0) {
+        while (index > 0) { // пока не дошли до корня
             size_t parent = (index - 1) / 2; // выразили формулу для нахождения индекса потомка
-            if (data[index] < data[parent]) { 
-                swap(data[index], data[parent]);
-                index = parent;
+            if (data[index] < data[parent]) {  // если вставленный узел меньше по значению, чем его предок
+                swap(data[index], data[parent]); // меняем их местами
+                index = parent; // перезаписываем индекс вставленного узла
             }
             else {
                 break;
@@ -39,8 +35,8 @@ private:
     }
 
     /**
-     * @brief Просеивание вниз (восстановление свойства кучи при удалении).
-     * @complexity O(log n)
+     *  Просеивание вниз (восстановление свойства кучи при удалении).
+     *  O(log n)
      */
     void trickle_down(size_t index) {
         size_t n = data.size();
@@ -65,18 +61,17 @@ private:
     }
 
 public:
-    /// Конструктор
+    /// Конструктор по умолчанию
     Heap(size_t initial_capacity = 16) : data(initial_capacity) {}
 
    /**
-        *@brief Конструктор из DynamicArray<T>(копия).
+        * Конструктор с параметрами
         * @param arr — объект DynamicArray<T>
-        *
-        * @complexity O(n)
+        *  O(n)
         */
         Heap(const DynamicArray<T>&arr) : data(arr) {
         // Построение кучи за O(n)
-        for (int i = static_cast<int>(data.size()) / 2 - 1; i >= 0; --i) {
+        for (int i = (data.size()) / 2 - 1; i >= 0; --i) {
             trickle_down(i);
         }
     }
@@ -92,8 +87,8 @@ public:
     }
 
     /**
-     * @brief Вставка элемента в кучу
-     * @complexity O(log n)
+     *  Вставка элемента в кучу
+     *  O(log n)
      */
     void insert(const T& value) {
         data.push_back(value);
@@ -101,34 +96,37 @@ public:
     }
 
     /**
-     * @brief Возвращает минимальный элемент (корень кучи)
-     * @complexity O(1)
+     *  Возвращает минимальный элемент (корень кучи)
+     *  O(1)
      */
     const T& get_min() const {
-        if (empty()) throw runtime_error("Heap is empty");
+        if (empty()) throw runtime_error("Куча пуста!");
         return data[0];
     }
 
     /**
-     * @brief Удаление минимального элемента (корня кучи)
-     * @complexity O(log n)
+     *  Удаление минимального элемента (корня кучи)
+     *  O(log n)
      */
     void extract_min() {
-        if (empty()) throw runtime_error("Heap is empty");
-        if (data.size() == 1) {
-            data.pop_back();
+        if (empty()) {
+            cout << "Куча пуста!";
             return;
         }
-        data[0] = data[data.size() - 1];
-        data.pop_back();
-        trickle_down(0);
+        if (data.size() == 1) { // если куча состоит из одного корня
+            data.pop_back(); // удаляем корень
+            return; // завершаем работу метода
+        }
+        data[0] = data[data.size() - 1]; // ставим на место корня значение самого правого листа
+        data.pop_back(); // удаляем сам лист
+        trickle_down(0); // меняем корень на потомка с минимальным значением 
     }
 
     /**
- * @brief Поиск элемента в куче
+ *  Поиск элемента в куче
  * @param value значение для поиска
  * @return индекс найденного элемента или -1, если элемент не найден
- * @complexity O(n)
+ *  O(n)
  */
     int find(const T& value) const {
         for (size_t i = 0; i < data.size(); ++i) {
@@ -139,14 +137,61 @@ public:
         return -1; // не нашли
     }
 
+    /**
+  *  Печатает кучу в виде дерева по уровням, с отступами
+  * Элементы выровнены по центру
+  *  O(n)
+  */
+    void print_tree() const {
+        size_t n = data.size();
+        if (empty()) {
+            cout << "Куча пуста!\n";
+            return;
+        }
+
+        // вычисляем количество уровней в дереве
+        size_t levels = 0;
+        for (size_t cnt = n; cnt > 0; cnt /= 2) levels++;
+
+        size_t max_width = static_cast<size_t>(pow(2, levels)); // ширина строки (условная)
+
+        size_t index = 0;
+        for (size_t level = 0; level < levels; ++level) {
+            size_t nodes_on_level = static_cast<size_t>(pow(2, level));  // сколько узлов на этом уровне
+            size_t space_between = max_width / nodes_on_level; // расстояние между узлами
+
+            // отступ перед первым элементом на уровне
+            cout << string(space_between / 2, ' '); // отступ будет состоять из space_between / 2 пробелов
+
+            for (size_t i = 0; i < nodes_on_level && index < n; ++i, ++index) {
+                cout << data[index];
+                // пробелы после элемента
+                if (i != nodes_on_level - 1) {
+                    cout << string(space_between - 1, ' ');
+                }
+            }
+            cout << "\n\n"; 
+        }
+    }
 
     /**
-     * @brief Печать кучи (для отладки)
-     * @complexity O(n)
+     *  Печать значений кучи, хранящихся в динамическом массиве
+     *  O(n)
      */
     void print() const {
         for (size_t i = 0; i < data.size(); i++)
             cout << data[i] << " ";
         cout << "\n";
     }
+
+
 };
+
+void test_insert();
+void test_get_min();
+void test_extract_min();
+void test_find();
+void test_size_and_empty();
+void test_constructor_from_array();
+void test_print();
+void test_print_tree();

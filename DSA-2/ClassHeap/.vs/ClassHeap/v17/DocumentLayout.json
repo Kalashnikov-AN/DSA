@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1D08CB94-BB93-4A2B-81FE-641CFD9D6168}|Heap.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\Heap.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1D08CB94-BB93-4A2B-81FE-641CFD9D6168}|Heap.vcxproj|solutionrelative:Heap.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1D08CB94-BB93-4A2B-81FE-641CFD9D6168}|Heap.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\Heap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{1D08CB94-BB93-4A2B-81FE-641CFD9D6168}|Heap.vcxproj|solutionrelative:Heap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{1D08CB94-BB93-4A2B-81FE-641CFD9D6168}|Heap.vcxproj|solutionrelative:ClassHeap.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D08CB94-BB93-4A2B-81FE-641CFD9D6168}|Heap.vcxproj|C:\\USERS\\HUUMA\\DOCUMENTS\\DSA\\DSA-1\\CLASSDYNAMICARRAY\\DYNARRAY.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classDynamicArray\\dynArray.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,13 +29,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "dynArray.h",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classDynamicArray\\dynArray.h",
               "RelativeDocumentMoniker": "..\\..\\DSA-1\\classDynamicArray\\dynArray.h",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\classDynamicArray\\dynArray.h",
               "RelativeToolTip": "..\\..\\DSA-1\\classDynamicArray\\dynArray.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAANsAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-02T15:35:02.66Z",
               "EditorCaption": ""
@@ -39,25 +43,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Heap.cpp",
+              "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\Heap.cpp",
+              "RelativeDocumentMoniker": "Heap.cpp",
+              "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\Heap.cpp",
+              "RelativeToolTip": "Heap.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-03T15:24:55.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Heap.h",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\Heap.h",
               "RelativeDocumentMoniker": "Heap.h",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\Heap.h",
               "RelativeToolTip": "Heap.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAAAMQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-09-27T05:02:39.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ClassHeap.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\ClassHeap.cpp",
               "RelativeDocumentMoniker": "ClassHeap.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassHeap\\ClassHeap.cpp",
               "RelativeToolTip": "ClassHeap.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "EditorCaption": ""
             }
