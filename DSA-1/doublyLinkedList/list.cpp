@@ -10,21 +10,20 @@ template <typename T>
 using List = DoublyLinkedList<T>;
 
 // Тест 1: оператор ++ (префиксный инкремент)
-// ---------------------------
 void test_iterator_increment() {
     cout << "test_iterator_increment\n";
 
-    // CASE 1: пустой список — begin() == end(), ++ не ломает сравнение
+    //  1: пустой список — begin() == end(), ++ не ломает сравнение
     {
         DoublyLinkedList<int> lst;
         auto it = lst.begin();
         auto e = lst.end();
         assert(!(it != e));        // begin == end для пустого
-        ++it;                      // ++ не должен вызвать UB
+        ++it;                      // вызываем ++
         assert(!(it != e));        // по-прежнему равны
     }
 
-    // CASE 2: один элемент — ++ переводит в end
+    //  2: один элемент — ++ переводит в end
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(7);
@@ -35,7 +34,7 @@ void test_iterator_increment() {
         assert(!(it != e));
     }
 
-    // CASE 3: небольшой список (3 элемента) — проходим по всем элементам
+    //  3: небольшой список (3 элемента) — проходим по всем элементам
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(1); lst.insert_back(2); lst.insert_back(3);
@@ -45,16 +44,17 @@ void test_iterator_increment() {
         assert((seen == vector<int>{1, 2, 3}));
     }
 
-    // CASE 4: большой список (100 элементов) — считаем шаги ++
+    //  4: большой список (100 элементов) — считаем шаги ++
     {
         DoublyLinkedList<int> lst;
         for (int i = 0; i < 100; ++i) lst.insert_back(i);
         size_t count = 0;
-        for (auto it = lst.begin(); it != lst.end(); ++it) ++count;
+        for (auto it = lst.begin(); it != lst.end(); ++it)
+            ++count;
         assert(count == 100);
     }
 
-    // CASE 5: многократный ++ за end — ничего критического не происходит (итератор остаётся end)
+    //  5: многократный ++ за end — ничего критического не происходит (итератор остаётся end)
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(1);
@@ -62,7 +62,8 @@ void test_iterator_increment() {
         auto it = lst.begin();
         auto e = lst.end();
         // продвинем на много шагов
-        for (int k = 0; k < 10; ++k) ++it;
+        for (int k = 0; k < 10; ++k)
+            ++it;
         // должен быть равен end (или nullptr)
         assert(!(it != e));
     }
@@ -70,22 +71,25 @@ void test_iterator_increment() {
     cout << "  test_iterator_increment: OK\n\n";
 }
 
-// ---------------------------
+
 // Тест 2: оператор * (разыменование)
-// ---------------------------
 void test_iterator_dereference() {
     cout << "test_iterator_dereference\n";
 
-    // CASE 1: пустой список — разыменование должно бросать исключение
+    //  1: пустой список — разыменование должно бросать исключение
     {
         DoublyLinkedList<int> lst;
         bool thrown = false;
-        try { int x = *lst.begin(); (void)x; }
-        catch (const out_of_range&) { thrown = true; }
+        try {
+            int x = *lst.begin();
+            }
+        catch (const out_of_range&) {
+            thrown = true;
+        }
         assert(thrown);
     }
 
-    // CASE 2: список из одного узла — значение читается и меняется через iterator
+    //  2: список из одного узла — значение читается и меняется через iterator
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(42);
@@ -95,7 +99,7 @@ void test_iterator_dereference() {
         assert(lst[0] == 100);       // изменение видно в списке
     }
 
-    // CASE 3: многопозиционный доступ: второй элемент можно получить и изменить
+    //  3: многопозиционный доступ: второй элемент можно получить и изменить
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(1); lst.insert_back(2); lst.insert_back(3);
@@ -106,7 +110,7 @@ void test_iterator_dereference() {
         assert(lst[1] == 20);
     }
 
-    // CASE 4: dereference(end()) — бросает
+    //  4: dereference(end()) — бросает
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(5);
@@ -117,7 +121,7 @@ void test_iterator_dereference() {
         assert(thrown);
     }
 
-    // CASE 5: два итератора на один и тот же узел — изменения видны на обоих
+    //  5: два итератора на один и тот же узел — изменения видны на обоих
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(7); lst.insert_back(8);
@@ -132,19 +136,19 @@ void test_iterator_dereference() {
     cout << "  test_iterator_dereference: OK\n\n";
 }
 
-// ---------------------------
+
 // Тест 3: оператор != (сравнение итераторов)
-// ---------------------------
+
 void test_iterator_comparison() {
     cout << "test_iterator_comparison\n";
 
-    // CASE 1: пустой список — begin == end
+    //  1: пустой список — begin == end
     {
         DoublyLinkedList<int> lst;
         assert(!(lst.begin() != lst.end()));
     }
 
-    // CASE 2: список из одного узла — begin != end; копия итератора равна оригиналу
+    //  2: список из одного узла — begin != end; копия итератора равна оригиналу
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(1);
@@ -154,7 +158,7 @@ void test_iterator_comparison() {
         assert(a != lst.end());      // begin != end
     }
 
-    // CASE 3: итераторы на разные позиции — должны быть не равны
+    //  3: итераторы на разные позиции — должны быть не равны
     {
         DoublyLinkedList<int> lst;
         for (int i = 1; i <= 4; ++i) lst.insert_back(i);
@@ -163,7 +167,7 @@ void test_iterator_comparison() {
         assert(it1 != it2);
     }
 
-    // CASE 4: итераторы от разных списков — не равны
+    //  4: итераторы от разных списков — не равны
     {
         DoublyLinkedList<int> a, b;
         a.insert_back(1);
@@ -173,7 +177,7 @@ void test_iterator_comparison() {
         assert(ia != ib); // разные объекты / разные указатели
     }
 
-    // CASE 5: достижение конца — итератор, дошедший до конца, равен end()
+    //  5: достижение конца — итератор, дошедший до конца, равен end()
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(10);
@@ -185,13 +189,13 @@ void test_iterator_comparison() {
     cout << "  test_iterator_comparison: OK\n\n";
 }
 
-// ---------------------------
+
 // Тест 4: полный проход по списку с накоплением (итерация)
-// ---------------------------
+
 void test_iterator_full_iteration() {
     cout << "test_iterator_full_iteration\n";
 
-    // CASE 1: пустой список -> собрали пустой вектор
+    //  1: пустой список -> собрали пустой вектор
     {
         DoublyLinkedList<int> lst;
         vector<int> out;
@@ -199,7 +203,7 @@ void test_iterator_full_iteration() {
         assert(out.empty());
     }
 
-    // CASE 2: один элемент
+    //  2: один элемент
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(123);
@@ -208,7 +212,7 @@ void test_iterator_full_iteration() {
         assert(out.size() == 1 && out[0] == 123);
     }
 
-    // CASE 3: нечетное количество элементов (5)
+    //  3: нечетное количество элементов (5)
     {
         DoublyLinkedList<int> lst;
         for (int i = 1; i <= 5; ++i) lst.insert_back(i);
@@ -217,7 +221,7 @@ void test_iterator_full_iteration() {
         assert(out == vector<int>({ 1,2,3,4,5 }));
     }
 
-    // CASE 4: четное количество элементов (6)
+    //  4: четное количество элементов (6)
     {
         DoublyLinkedList<int> lst;
         for (int i = 10; i < 16; ++i) lst.insert_back(i);
@@ -226,7 +230,7 @@ void test_iterator_full_iteration() {
         assert(out == vector<int>({ 10,11,12,13,14,15 }));
     }
 
-    // CASE 5: большие списки — проверка корректности прохода и количества
+    //  5: большие списки — проверка корректности прохода и количества
     {
         DoublyLinkedList<int> lst;
         const int N = 200;
@@ -247,13 +251,13 @@ void test_iterator_full_iteration() {
     cout << "  test_iterator_full_iteration: OK\n\n";
 }
 
-// ---------------------------
+
 // Тест 5: краевые и «поведенческие» сценарии
-// ---------------------------
+
 void test_iterator_edge_cases() {
     cout << "test_iterator_edge_cases\n";
 
-    // CASE 1: несколько ++ подряд на одном итераторе
+    //  1: несколько ++ подряд на одном итераторе
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(1); lst.insert_back(2); lst.insert_back(3);
@@ -262,7 +266,7 @@ void test_iterator_edge_cases() {
         assert(!(it != lst.end())); // всё равно end
     }
 
-    // CASE 2: использование итератора после удаления других узлов (корректность текущего)
+    //  2: использование итератора после удаления других узлов (корректность текущего)
     {
         DoublyLinkedList<int> lst;
         for (int i = 1; i <= 5; ++i) lst.insert_back(i);
@@ -272,7 +276,7 @@ void test_iterator_edge_cases() {
         assert(*it == 2); // итератор по-прежнему валиден
     }
 
-    // CASE 3: удаление текущего узла и поведение итератора (заметим: итератор станет висячим)
+    //  3: удаление текущего узла и поведение итератора (заметим: итератор станет висячим)
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(10); lst.insert_back(20); lst.insert_back(30);
@@ -284,7 +288,7 @@ void test_iterator_edge_cases() {
         assert(lst.size() == 2);
     }
 
-    // CASE 4: копирование итераторов и независимость позиций
+    //  4: копирование итераторов и независимость позиций
     {
         DoublyLinkedList<int> lst;
         for (int i = 1; i <= 4; ++i) lst.insert_back(i);
@@ -295,7 +299,7 @@ void test_iterator_edge_cases() {
         assert(*it1 == 2);
     }
 
-    // CASE 5: вставка в середину списка — итератор, указывающий на узлы до/после вставки, остаётся корректным для своих узлов
+    //  5: вставка в середину списка — итератор, указывающий на узлы до/после вставки, остаётся корректным для своих узлов
     {
         DoublyLinkedList<int> lst;
         lst.insert_back(1); lst.insert_back(3);

@@ -5,13 +5,12 @@
 
 using namespace std;
 
-// ---------------------------
-// 6) Тест многократных вызовов begin() для одного объекта
-// ---------------------------
+
+//  Тест многократных вызовов begin() для одного объекта
 void test_multiple_begin_calls() {
     cout << "test_multiple_begin_calls\n";
 
-    // CASE 1: пустое дерево — begin() несколько раз подряд
+    //  1: пустое дерево — begin() несколько раз подряд
     {
         BinarySearchTree<int> bst;
         auto it1 = bst.begin();
@@ -27,7 +26,7 @@ void test_multiple_begin_calls() {
         assert(!(it2 != e2));
     }
 
-    // CASE 2: дерево из одного узла — сравним begin() несколько раз
+    //  2: дерево из одного узла — сравним begin() несколько раз
     {
         BinarySearchTree<int> bst;
         bst.insert(42);
@@ -45,7 +44,7 @@ void test_multiple_begin_calls() {
         assert(!(e1 != e2));
     }
 
-    // CASE 3: сбалансированное дерево — три вызова begin()
+    //  3: сбалансированное дерево — три вызова begin()
     {
         BinarySearchTree<int> bst;
         for (int v : {4, 2, 6, 1, 3, 5, 7}) bst.insert(v);
@@ -72,11 +71,11 @@ void test_multiple_begin_calls() {
         // фактически, цикл с it1 или it2 не выполнится вовсе, т.к. (it1 != e) будет true всегда
         // и может привести к неопределённому поведению (так как сравнение разных traversal)
         // мы не должны падать, но результат не определён стандартом
-        cout << "  CASE 3: sizes collected: "
+        cout << "   3: sizes collected: "
             << collected1.size() << ", " << collected2.size() << ", " << collected3.size() << "\n";
     }
 
-    // CASE 4: дерево из 5 элементов — проверяем поведение при повторных вызовах begin()
+    //  4: дерево из 5 элементов — проверяем поведение при повторных вызовах begin()
     {
         BinarySearchTree<int> bst;
         for (int i = 1; i <= 5; ++i) bst.insert(i);
@@ -92,10 +91,10 @@ void test_multiple_begin_calls() {
         int steps = 0;
         while (it1 != e && steps++ < 10) ++it1;
         // Мы останавливаемся раньше, чтобы избежать UB.
-        cout << "  CASE 4: loop stopped after " << steps << " increments\n";
+        cout << "   4: loop stopped after " << steps << " increments\n";
     }
 
-    // CASE 5: вызовы begin() в разных областях (каждый BST свой)
+    //  5: вызовы begin() в разных областях (каждый BST свой)
     {
         BinarySearchTree<int> bst1;
         BinarySearchTree<int> bst2;
@@ -116,13 +115,12 @@ void test_multiple_begin_calls() {
     cout << "  test_multiple_begin_calls: OK (см. комментарии о поведении)\n\n";
 }
 
-// ---------------------------
+
 // 1) Тест оператора ++ (инкремент)
-// ---------------------------
 void test_iterator_increment() {
     cout << "test_iterator_increment\n";
 
-    // CASE 1: пустое дерево
+    //  1: пустое дерево
     {
         BinarySearchTree<int> bst;
         auto it = bst.begin();
@@ -131,7 +129,7 @@ void test_iterator_increment() {
         assert(!(it != e));
     }
 
-    // CASE 2: дерево из одного узла
+    //  2: дерево из одного узла
     {
         BinarySearchTree<int> bst;
         bst.insert(10);
@@ -144,7 +142,7 @@ void test_iterator_increment() {
         assert(!(it != e));
     }
 
-    // CASE 3: сбалансированное дерево
+    //  3: сбалансированное дерево
     {
         BinarySearchTree<int> bst;
         // Вставляем значения (результат inorder = 1..7)
@@ -162,7 +160,7 @@ void test_iterator_increment() {
         assert(idx == expected.size());
     }
 
-    // CASE 4: вырожденное дерево — все вправо (ascending inserts)
+    //  4: вырожденное дерево — все вправо (ascending inserts)
     {
         BinarySearchTree<int> bst;
         for (int i = 1; i <= 5; ++i) bst.insert(i); // 1,2,3,4,5
@@ -176,7 +174,7 @@ void test_iterator_increment() {
         assert(expect == 6);
     }
 
-    // CASE 5: вырожденное дерево — все влево (descending inserts)
+    //  5: вырожденное дерево — все влево (descending inserts)
     {
         BinarySearchTree<int> bst;
         for (int i = 5; i >= 1; --i) bst.insert(i); // 5,4,3,2,1 inserted -> inorder 1..5
@@ -193,13 +191,12 @@ void test_iterator_increment() {
     cout << "  test_iterator_increment: OK\n\n";
 }
 
-// ---------------------------
+
 // 2) Тест оператора * (разыменование)
-// ---------------------------
 void test_iterator_dereference() {
     cout << "test_iterator_dereference\n";
 
-    // CASE 1: пустое дерево -> deref должен бросить out_of_range
+    //  1: пустое дерево -> deref должен бросить out_of_range
     {
         BinarySearchTree<int> bst;
         auto it = bst.begin();
@@ -209,7 +206,7 @@ void test_iterator_dereference() {
         assert(thrown);
     }
 
-    // CASE 2: дерево из одного узла — можно читать и изменять (внутренний traversal — копия)
+    //  2: дерево из одного узла — можно читать и изменять (внутренний traversal — копия)
     {
         BinarySearchTree<int> bst;
         bst.insert(42);
@@ -221,7 +218,7 @@ void test_iterator_dereference() {
         assert(*it == 100);
     }
 
-    // CASE 3: сбалансированное дерево — первые несколько элементов
+    //  3: сбалансированное дерево — первые несколько элементов
     {
         BinarySearchTree<int> bst;
         for (int v : {4, 2, 6, 1, 3, 5, 7}) bst.insert(v);
@@ -233,7 +230,7 @@ void test_iterator_dereference() {
         assert(*it == 3);      // проверяем третий
     }
 
-    // CASE 4: вырожденное дерево вправо — доступ к середине
+    //  4: вырожденное дерево вправо — доступ к середине
     {
         BinarySearchTree<int> bst;
         for (int i = 1; i <= 9; ++i) bst.insert(i); // inorder 1..9
@@ -246,7 +243,7 @@ void test_iterator_dereference() {
         assert(*it == 500);
     }
 
-    // CASE 5: случайный набор значений
+    //  5: случайный набор значений
     {
         BinarySearchTree<int> bst;
         vector<int> ins = { 10, 5, 15, 3, 7, 12, 18 };
@@ -267,13 +264,12 @@ void test_iterator_dereference() {
     cout << "  test_iterator_dereference: OK\n\n";
 }
 
-// ---------------------------
+
 // 3) Тест оператора != (сравнение итераторов)
-// ---------------------------
 void test_iterator_comparison() {
     cout << "test_iterator_comparison\n";
 
-    // CASE 1: пустое дерево — begin == end
+    //  1: пустое дерево — begin == end
     {
         BinarySearchTree<int> bst;
         auto b = bst.begin();
@@ -281,7 +277,7 @@ void test_iterator_comparison() {
         assert(!(b != e));
     }
 
-    // CASE 2: один элемент — begin != end, но после ++ begin == end
+    //  2: один элемент — begin != end, но после ++ begin == end
     {
         BinarySearchTree<int> bst;
         bst.insert(7);
@@ -294,7 +290,7 @@ void test_iterator_comparison() {
         assert(!(b != e));
     }
 
-    // CASE 3: два итератора, скопированные из одного — равны; после ++ становятся разными
+    //  3: два итератора, скопированные из одного — равны; после ++ становятся разными
     {
         BinarySearchTree<int> bst;
         for (int v : {2, 1, 3}) bst.insert(v);
@@ -305,7 +301,7 @@ void test_iterator_comparison() {
         assert(it1 != it2);
     }
 
-    // CASE 4: end() дважды после single begin() -> оба end() должны быть равны
+    //  4: end() дважды после single begin() -> оба end() должны быть равны
     {
         BinarySearchTree<int> bst;
         bst.insert(100);
@@ -315,7 +311,7 @@ void test_iterator_comparison() {
         assert(!(e1 != e2)); // оба end указывают на тот же traversal и index
     }
 
-    // CASE 5: итераторы из разных деревьев — должны быть не равны
+    //  5: итераторы из разных деревьев — должны быть не равны
     {
         BinarySearchTree<int> a, b;
         a.insert(1); a.insert(2);
@@ -329,13 +325,12 @@ void test_iterator_comparison() {
     cout << "  test_iterator_comparison: OK\n\n";
 }
 
-// ---------------------------
+
 // 4) Тест полного обхода (сбор значений через итератор)
-// ---------------------------
 void test_iterator_full_traversal() {
     cout << "test_iterator_full_traversal\n";
 
-    // CASE 1: пустое дерево -> получаем пустой вектор
+    //  1: пустое дерево -> получаем пустой вектор
     {
         BinarySearchTree<int> bst;
         vector<int> collected;
@@ -343,7 +338,7 @@ void test_iterator_full_traversal() {
         assert(collected.empty());
     }
 
-    // CASE 2: один элемент
+    //  2: один элемент
     {
         BinarySearchTree<int> bst;
         bst.insert(11);
@@ -352,7 +347,7 @@ void test_iterator_full_traversal() {
         assert(collected.size() == 1 && collected[0] == 11);
     }
 
-    // CASE 3: сбалансированное дерево
+    //  3: сбалансированное дерево
     {
         BinarySearchTree<int> bst;
         vector<int> ins = { 4,2,6,1,3,5,7 };
@@ -364,7 +359,7 @@ void test_iterator_full_traversal() {
         assert(collected == expected);
     }
 
-    // CASE 4: вырожденное вправо
+    //  4: вырожденное вправо
     {
         BinarySearchTree<int> bst;
         for (int i = 1; i <= 8; ++i) bst.insert(i);
@@ -373,7 +368,7 @@ void test_iterator_full_traversal() {
         for (size_t i = 0; i < collected.size(); ++i) assert(collected[i] == static_cast<int>(i + 1));
     }
 
-    // CASE 5: произвольный набор с дубликатами по смыслу (BST не вставляет дубликаты у тебя),
+    //  5: произвольный набор с дубликатами по смыслу (BST не вставляет дубликаты у тебя),
     // поэтому тестируем смесь значений
     {
         BinarySearchTree<int> bst;
@@ -389,13 +384,12 @@ void test_iterator_full_traversal() {
     cout << "  test_iterator_full_traversal: OK\n\n";
 }
 
-// ---------------------------
+
 // 5) Тест исключительных ситуаций (dereference end и выход за границы)
-// ---------------------------
 void test_iterator_exceptions() {
     cout << "test_iterator_exceptions\n";
 
-    // CASE 1: пустое дерево -> deref begin() бросает
+    //  1: пустое дерево -> deref begin() бросает
     {
         BinarySearchTree<int> bst;
         bool thrown = false;
@@ -404,7 +398,7 @@ void test_iterator_exceptions() {
         assert(thrown);
     }
 
-    // CASE 2: single -> deref(end) бросает
+    //  2: single -> deref(end) бросает
     {
         BinarySearchTree<int> bst;
         bst.insert(7);
@@ -416,7 +410,7 @@ void test_iterator_exceptions() {
         assert(thrown);
     }
 
-    // CASE 3: после прохода до конца, разыменование также бросает
+    //  3: после прохода до конца, разыменование также бросает
     {
         BinarySearchTree<int> bst;
         for (int i = 1; i <= 3; ++i) bst.insert(i);
@@ -430,7 +424,7 @@ void test_iterator_exceptions() {
         assert(thrown);
     }
 
-    // CASE 4: многократный ++ за пределы end — оператор++ должен быть защищён от переполнения
+    //  4: многократный ++ за пределы end — оператор++ должен быть защищён от переполнения
     {
         BinarySearchTree<int> bst;
         for (int i : {2, 1, 3}) bst.insert(i);
@@ -444,7 +438,7 @@ void test_iterator_exceptions() {
         assert(thrown);
     }
 
-    // CASE 5: убедимся, что копия итератора после продвижения ведёт себя корректно
+    //  5: убедимся, что копия итератора после продвижения ведёт себя корректно
     {
         BinarySearchTree<int> bst;
         for (int i = 1; i <= 5; ++i) bst.insert(i);
