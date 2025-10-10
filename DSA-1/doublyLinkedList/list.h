@@ -2,6 +2,7 @@
 #pragma once
 #include <stdexcept>
 #include <cstddef>
+#include "..\..\DSA-2\ClassIterator\AbstractIterator.h"
 using namespace std;
 
 /// Шаблонный класс двусвязного списка
@@ -24,6 +25,98 @@ private:
     Node* tail;  /// указатель на хвост списка
 
 public:
+
+/**
+ *  Класс итератора для двусвязного списка.
+ *
+ * Реализует базовый интерфейс итератора (`AbstractIterator<T>`) для прохода
+ * по элементам двусвязного списка 
+ *
+ * Каждый объект `Iterator` хранит указатель `current` — это текущий узел (`Node*`),
+ * на который итератор указывает в данный момент.
+ *
+ * Основные операции:
+ * - `operator++()` — переход к следующему элементу (аналог `++it` в STL);
+ * - `operator*()` — разыменование итератора (доступ к данным узла);
+ * - `operator!=()` — сравнение двух итераторов (обычно `it != end()` в цикле).
+ */
+    class Iterator : public AbstractIterator<T> {
+        /// Указатель на текущий узел, на который указывает итератор
+        Node* current;
+
+    public:
+    /**
+     * Конструктор итератора.
+     * @param node Указатель на узел, с которого начинается итерация (по умолчанию `nullptr`).
+     *
+     * Если `node == nullptr`, итератор считается указывающим на "конец" списка
+     */
+        Iterator(Node* node = nullptr) : current(node) {}
+
+    /**
+    * Оператор префиксного инкремента 
+    *
+    * Перемещает итератор на следующий элемент списка.
+    * Если текущий элемент существует 
+    * итератор просто сдвигается на `current->next`.
+    *
+    * Если итератор уже указывает на конец (`nullptr`),
+    * то он таким и остаётся.
+    *
+    * @return Ссылка на сам итератор 
+    */
+        Iterator& operator++() override {
+            if (current)
+                current = current->next;
+            return *this;
+        }
+
+     /**
+     * Оператор разыменования *
+     *
+     * Возвращает ссылку на данные data текущего узла.
+     * 
+     * @throws out_of_range если итератор указывает на несуществующий элемент или конец списка.
+     *
+     * @return Ссылка на значение типа T, хранящееся в текущем узле.
+     */
+        T& operator*() const override {
+            if (!current)
+                throw out_of_range("Элемент не существует");
+            return current->data;
+        }
+
+     /**
+     * Оператор сравнения на неравенство `it1 != it2`.
+     *
+     * Используется, чтобы проверить, указывают ли два итератора на разные элементы.
+     *
+     * Поскольку параметр имеет тип `AbstractIterator<T>&`, используется `dynamic_cast`
+     * для безопасного приведения к типу `Iterator*`.
+     * Это необходимо, потому что мы можем сравнивать итераторы разных типов,
+     * реализующих один интерфейс `AbstractIterator<T>`.
+     *
+     * @param other Другой итератор для сравнения.
+     * @return `true`, если итераторы указывают на разные узлы;
+     *         `false`, если они указывают на один и тот же узел.
+     */
+        bool operator!=(const AbstractIterator<T>& other) const override {
+            // Пробуем привести ссылку к типу Iterator*
+            const Iterator* it = dynamic_cast<const Iterator*>(&other);
+            // Если приведение не удалось (итераторы разных типов) или указатели разные - итераторы не равны
+            return !it || this->current != it->current;
+        }
+    };
+
+    /// Возвращает итератор, указывающий на первый элемент
+    Iterator begin() const {
+        return Iterator(head);
+    }
+
+    /// Возвращает итератор, указывающий на элемент после последнего
+    Iterator end() const {
+        return Iterator(nullptr);
+    }
 
     /// Конструктор: создаёт пустой список
     DoublyLinkedList() {
@@ -307,6 +400,11 @@ void insert_at(size_t index, const T& value) {
 
 };
 
+void test_iterator_increment();
+void test_iterator_dereference();
+void test_iterator_comparison();
+void test_iterator_full_iteration();
+void test_iterator_edge_cases();
 void test_insert_and_size();
 void test_find_and_insert_after();
 void test_remove_front_and_back();

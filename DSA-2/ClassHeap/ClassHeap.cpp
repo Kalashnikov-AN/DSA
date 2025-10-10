@@ -45,6 +45,7 @@ int main()
     test_constructor_from_array();
     test_print();
     test_print_tree();
+    test_heap_sort();
     
 }
 

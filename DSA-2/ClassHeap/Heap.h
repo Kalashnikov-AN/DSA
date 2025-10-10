@@ -2,7 +2,7 @@
 #pragma once
 #include <stdexcept>
 #include <iostream>
-#include "C:\Users\huuma\Documents\DSA\DSA-1\classDynamicArray\dynArray.h"
+#include "..\..\DSA-1\classDynamicArray\dynArray.h"
 
 
 using namespace std;
@@ -187,6 +187,29 @@ public:
 
 };
 
+/**
+ * ‘ункци€ сортировки кучей (heap sort)
+ * 1. —троит min-heap из массива.
+ * 2. »звлекает минимальный элемент по одному, помеща€ его в конец массива.
+ * 3. ѕосле завершени€ массив будет отсортирован по возрастанию.
+ * O(n log n)
+ */
+template <typename T>
+void heapSort(DynamicArray<T>& arr) {
+    size_t n = arr.size();
+    if (n <= 1) return; // уже отсортировано
+
+    // построение min-heap 
+    Heap<T> heap(arr);
+    heap.print_tree();
+    // извлекаем элементы по одному 
+    for (size_t i = 0; i < n; ++i) {
+        arr[i] = heap.get_min(); // минимальный элемент на текущей итерации
+        heap.extract_min();      // удал€ем его из кучи
+    }
+}
+
+void test_heap_sort();
 void test_insert();
 void test_get_min();
 void test_extract_min();

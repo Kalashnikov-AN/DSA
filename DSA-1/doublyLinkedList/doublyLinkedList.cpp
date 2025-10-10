@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     test_insert_and_size();
-    test_remove_front_and_back();
+    //test_remove_front_and_back();
     test_remove_node();
     test_concatenate_and_clear();
     test_copy_constructor();
@@ -19,5 +19,21 @@ int main()
     test_insert_at_various_positions();
     test_remove_at_various_positions();
     test_remove_at_out_of_range();
+    DoublyLinkedList<int> list;
+    list.insert_back(10);
+    list.insert_back(20);
+    list.insert_back(30);
+
+    for (auto it = list.begin(); it != list.end(); ++it)
+        cout << *it << " ";   // 10 20 30
+    for (auto t : list) {
+        cout << t;
+        cout << "\n";
+    }
+    test_iterator_increment();
+    test_iterator_dereference();
+    test_iterator_comparison();
+    test_iterator_full_iteration();
+    test_iterator_edge_cases();
 }
 

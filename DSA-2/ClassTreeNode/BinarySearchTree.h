@@ -6,8 +6,15 @@
 #include "TreeNode.h"
 #include <stack>
 #include "TreeNodeFunctions.h"
+#include "..\..\DSA-2\ClassIterator\AbstractIterator.h"
 using namespace std;
 
+void test_multiple_begin_calls();
+void test_iterator_increment();
+void test_iterator_dereference();
+void test_iterator_comparison();
+void test_iterator_full_traversal();
+void test_iterator_exceptions();
 void test_insert();
 void test_size();
 void test_height();
@@ -25,7 +32,11 @@ template<typename T>
 class BinarySearchTree {
 private:
     TreeNode<T>* root; ///< Корень дерева
-
+    mutable vector<T>* last_traversal = nullptr;
+    /*
+     mutable — это ключевое слово, которое позволяет изменять
+     данные в полях класса даже внутри константного метода (или константного объекта)
+    */
 public:
     /// Конструктор: инициализирует пустое дерево
     BinarySearchTree() : root(nullptr) {}
@@ -34,6 +45,55 @@ public:
     ~BinarySearchTree() {
         clear();
     }
+
+    // 🔹 Итератор (inorder)
+    class Iterator : public AbstractIterator<T> {
+        vector<T>* traversal; // указатель на вектор 
+        size_t index;
+
+    public:
+        Iterator(vector<T>* vec = nullptr, size_t i = 0)
+            : traversal(vec), index(i) {
+        }
+
+        Iterator& operator++() override {
+            if (traversal && index < traversal->size()) ++index;
+            return *this;
+        }
+
+        T& operator*() const override {
+            if (!traversal || index >= traversal->size())
+                throw out_of_range("Iterator dereference past end");
+            return (*traversal)[index];
+        }
+
+        bool operator!=(const AbstractIterator<T>& other) const override {
+            const Iterator* it = dynamic_cast<const Iterator*>(&other);
+            if (!it) return true;
+            return traversal != it->traversal || index != it->index;
+        }
+    };
+
+
+    Iterator begin() const {
+        // создаём вектор и наполняем его обходом in-order
+        vector<T>* vec = new vector<T>();
+        inorder(root, *vec);
+
+        // создаём итератор, указывающий на начало
+        Iterator it_begin(vec, 0);
+
+        // сохраняем указатель, чтобы end() мог использовать тот же самый вектор
+        last_traversal = vec;
+        return it_begin;
+    }
+
+    Iterator end() const {
+        // используем тот же вектор, что и в begin()
+        if (!last_traversal) return Iterator(nullptr, 0);
+        return Iterator(last_traversal, last_traversal->size());
+    }
+
 
     /**
      *  Вставка значения в дерево.
@@ -160,6 +220,7 @@ public:
      */
     void clear() {
         delete_tree(root);
+        delete last_traversal; // очищаем память от последнего обхода
     }
 
     /**

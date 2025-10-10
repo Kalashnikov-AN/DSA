@@ -1,9 +1,74 @@
 ﻿// Автор: Калашников А.Н.
 #include <cassert>
 #include "Heap.h"   
-#include "C:\Users\huuma\Documents\DSA\DSA-1\classDynamicArray\dynArray.h"
+#include "..\..\DSA-1\classDynamicArray\dynArray.h"
 
 using namespace std;
+
+/**
+ * Тестирование функции сортировки кучей (heapSort)
+ * Проверяются разные варианты: пустой массив, один элемент, обычный, дубли, обратный порядок элементов
+ */
+void test_heap_sort() {
+
+    // Пустой массив
+    {
+        DynamicArray<int> arr;
+        heapSort(arr);
+        assert(arr.size() == 0);
+    }
+
+    // Один узел
+    {
+        DynamicArray<int> arr;
+        arr.push_back(42);
+        heapSort(arr);
+        assert(arr[0] == 42);
+    }
+
+    // Несколько элементов 
+    {
+        DynamicArray<int> arr;
+        arr.push_back(5);
+        arr.push_back(2);
+        arr.push_back(8);
+        arr.push_back(1);
+        arr.push_back(3);
+
+        heapSort(arr);
+
+        for (size_t i = 1; i < arr.size(); ++i)
+            assert(arr[i - 1] <= arr[i]); // проверка сортировки
+
+    }
+
+    // Повторяющиеся элементы
+    {
+        DynamicArray<int> arr;
+        int values[] = { 4, 1, 1, 4, 2, 2, 3 };
+        for (int v : values) arr.push_back(v);
+
+        heapSort(arr);
+
+        for (size_t i = 1; i < arr.size(); ++i)
+            assert(arr[i - 1] <= arr[i]);
+
+    }
+
+    // Обратный порядок
+    {
+        DynamicArray<int> arr;
+        for (int i = 10; i >= 1; --i)
+            arr.push_back(i);
+
+        heapSort(arr);
+
+        for (size_t i = 1; i < arr.size(); ++i)
+            assert(arr[i - 1] <= arr[i]);
+    }
+
+    cout << "Все тесты heapSort успешно пройдены!\n\n";
+}
 
 /**
  *  Тест метода insert()

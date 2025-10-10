@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassIterator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C91E6955-D54D-4B58-B5BD-F544D0A069B4}|ClassIterator.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassIterator\\AbstractIterator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C91E6955-D54D-4B58-B5BD-F544D0A069B4}|ClassIterator.vcxproj|solutionrelative:AbstractIterator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C91E6955-D54D-4B58-B5BD-F544D0A069B4}|ClassIterator.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassIterator\\ClassIterator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C91E6955-D54D-4B58-B5BD-F544D0A069B4}|ClassIterator.vcxproj|solutionrelative:ClassIterator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AbstractIterator.h",
+              "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassIterator\\AbstractIterator.h",
+              "RelativeDocumentMoniker": "AbstractIterator.h",
+              "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassIterator\\AbstractIterator.h",
+              "RelativeToolTip": "AbstractIterator.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-09T14:21:46.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClassIterator.cpp",
+              "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassIterator\\ClassIterator.cpp",
+              "RelativeDocumentMoniker": "ClassIterator.cpp",
+              "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassIterator\\ClassIterator.cpp",
+              "RelativeToolTip": "ClassIterator.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-09T14:20:47.116Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
