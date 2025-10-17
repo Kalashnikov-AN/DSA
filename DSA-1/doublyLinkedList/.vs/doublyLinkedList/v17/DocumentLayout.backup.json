@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\list.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|solutionrelative:list.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\doublyLinkedList.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|solutionrelative:doublyLinkedList.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|solutionrelative:list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\doublyLinkedList.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|solutionrelative:doublyLinkedList.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\list.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DA93BA5F-2F73-4388-9B03-568CC0102F51}|doublyLinkedList.vcxproj|solutionrelative:list.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,19 +22,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "doublyLinkedList.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\doublyLinkedList.cpp",
               "RelativeDocumentMoniker": "doublyLinkedList.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\doublyLinkedList.cpp",
               "RelativeToolTip": "doublyLinkedList.cpp",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-19T13:42:57.138Z"
+              "WhenOpened": "2025-04-19T13:42:57.138Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -44,19 +45,20 @@
               "RelativeDocumentMoniker": "list.h",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\list.h",
               "RelativeToolTip": "list.h",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-19T13:46:18.543Z"
+              "WhenOpened": "2025-04-19T13:46:18.543Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "list.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\list.cpp",
               "RelativeDocumentMoniker": "list.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-1\\doublyLinkedList\\list.cpp",
               "RelativeToolTip": "list.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAgwHwBAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-19T13:46:47.665Z",
               "EditorCaption": ""

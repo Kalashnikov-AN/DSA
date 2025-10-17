@@ -72,7 +72,7 @@ int main()
 	test_iterator_comparison();
 	test_iterator_full_traversal();
 	test_iterator_exceptions();
-	//test_multiple_begin_calls();
+	test_multiple_begin_calls();
 
 	/* 
 	Дерево является строгим, т.к. у каждого узла либо 0, либо 2 потомка.

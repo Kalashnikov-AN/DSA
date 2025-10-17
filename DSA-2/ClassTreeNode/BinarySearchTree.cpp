@@ -6,11 +6,11 @@
 using namespace std;
 
 
-//  Тест многократных вызовов begin() для одного объекта
+// 1) Тест: многократные вызовы begin() для одного дерева
 void test_multiple_begin_calls() {
     cout << "test_multiple_begin_calls\n";
 
-    //  1: пустое дерево — begin() несколько раз подряд
+    // 1: пустое дерево — begin() несколько раз подряд
     {
         BinarySearchTree<int> bst;
         auto it1 = bst.begin();
@@ -18,83 +18,79 @@ void test_multiple_begin_calls() {
         auto e1 = bst.end();
         auto e2 = bst.end();
 
-        // оба итератора указывают на разные traversal (из-за new vector в каждом begin)
-        // => они не равны
-        assert(it1 != it2);
-        // но оба — end(), так что при проверке цикла ничего не произойдёт
+        // Оба begin() создают итераторы с current == nullptr
+        // => равны end()
         assert(!(it1 != e1));
         assert(!(it2 != e2));
+        // Следовательно, begin() == end() и it1 == it2
+        assert(!(it1 != it2));
     }
 
-    //  2: дерево из одного узла — сравним begin() несколько раз
+    // 2: дерево из одного узла — сравним begin() несколько раз
     {
         BinarySearchTree<int> bst;
         bst.insert(42);
-        auto it1 = bst.begin(); // создаёт 1-й traversal
-        auto it2 = bst.begin(); // создаёт 2-й traversal, старый потерян (утечка памяти)
-        auto e1 = bst.end();    // end() теперь соответствует it2, т.к. last_traversal = it2.traversal
-        auto e2 = bst.end();
+        auto it1 = bst.begin();
+        auto it2 = bst.begin();
+        auto e = bst.end();
 
-        // it1 и it2 теперь указывают на разные буферы, поэтому не равны
-        assert(it1 != it2);
-        // оба корректно читают значение (но из разных векторов)
+        // Оба begin() указывают на один и тот же корневой узел
+        assert(!(it1 != it2));
         assert(*it1 == 42);
         assert(*it2 == 42);
-        // e1 и e2 равны между собой
-        assert(!(e1 != e2));
+
+        // После инкремента оба станут равны end()
+        ++it1;
+        ++it2;
+        assert(!(it1 != e));
+        assert(!(it2 != e));
     }
 
-    //  3: сбалансированное дерево — три вызова begin()
+    // 3: простое дерево — три вызова begin()
     {
         BinarySearchTree<int> bst;
         for (int v : {4, 2, 6, 1, 3, 5, 7}) bst.insert(v);
 
-        auto it1 = bst.begin(); // создаёт первый traversal
-        auto it2 = bst.begin(); // второй
-        auto it3 = bst.begin(); // третий
-        // теперь last_traversal указывает на вектор, созданный при it3
+        auto it1 = bst.begin();
+        auto it2 = bst.begin();
+        auto it3 = bst.begin();
         auto e = bst.end();
 
-        // it1, it2, it3 — разные буферы => все должны быть !=
+        // Все три итератора начинают с минимального элемента (1)
+        assert(*it1 == 1 && *it2 == 1 && *it3 == 1);
+        assert(!(it1 != it2));
+        assert(!(it2 != it3));
+
+        // Двигаем один — должен измениться current
+        ++it1;
         assert(it1 != it2);
-        assert(it2 != it3);
-        assert(it1 != it3);
-
-        // но все корректно читают значения по inorder
-        vector<int> collected1, collected2, collected3;
-        for (auto t = it1; t != e; ++t) collected1.push_back(*t);
-        for (auto t = it2; t != e; ++t) collected2.push_back(*t);
-        for (auto t = it3; t != e; ++t) collected3.push_back(*t);
-
-        // collected1/2/3 могут отличаться, потому что e соответствует it3 (последнему)
-        // => итерации it1 и it2 будут сравниваться с end() от другой traversal
-        // фактически, цикл с it1 или it2 не выполнится вовсе, т.к. (it1 != e) будет true всегда
-        // и может привести к неопределённому поведению (так как сравнение разных traversal)
-        // мы не должны падать, но результат не определён стандартом
-        cout << "   3: sizes collected: "
-            << collected1.size() << ", " << collected2.size() << ", " << collected3.size() << "\n";
+        assert(*it1 == 2);
+        assert(*it2 == 1);
     }
 
-    //  4: дерево из 5 элементов — проверяем поведение при повторных вызовах begin()
+    // 4: дерево из 5 элементов — проверяем независимость итераторов
     {
         BinarySearchTree<int> bst;
         for (int i = 1; i <= 5; ++i) bst.insert(i);
 
-        auto it1 = bst.begin(); // new traversal A
-        auto it2 = bst.begin(); // new traversal B
-        auto e = bst.end();   // end соответствует traversal B
+        auto it1 = bst.begin();
+        auto it2 = bst.begin();
+        auto e = bst.end();
 
-        // Попробуем пройти первым итератором (it1) до конца traversal A,
-        // но при сравнении с e (traversal B) условие (it1 != e) всегда истинно,
-        // поэтому цикл не завершится (бесконечный цикл).
-        // Чтобы не зависнуть, ограничим вручную количество шагов.
-        int steps = 0;
-        while (it1 != e && steps++ < 10) ++it1;
-        // Мы останавливаемся раньше, чтобы избежать UB.
-        cout << "   4: loop stopped after " << steps << " increments\n";
+        ++it1; // теперь it1 указывает на 2
+        assert(it1 != it2);
+        assert(*it1 == 2);
+        assert(*it2 == 1);
+
+        // Оба корректно дойдут до конца независимо
+        int steps1 = 0, steps2 = 0;
+        while (it1 != e) { ++it1; ++steps1; }
+        while (it2 != e) { ++it2; ++steps2; }
+        assert(steps1 == 4);
+        assert(steps2 == 5);
     }
 
-    //  5: вызовы begin() в разных областях (каждый BST свой)
+    // 5: begin() на разных BST
     {
         BinarySearchTree<int> bst1;
         BinarySearchTree<int> bst2;
@@ -103,173 +99,149 @@ void test_multiple_begin_calls() {
 
         auto it1 = bst1.begin();
         auto it2 = bst2.begin();
-        assert(it1 != it2); // разные traversal в разных объектах
-
-        auto e1 = bst1.end();
-        auto e2 = bst2.end();
-        assert(!(e1 != e1)); // один и тот же end в пределах bst1
-        assert(it1 != e1);
-        assert(it2 != e2);
+        assert(it1 != it2);
+        assert(*it1 == 10);
+        assert(*it2 == 20);
     }
 
-    cout << "  test_multiple_begin_calls: OK (см. комментарии о поведении)\n\n";
+    cout << "  test_multiple_begin_calls: OK\n\n";
 }
 
 
-// 1) Тест оператора ++ (инкремент)
+// 2) Тест: оператор ++
 void test_iterator_increment() {
     cout << "test_iterator_increment\n";
 
-    //  1: пустое дерево
+    // 1: пустое дерево
     {
         BinarySearchTree<int> bst;
         auto it = bst.begin();
         auto e = bst.end();
-        // Пустое дерево: begin == end
         assert(!(it != e));
     }
 
-    //  2: дерево из одного узла
+    // 2: дерево из одного узла
     {
         BinarySearchTree<int> bst;
         bst.insert(10);
         auto it = bst.begin();
         auto e = bst.end();
-        // сначала корень
         assert(*it == 10);
         ++it;
-        // после ++ — end
         assert(!(it != e));
     }
 
-    //  3: сбалансированное дерево
+    // 3: простое дерево
     {
         BinarySearchTree<int> bst;
-        // Вставляем значения (результат inorder = 1..7)
-        for (int v : {4, 2, 6, 1, 3, 5, 7}) bst.insert(v);
-        auto it = bst.begin();
-        auto e = bst.end();
-
+        for (int v : {4, 2, 6, 1, 3, 5, 7})
+            bst.insert(v);
         vector<int> expected = { 1,2,3,4,5,6,7 };
-        size_t idx = 0;
-        while (it != e) {
-            assert(*it == expected[idx]);
-            ++it;
-            ++idx;
-        }
-        assert(idx == expected.size());
+        vector<int> collected;
+        for (auto it: bst)
+            collected.push_back(it);
+        assert(collected == expected);
     }
 
-    //  4: вырожденное дерево — все вправо (ascending inserts)
+    // 4: все вправо
     {
         BinarySearchTree<int> bst;
-        for (int i = 1; i <= 5; ++i) bst.insert(i); // 1,2,3,4,5
-        auto it = bst.begin();
-        auto e = bst.end();
-        int expect = 1;
-        while (it != e) {
-            assert(*it == expect++);
-            ++it;
-        }
-        assert(expect == 6);
+        for (int i = 1; i <= 5; ++i)
+            bst.insert(i);
+        int expected = 1;
+        for (auto it = bst.begin(); it != bst.end(); ++it)
+            assert(*it == expected++);
+        assert(expected == 6);
     }
 
-    //  5: вырожденное дерево — все влево (descending inserts)
+    // 5: все влево
     {
         BinarySearchTree<int> bst;
-        for (int i = 5; i >= 1; --i) bst.insert(i); // 5,4,3,2,1 inserted -> inorder 1..5
-        auto it = bst.begin();
-        auto e = bst.end();
-        int expect = 1;
-        while (it != e) {
-            assert(*it == expect++);
-            ++it;
-        }
-        assert(expect == 6);
+        for (int i = 5; i >= 1; --i)
+            bst.insert(i);
+        int expected = 1;
+        for (auto it = bst.begin(); it != bst.end(); ++it)
+            assert(*it == expected++);
+        assert(expected == 6);
     }
 
     cout << "  test_iterator_increment: OK\n\n";
 }
 
 
-// 2) Тест оператора * (разыменование)
+// 3) Тест: оператор *
 void test_iterator_dereference() {
     cout << "test_iterator_dereference\n";
 
-    //  1: пустое дерево -> deref должен бросить out_of_range
+    // 1: пустое дерево
     {
         BinarySearchTree<int> bst;
-        auto it = bst.begin();
         bool thrown = false;
-        try { int v = *it; (void)v; }
-        catch (const out_of_range&) { thrown = true; }
+        try {
+            auto it = bst.begin();
+            int x = *it;
+        }
+        catch (const out_of_range&) {
+            thrown = true;
+        }
         assert(thrown);
     }
 
-    //  2: дерево из одного узла — можно читать и изменять (внутренний traversal — копия)
+    // 2: один узел
     {
         BinarySearchTree<int> bst;
         bst.insert(42);
         auto it = bst.begin();
         assert(*it == 42);
-
-        // изменение через итератор меняет значение в traversal (не в дереве)
-        *it = 100;
-        assert(*it == 100);
     }
 
-    //  3: сбалансированное дерево — первые несколько элементов
+    // 3: простое дерево
     {
         BinarySearchTree<int> bst;
-        for (int v : {4, 2, 6, 1, 3, 5, 7}) bst.insert(v);
-        auto it = bst.begin(); // points to 1
-        assert(*it == 1);      // проверяем первый
-        ++it;
-        assert(*it == 2);      // проверяем второй
-        ++it;
-        assert(*it == 3);      // проверяем третий
-    }
-
-    //  4: вырожденное дерево вправо — доступ к середине
-    {
-        BinarySearchTree<int> bst;
-        for (int i = 1; i <= 9; ++i) bst.insert(i); // inorder 1..9
+        for (int v : {4, 2, 6, 1, 3, 5, 7})
+            bst.insert(v);
         auto it = bst.begin();
-        // двигаемся до 5-го элемента
-        for (int i = 1; i < 5; ++i) ++it;
-        assert(*it == 5); // проверяем значение посередине
-        // изменяем через итератор
-        *it = 500;
-        assert(*it == 500);
+        assert(*it == 1);
+        ++it;
+        assert(*it == 2);
+        ++it;
+        assert(*it == 3);
     }
 
-    //  5: случайный набор значений
+    // 4: вправо
+    {
+        BinarySearchTree<int> bst;
+        for (int i = 1; i <= 9; ++i)
+            bst.insert(i);
+        auto it = bst.begin();
+        for (int i = 1; i < 5; ++i)
+            ++it;
+        assert(*it == 5);
+    }
+
+    // 5: произвольный набор
     {
         BinarySearchTree<int> bst;
         vector<int> ins = { 10, 5, 15, 3, 7, 12, 18 };
-        for (int v : ins) bst.insert(v);
-        // inorder должен быть [3,5,7,10,12,15,18]
+        for (int v : ins)
+            bst.insert(v);
         vector<int> expected = ins;
         sort(expected.begin(), expected.end());
-        auto it = bst.begin();
-        auto e = bst.end();
-        size_t idx = 0;
-        while (it != e) {
-            assert(*it == expected[idx++]);
-            ++it;
-        }
-        assert(idx == expected.size());
+        vector<int> collected;
+        for (auto it = bst.begin(); it != bst.end(); ++it)
+            collected.push_back(*it);
+        assert(collected == expected);
     }
 
     cout << "  test_iterator_dereference: OK\n\n";
 }
 
 
-// 3) Тест оператора != (сравнение итераторов)
+// 4) Тест: оператор !=
 void test_iterator_comparison() {
     cout << "test_iterator_comparison\n";
 
-    //  1: пустое дерево — begin == end
+    // 1: пустое дерево
     {
         BinarySearchTree<int> bst;
         auto b = bst.begin();
@@ -277,48 +249,45 @@ void test_iterator_comparison() {
         assert(!(b != e));
     }
 
-    //  2: один элемент — begin != end, но после ++ begin == end
+    // 2: один элемент
     {
         BinarySearchTree<int> bst;
         bst.insert(7);
         auto b = bst.begin();
         auto e = bst.end();
         assert(b != e);
-        auto b_copy = b; // копия итератора (копирование должно работать)
-        assert(!(b != b_copy));
         ++b;
         assert(!(b != e));
     }
 
-    //  3: два итератора, скопированные из одного — равны; после ++ становятся разными
+    // 3: копии итераторов
     {
         BinarySearchTree<int> bst;
-        for (int v : {2, 1, 3}) bst.insert(v);
+        for (int v : {2, 1, 3})
+            bst.insert(v);
         auto it1 = bst.begin();
-        auto it2 = it1; // копия, разделяют один traversal pointer
+        auto it2 = it1;
         assert(!(it1 != it2));
         ++it1;
         assert(it1 != it2);
     }
 
-    //  4: end() дважды после single begin() -> оба end() должны быть равны
+    // 4: end() дважды
     {
         BinarySearchTree<int> bst;
         bst.insert(100);
-        auto b = bst.begin(); // создаёт last_traversal
         auto e1 = bst.end();
         auto e2 = bst.end();
-        assert(!(e1 != e2)); // оба end указывают на тот же traversal и index
+        assert(!(e1 != e2));
     }
 
-    //  5: итераторы из разных деревьев — должны быть не равны
+    // 5: разные деревья
     {
         BinarySearchTree<int> a, b;
-        a.insert(1); a.insert(2);
-        b.insert(1); b.insert(2);
-        auto itA = a.begin(); // создал last_traversal для a
-        auto itB = b.begin(); // создал last_traversal для b
-        // itA и itB ссылаются на разные буферы => не равны
+        a.insert(1);
+        b.insert(2);
+        auto itA = a.begin();
+        auto itB = b.begin();
         assert(itA != itB);
     }
 
@@ -326,132 +295,156 @@ void test_iterator_comparison() {
 }
 
 
-// 4) Тест полного обхода (сбор значений через итератор)
+// 5) Тест: полный обход
 void test_iterator_full_traversal() {
     cout << "test_iterator_full_traversal\n";
 
-    //  1: пустое дерево -> получаем пустой вектор
+    // 1: пустое дерево
     {
         BinarySearchTree<int> bst;
-        vector<int> collected;
-        for (auto it = bst.begin(); it != bst.end(); ++it) collected.push_back(*it);
-        assert(collected.empty());
+        vector<int> result;
+        for (auto it = bst.begin(); it != bst.end(); ++it)
+            result.push_back(*it);
+        assert(result.empty());
     }
 
-    //  2: один элемент
+    // 2: один элемент
     {
         BinarySearchTree<int> bst;
         bst.insert(11);
-        vector<int> collected;
-        for (auto it = bst.begin(); it != bst.end(); ++it) collected.push_back(*it);
-        assert(collected.size() == 1 && collected[0] == 11);
+        vector<int> result;
+        for (auto it = bst.begin(); it != bst.end(); ++it)
+            result.push_back(*it);
+        assert(result.size() == 1 && result[0] == 11);
     }
 
-    //  3: сбалансированное дерево
+    // 3: простое дерево
     {
         BinarySearchTree<int> bst;
         vector<int> ins = { 4,2,6,1,3,5,7 };
-        for (int v : ins) bst.insert(v);
-        vector<int> collected;
-        for (auto it = bst.begin(); it != bst.end(); ++it) collected.push_back(*it);
+        for (int v : ins)
+            bst.insert(v);
         vector<int> expected = ins;
         sort(expected.begin(), expected.end());
-        assert(collected == expected);
+        vector<int> result;
+        for (auto it = bst.begin(); it != bst.end(); ++it)
+            result.push_back(*it);
+        assert(result == expected);
     }
 
-    //  4: вырожденное вправо
+    // 4: вырожденное вправо
     {
         BinarySearchTree<int> bst;
-        for (int i = 1; i <= 8; ++i) bst.insert(i);
-        vector<int> collected;
-        for (auto it = bst.begin(); it != bst.end(); ++it) collected.push_back(*it);
-        for (size_t i = 0; i < collected.size(); ++i) assert(collected[i] == static_cast<int>(i + 1));
+        for (int i = 1; i <= 8; ++i)
+            bst.insert(i);
+        int expected = 1;
+        for (auto it = bst.begin(); it != bst.end(); ++it)
+            assert(*it == expected++);
     }
 
-    //  5: произвольный набор с дубликатами по смыслу (BST не вставляет дубликаты у тебя),
-    // поэтому тестируем смесь значений
+    // 5: произвольное дерево
     {
         BinarySearchTree<int> bst;
-        vector<int> ins = { 20, 10, 30, 5, 15, 25, 35 };
-        for (int v : ins) bst.insert(v);
-        vector<int> collected;
-        for (auto it = bst.begin(); it != bst.end(); ++it) collected.push_back(*it);
-        vector<int> expected = ins;
-        sort(expected.begin(), expected.end());
-        assert(collected == expected);
+        for (int v : {20, 10, 30, 5, 15, 25, 35})
+            bst.insert(v);
+        vector<int> expected = { 5,10,15,20,25,30,35 };
+        vector<int> result;
+        for (auto it = bst.begin(); it != bst.end(); ++it)
+            result.push_back(*it);
+        assert(result == expected);
     }
 
     cout << "  test_iterator_full_traversal: OK\n\n";
 }
 
 
-// 5) Тест исключительных ситуаций (dereference end и выход за границы)
+// 6) Тест: исключения
 void test_iterator_exceptions() {
     cout << "test_iterator_exceptions\n";
 
-    //  1: пустое дерево -> deref begin() бросает
+    // 1: пустое дерево — при разыменовании бросается исключение
     {
         BinarySearchTree<int> bst;
         bool thrown = false;
-        try { int x = *bst.begin(); (void)x; }
-        catch (const out_of_range&) { thrown = true; }
+        try {
+            *bst.begin();
+        }
+        catch (const out_of_range&) {
+            thrown = true;
+        }
         assert(thrown);
     }
 
-    //  2: single -> deref(end) бросает
+    // 2: разыменование end()
     {
         BinarySearchTree<int> bst;
         bst.insert(7);
-        auto b = bst.begin();
         auto e = bst.end();
         bool thrown = false;
-        try { int x = *e; (void)x; }
-        catch (const out_of_range&) { thrown = true; }
+        try {
+            *e;
+        }
+        catch (const out_of_range&) {
+            thrown = true;
+        }
         assert(thrown);
     }
 
-    //  3: после прохода до конца, разыменование также бросает
+    // 3: после прохода до конца
     {
         BinarySearchTree<int> bst;
-        for (int i = 1; i <= 3; ++i) bst.insert(i);
+        for (int i = 1; i <= 3; ++i)
+            bst.insert(i);
         auto it = bst.begin();
         auto e = bst.end();
-        // шаг до конца
-        while (it != e) ++it;
+        while (it != e)
+            ++it;
         bool thrown = false;
-        try { int x = *it; (void)x; }
-        catch (const out_of_range&) { thrown = true; }
+        try {
+            *it;
+        }
+        catch (const out_of_range&) {
+            thrown = true;
+        }
         assert(thrown);
     }
 
-    //  4: многократный ++ за пределы end — оператор++ должен быть защищён от переполнения
+    // 4: ++ за пределы end
     {
         BinarySearchTree<int> bst;
-        for (int i : {2, 1, 3}) bst.insert(i);
+        for (int i : {2, 1, 3})
+            bst.insert(i);
         auto it = bst.begin();
         auto e = bst.end();
-        // делаем много ++ — не должно упасть, но разыменование бросит
-        for (int k = 0; k < 10; ++k) ++it;
+        for (int i = 0; i < 10; ++i)
+            ++it; // не должно быть исключений
         bool thrown = false;
-        try { int x = *it; (void)x; }
-        catch (const out_of_range&) { thrown = true; }
+        try {
+            *it;
+        }
+        catch (const out_of_range&) {
+            thrown = true;
+        }
         assert(thrown);
     }
 
-    //  5: убедимся, что копия итератора после продвижения ведёт себя корректно
+    //  5: убедимся, что копия итератора после ++ ведёт себя корректно
     {
         BinarySearchTree<int> bst;
-        for (int i = 1; i <= 5; ++i) bst.insert(i);
+        for (int i = 1; i <= 5; ++i)
+            bst.insert(i);
         auto it = bst.begin();
-        ++it; // now points to second element
+        ++it; // теперь указывает на второй
         auto it_copy = it; // копия
         assert(*it == *it_copy);
         ++it;
-        assert(*it != *it_copy); // независимые позиции
+        assert(*it != *it_copy); 
     }
+
 
     cout << "  test_iterator_exceptions: OK\n\n";
 }
+
 
 /**
  *  Тестирование метода insert()
