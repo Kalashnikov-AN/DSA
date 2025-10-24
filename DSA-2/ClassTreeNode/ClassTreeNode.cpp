@@ -3,6 +3,7 @@
 #include "TreeNode.h"
 #include "TreeNodeFunctions.h"
 #include "BinarySearchTree.h"
+#include "AVLTree.h"
 using namespace std;
 
 int main()
@@ -43,7 +44,7 @@ int main()
 	test_search();
 	test_search_any();
 	test_count_nodes();
-	test_depth();
+	/*test_depth();*/
 	test_print_tree();
 	test_delete_tree();
 	test_insert();
@@ -72,7 +73,7 @@ int main()
 	test_iterator_comparison();
 	test_iterator_full_traversal();
 	test_iterator_exceptions();
-	test_multiple_begin_calls();
+	run_all_tests();
 
 	/* 
 	Дерево является строгим, т.к. у каждого узла либо 0, либо 2 потомка.

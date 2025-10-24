@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNodeFunctions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:TreeNodeFunctions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\BinarySearchTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:BinarySearchTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,20 +15,24 @@
       "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:ClassTreeNode.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\BinarySearchTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:BinarySearchTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNodeFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:TreeNodeFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\AVLTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:AVLTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNode.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:TreeNode.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNodeFunctions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:TreeNodeFunctions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\AVLTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:AVLTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\BinarySearchTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:BinarySearchTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNodeFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1F63D5DA-CCCB-4C38-9033-BEB621BE51A2}|ClassTreeNode.vcxproj|solutionrelative:TreeNodeFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,37 +42,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "AVLTree.cpp",
+              "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\AVLTree.cpp",
+              "RelativeDocumentMoniker": "AVLTree.cpp",
+              "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\AVLTree.cpp",
+              "RelativeToolTip": "AVLTree.cpp",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAAAKQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-24T15:37:51.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AVLTree.h",
+              "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\AVLTree.h",
+              "RelativeDocumentMoniker": "AVLTree.h",
+              "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\AVLTree.h",
+              "RelativeToolTip": "AVLTree.h",
+              "ViewState": "AgIAAOEAAAAAAAAAAIAwwPEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-24T15:27:41.206Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "BinarySearchTree.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\BinarySearchTree.cpp",
               "RelativeDocumentMoniker": "BinarySearchTree.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\BinarySearchTree.cpp",
               "RelativeToolTip": "BinarySearchTree.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH8BAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-19T15:15:24.001Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "BinarySearchTree.h",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\BinarySearchTree.h",
               "RelativeDocumentMoniker": "BinarySearchTree.h",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\BinarySearchTree.h",
               "RelativeToolTip": "BinarySearchTree.h",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAADAAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAANQAAAAAAAAAAAAgwOQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-09-19T14:49:44.261Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "TreeNodeFunctions.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNodeFunctions.cpp",
               "RelativeDocumentMoniker": "TreeNodeFunctions.cpp",
@@ -76,15 +110,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "TreeNodeFunctions.h",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNodeFunctions.h",
               "RelativeDocumentMoniker": "TreeNodeFunctions.h",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNodeFunctions.h",
               "RelativeToolTip": "TreeNodeFunctions.h",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAtwAwAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAANQAAAAAAAAAAAAgwOQAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-18T14:01:27.891Z"
+              "WhenOpened": "2025-09-18T14:01:27.891Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -94,19 +129,20 @@
               "RelativeDocumentMoniker": "TreeNode.h",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\TreeNode.h",
               "RelativeToolTip": "TreeNode.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-12T12:36:24.261Z"
+              "WhenOpened": "2025-09-12T12:36:24.261Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ClassTreeNode.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\ClassTreeNode.cpp",
               "RelativeDocumentMoniker": "ClassTreeNode.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\DSA\\DSA-2\\ClassTreeNode\\ClassTreeNode.cpp",
               "RelativeToolTip": "ClassTreeNode.cpp",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAADwAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAC8AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-12T12:34:43.46Z",
               "EditorCaption": ""

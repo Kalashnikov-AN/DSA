@@ -30,7 +30,7 @@ void test_search();
  */
 template<typename T>
 class BinarySearchTree {
-private:
+protected:
     TreeNode<T>* root; ///< Корень дерева
     
 public:

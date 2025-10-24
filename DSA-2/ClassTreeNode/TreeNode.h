@@ -9,7 +9,8 @@ class TreeNode {
 public:
 	T value; // данные в узле
 	TreeNode<T>* left; // указатель на левого потомка 
-	TreeNode<T>* right; // указатель на правого потомка 
+	TreeNode<T>* right; // указатель на правого потомка
+    int height = 1;     // высота узла (дл€ AVL-дерева)
 
 	//  онструктор: инициализирует значение и обнул€ет указатели
 	TreeNode(const T& val) : value(val), left(nullptr), right(nullptr) {}
@@ -18,7 +19,8 @@ public:
     TreeNode(const TreeNode& other)
         : value(other.value),
         left(other.left ? new TreeNode(*other.left) : nullptr),
-        right(other.right ? new TreeNode(*other.right) : nullptr)
+        right(other.right ? new TreeNode(*other.right) : nullptr),
+        height(other.height)
     {
     }
 
@@ -36,6 +38,7 @@ public:
         // копируем поддеревь€
         left = other.left ? new TreeNode(*other.left) : nullptr;
         right = other.right ? new TreeNode(*other.right) : nullptr;
+        height = other.height;
 
         return *this;
     }

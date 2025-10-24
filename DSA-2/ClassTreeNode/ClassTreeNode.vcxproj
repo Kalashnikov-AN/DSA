@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AVLTree.cpp" />
     <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="ClassTreeNode.cpp" />
     <ClCompile Include="TreeNodeFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AVLTree.h" />
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="TreeNode.h" />
     <ClInclude Include="TreeNodeFunctions.h" />
