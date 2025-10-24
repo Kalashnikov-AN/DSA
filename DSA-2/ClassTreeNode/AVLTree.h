@@ -1,70 +1,70 @@
-#pragma once
+п»ї#pragma once
 #include "BinarySearchTree.h"
 
 /**
- *  Класс AVL дерева (наследуется от BinarySearchTree)
- *  Реализует самобалансирующееся бинарное дерево поиска.
- *  Поддерживает балансировку после вставки и удаления элементов.
+ *  РљР»Р°СЃСЃ AVL РґРµСЂРµРІР° (РЅР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ BinarySearchTree)
+ *  Р РµР°Р»РёР·СѓРµС‚ СЃР°РјРѕР±Р°Р»Р°РЅСЃРёСЂСѓСЋС‰РµРµСЃСЏ Р±РёРЅР°СЂРЅРѕРµ РґРµСЂРµРІРѕ РїРѕРёСЃРєР°.
+ *  РџРѕРґРґРµСЂР¶РёРІР°РµС‚ Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєСѓ РїРѕСЃР»Рµ РІСЃС‚Р°РІРєРё Рё СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ.
  */
 template<typename T>
 class AVLTree : public BinarySearchTree<T> {
 private:
-    using Node = TreeNode<T>;  // удобное сокращение типа узла
+    using Node = TreeNode<T>;  // СѓРґРѕР±РЅРѕРµ СЃРѕРєСЂР°С‰РµРЅРёРµ С‚РёРїР° СѓР·Р»Р°
 
-    /// Получение высоты узла (nullptr имеет высоту 0)
+    /// РџРѕР»СѓС‡РµРЅРёРµ РІС‹СЃРѕС‚С‹ СѓР·Р»Р° (nullptr РёРјРµРµС‚ РІС‹СЃРѕС‚Сѓ 0)
     int getHeight(Node* node) const {
         return node ? node->height : 0;
     }
 
-    /// Вычисление баланса узла (разница высот левого и правого поддерева)
+    /// Р’С‹С‡РёСЃР»РµРЅРёРµ Р±Р°Р»Р°РЅСЃР° СѓР·Р»Р° (СЂР°Р·РЅРёС†Р° РІС‹СЃРѕС‚ Р»РµРІРѕРіРѕ Рё РїСЂР°РІРѕРіРѕ РїРѕРґРґРµСЂРµРІР°)
     int getBalance(Node* node) const {
         if (!node) return 0;
         return getHeight(node->left) - getHeight(node->right);
     }
 
-    /// Обновление высоты узла на основе потомков
+    /// РћР±РЅРѕРІР»РµРЅРёРµ РІС‹СЃРѕС‚С‹ СѓР·Р»Р° РЅР° РѕСЃРЅРѕРІРµ РїРѕС‚РѕРјРєРѕРІ
     void updateHeight(Node* node) {
         if (node)
             node->height = 1 + max(getHeight(node->left), getHeight(node->right));
     }
 
-    /// Правый поворот поддерева вокруг узла y
+    /// РџСЂР°РІС‹Р№ РїРѕРІРѕСЂРѕС‚ РїРѕРґРґРµСЂРµРІР° РІРѕРєСЂСѓРі СѓР·Р»Р° y
     Node* rotateRight(Node* y) {
         Node* x = y->left;
         Node* T2 = x->right;
 
-        // Выполняем поворот
+        // Р’С‹РїРѕР»РЅСЏРµРј РїРѕРІРѕСЂРѕС‚
         x->right = y;
         y->left = T2;
 
-        // Обновляем высоты
+        // РћР±РЅРѕРІР»СЏРµРј РІС‹СЃРѕС‚С‹
         updateHeight(y);
         updateHeight(x);
 
-        // Новый корень поддерева
+        // РќРѕРІС‹Р№ РєРѕСЂРµРЅСЊ РїРѕРґРґРµСЂРµРІР°
         return x;
     }
 
-    /// Левый поворот поддерева вокруг узла x
+    /// Р›РµРІС‹Р№ РїРѕРІРѕСЂРѕС‚ РїРѕРґРґРµСЂРµРІР° РІРѕРєСЂСѓРі СѓР·Р»Р° x
     Node* rotateLeft(Node* x) {
         Node* y = x->right;
         Node* T2 = y->left;
 
-        // Выполняем поворот
+        // Р’С‹РїРѕР»РЅСЏРµРј РїРѕРІРѕСЂРѕС‚
         y->left = x;
         x->right = T2;
 
-        // Обновляем высоты
+        // РћР±РЅРѕРІР»СЏРµРј РІС‹СЃРѕС‚С‹
         updateHeight(x);
         updateHeight(y);
 
-        // Новый корень поддерева
+        // РќРѕРІС‹Р№ РєРѕСЂРµРЅСЊ РїРѕРґРґРµСЂРµРІР°
         return y;
     }
 
-    /// Рекурсивная вставка с балансировкой
+    /// Р РµРєСѓСЂСЃРёРІРЅР°СЏ РІСЃС‚Р°РІРєР° СЃ Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРѕР№
     Node* insertRec(Node* node, const T& key) {
-        // Стандартная вставка BST
+        // РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ РІСЃС‚Р°РІРєР° BST
         if (!node)
             return new Node(key);
 
@@ -73,66 +73,66 @@ private:
         else if (key > node->value)
             node->right = insertRec(node->right, key);
         else
-            return node; // дубликаты не вставляем
+            return node; // РґСѓР±Р»РёРєР°С‚С‹ РЅРµ РІСЃС‚Р°РІР»СЏРµРј
 
-        // Обновляем высоту текущего узла
+        // РћР±РЅРѕРІР»СЏРµРј РІС‹СЃРѕС‚Сѓ С‚РµРєСѓС‰РµРіРѕ СѓР·Р»Р°
         updateHeight(node);
 
-        // Вычисляем баланс
+        // Р’С‹С‡РёСЃР»СЏРµРј Р±Р°Р»Р°РЅСЃ
         int balance = getBalance(node);
 
-        // Балансировка 4 случаев:
+        // Р‘Р°Р»Р°РЅСЃРёСЂРѕРІРєР° 4 СЃР»СѓС‡Р°РµРІ:
 
-        // 1. Левый Левый (Right Rotation)
+        // 1. Р›РµРІС‹Р№ Р›РµРІС‹Р№ (Right Rotation)
         if (balance > 1 && key < node->left->value)
             return rotateRight(node);
 
-        // 2. Правый Правый (Left Rotation)
+        // 2. РџСЂР°РІС‹Р№ РџСЂР°РІС‹Р№ (Left Rotation)
         if (balance < -1 && key > node->right->value)
             return rotateLeft(node);
 
-        // 3. Левый Правый (Left Rotation -> Right Rotation)
+        // 3. Р›РµРІС‹Р№ РџСЂР°РІС‹Р№ (Left Rotation -> Right Rotation)
         if (balance > 1 && key > node->left->value) {
             node->left = rotateLeft(node->left);
             return rotateRight(node);
         }
 
-        // 4. Правый Левый (Right Rotation -> Left Rotation)
+        // 4. РџСЂР°РІС‹Р№ Р›РµРІС‹Р№ (Right Rotation -> Left Rotation)
         if (balance < -1 && key < node->right->value) {
             node->right = rotateRight(node->right);
             return rotateLeft(node);
         }
 
-        return node; // узел уже сбалансирован
+        return node; // СѓР·РµР» СѓР¶Рµ СЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅ
     }
 
-    /// Рекурсивное удаление с балансировкой
+    /// Р РµРєСѓСЂСЃРёРІРЅРѕРµ СѓРґР°Р»РµРЅРёРµ СЃ Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРѕР№
     //Node* removeRec(Node* node, const T& key) {
     //    if (!node) return node;
 
-    //    // Обычное удаление из BST
+    //    // РћР±С‹С‡РЅРѕРµ СѓРґР°Р»РµРЅРёРµ РёР· BST
     //    if (key < node->value)
     //        node->left = removeRec(node->left, key);
     //    else if (key > node->value)
     //        node->right = removeRec(node->right, key);
     //    else {
-    //        // Узел найден
+    //        // РЈР·РµР» РЅР°Р№РґРµРЅ
     //        if (!node->left || !node->right) {
     //            Node* temp = node->left ? node->left : node->right;
 
     //            if (!temp) {
-    //                // Нет потомков
+    //                // РќРµС‚ РїРѕС‚РѕРјРєРѕРІ
     //                temp = node;
     //                node = nullptr;
     //            }
     //            else {
-    //                // Один потомок
+    //                // РћРґРёРЅ РїРѕС‚РѕРјРѕРє
     //                *node = *temp;
     //            }
     //            delete temp;
     //        }
     //        else {
-    //            // Два потомка — находим inorder-последователя
+    //            // Р”РІР° РїРѕС‚РѕРјРєР° вЂ” РЅР°С…РѕРґРёРј inorder-РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЏ
     //            Node* succ = node->right;
     //            while (succ->left)
     //                succ = succ->left;
@@ -141,17 +141,17 @@ private:
     //        }
     //    }
 
-    //    // Если дерево стало пустым
+    //    // Р•СЃР»Рё РґРµСЂРµРІРѕ СЃС‚Р°Р»Рѕ РїСѓСЃС‚С‹Рј
     //    if (!node)
     //        return node;
 
-    //    // Обновляем высоту
+    //    // РћР±РЅРѕРІР»СЏРµРј РІС‹СЃРѕС‚Сѓ
     //    updateHeight(node);
 
-    //    // Проверяем баланс
+    //    // РџСЂРѕРІРµСЂСЏРµРј Р±Р°Р»Р°РЅСЃ
     //    int balance = getBalance(node);
 
-    //    // Балансировка (аналогично вставке)
+    //    // Р‘Р°Р»Р°РЅСЃРёСЂРѕРІРєР° (Р°РЅР°Р»РѕРіРёС‡РЅРѕ РІСЃС‚Р°РІРєРµ)
     //    if (balance > 1 && getBalance(node->left) >= 0)
     //        return rotateRight(node);
 
@@ -173,43 +173,43 @@ private:
     Node* removeRec(Node* node, const T& key) {
         if (!node) return node;
 
-        // Стандартное удаление из BST
+        // РЎС‚Р°РЅРґР°СЂС‚РЅРѕРµ СѓРґР°Р»РµРЅРёРµ РёР· BST
         if (key < node->value) {
             node->left = removeRec(node->left, key);
         }
         else if (key > node->value) {
             node->right = removeRec(node->right, key);
         }
-        else { // узел найден
-            // 1. Нет потомков
+        else { // СѓР·РµР» РЅР°Р№РґРµРЅ
+            // 1. РќРµС‚ РїРѕС‚РѕРјРєРѕРІ
             if (!node->left && !node->right) {
                 delete node;
                 return nullptr;
             }
-            // 2. Один потомок
+            // 2. РћРґРёРЅ РїРѕС‚РѕРјРѕРє
             else if (!node->left || !node->right) {
                 Node* child = node->left ? node->left : node->right;
                 delete node;
-                return child; // возвращаем потомка, чтобы родитель переписал свой указатель
+                return child; // РІРѕР·РІСЂР°С‰Р°РµРј РїРѕС‚РѕРјРєР°, С‡С‚РѕР±С‹ СЂРѕРґРёС‚РµР»СЊ РїРµСЂРµРїРёСЃР°Р» СЃРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ
             }
-            // 3. Два потомка
+            // 3. Р”РІР° РїРѕС‚РѕРјРєР°
             else {
-                // находим inorder-последователя (минимум в правом поддереве)
+                // РЅР°С…РѕРґРёРј inorder-РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЏ (РјРёРЅРёРјСѓРј РІ РїСЂР°РІРѕРј РїРѕРґРґРµСЂРµРІРµ)
                 Node* succ = node->right;
                 while (succ->left)
                     succ = succ->left;
-                node->value = succ->value; // копируем значение
-                node->right = removeRec(node->right, succ->value); // удаляем successor
+                node->value = succ->value; // РєРѕРїРёСЂСѓРµРј Р·РЅР°С‡РµРЅРёРµ
+                node->right = removeRec(node->right, succ->value); // СѓРґР°Р»СЏРµРј successor
             }
         }
 
-        // Обновляем высоту
+        // РћР±РЅРѕРІР»СЏРµРј РІС‹СЃРѕС‚Сѓ
         updateHeight(node);
 
-        // Проверяем баланс
+        // РџСЂРѕРІРµСЂСЏРµРј Р±Р°Р»Р°РЅСЃ
         int balance = getBalance(node);
 
-        // Балансировка 4 случаев
+        // Р‘Р°Р»Р°РЅСЃРёСЂРѕРІРєР° 4 СЃР»СѓС‡Р°РµРІ
         if (balance > 1 && getBalance(node->left) >= 0)
             return rotateRight(node);
 
@@ -231,15 +231,15 @@ private:
 
 
 public:
-    /// Конструктор AVL дерева
+    /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ AVL РґРµСЂРµРІР°
     AVLTree() : BinarySearchTree<T>() {}
 
-    /// Вставка с балансировкой
+    /// Р’СЃС‚Р°РІРєР° СЃ Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРѕР№
     void insert(const T& key) {
         this->root = insertRec(this->root, key);
     }
 
-    /// Удаление с балансировкой
+    /// РЈРґР°Р»РµРЅРёРµ СЃ Р±Р°Р»Р°РЅСЃРёСЂРѕРІРєРѕР№
     void remove(const T& key) {
         this->root = removeRec(this->root, key);
     }
