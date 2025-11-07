@@ -1,0 +1,45 @@
+﻿  graph.cpp
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(304,23): warning C4566: символ, представленный универсальным именем символа "\u221E", невозможно представить в текущей кодовой странице (1251)
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(265,15): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "graph.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(265,15):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(337,32):
+          выполняется компиляция ссылки на экземпляр класс шаблон функции "DirectedGraph<int,double>"
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(260,15):
+          во время компиляции функции-члена класс шаблон "std::vector<W,std::allocator<W>> DirectedGraph<int,W>::BellmanFord(const T &) const"
+          with
+          [
+              W=double,
+              T=int
+          ]
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(344,24):
+              см. первую ссылку на DirectedGraph<int,double>::BellmanFord "test_bellman_ford"
+  
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(129,37): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "graph.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(129,37):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(109,10):
+          во время компиляции функции-члена класс шаблон "void DirectedGraph<int,double>::removeVertex(const T &)"
+          with
+          [
+              T=int
+          ]
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(364,19):
+              см. первую ссылку на DirectedGraph<int,double>::removeVertex "test_edge_cases_and_large_graphs"
+  
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(96,43): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "graph.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(96,43):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(91,10):
+          во время компиляции функции-члена класс шаблон "void DirectedGraph<int,double>::addVertex(const T &)"
+          with
+          [
+              T=int
+          ]
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(339,46):
+              см. первую ссылку на DirectedGraph<int,double>::addVertex "test_bellman_ford"
+  
+  ClassGraph.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\x64\Debug\ClassGraph.exe
