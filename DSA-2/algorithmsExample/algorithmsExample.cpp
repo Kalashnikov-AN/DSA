@@ -15,8 +15,8 @@ int main() {
     // for_each 
     // Применяет функцию ко всем элементам контейнера
     cout << "Элементы массива: ";
-    for_each(numbers.begin(), numbers.end(), [](int n) {
-        cout << n << " ";
+    for_each(numbers.begin(), numbers.end(), [](int n) { // должна быть вызываемой для каждого элемента в диапазоне [first, last]
+        cout << n << " ";                                // возвращаемое значение игнорируется
         });
     cout << "\n";
 
@@ -51,9 +51,9 @@ int main() {
     // copy_if 
     // Копирует только те элементы, которые удовлетворяют условию
     vector<int> even_numbers;
-    copy_if(numbers.begin(), numbers.end(), back_inserter(even_numbers), [](int n) {
+    copy_if(numbers.begin(), numbers.end(), back_inserter(even_numbers), [](int n) { // предикат должен возвращать bool
         return n % 2 == 0; // предикат
-        }); //todo: комменты foreach, copy_if. Какая функция подойдет. В copy_if предикат, а в for_each нет и тд
+        }); 
 
     cout << "Только четные числа: ";
     for (auto x : even_numbers) {

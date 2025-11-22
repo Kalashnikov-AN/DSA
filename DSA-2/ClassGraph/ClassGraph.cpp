@@ -29,6 +29,8 @@ int main() {
 
     g1.printMatrix();
 
+    g1.saveGraphML("23.graphml");
+
     vector<string> res = g1.BFS("A");
     cout << "BFS" << endl;
     for (string element : res) {
@@ -51,7 +53,6 @@ int main() {
     }
     cout << endl;
 
-    // Пример использования графа
     DirectedGraph<string, double> g(9999999.0); // INF = 9999999
 
     // Добавляем вершины
@@ -86,16 +87,14 @@ int main() {
     cout << "\nПосле редактирования ребра B->D = 1:\n";
     g.printMatrix();
     g.BellmanFord("A");
-    cout << "Running graph tests...\n";
+   
     test_vertex_operations();
     test_edge_operations();
     test_bfs();
     test_dfs();
-   // test_bellman_ford();
-    test_bellman_ford_vector_one_function();
-    test_edge_cases_and_large_graphs();
     test_get_neighbors();
     test_get_weight();
-    cout << "All tests passed successfully.\n";
-    return 0;
+    test_bellman_ford();
+    test_saveGraphML();
+    test_loadGraphML();
 }

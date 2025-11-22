@@ -1,45 +1,86 @@
-﻿  graph.cpp
-C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(304,23): warning C4566: символ, представленный универсальным именем символа "\u221E", невозможно представить в текущей кодовой странице (1251)
-C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(265,15): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-  (компиляция исходного файла "graph.cpp")
-      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(265,15):
+﻿  ClassGraph.cpp
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(278,15): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "ClassGraph.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(278,15):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(337,32):
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\ClassGraph.cpp(10,35):
+          выполняется компиляция ссылки на экземпляр класс шаблон функции "DirectedGraph<std::string,double>"
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(273,15):
+          во время компиляции функции-члена класс шаблон "std::vector<W,std::allocator<W>> DirectedGraph<std::string,W>::BellmanFord(const T &) const"
+          with
+          [
+              W=double,
+              T=std::string
+          ]
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\ClassGraph.cpp(49,31):
+              см. первую ссылку на DirectedGraph<std::string,double>::BellmanFord "main"
+  
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(102,43): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "ClassGraph.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(102,43):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(97,10):
+          во время компиляции функции-члена класс шаблон "void DirectedGraph<std::string,double>::addVertex(const T &)"
+          with
+          [
+              T=std::string
+          ]
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\ClassGraph.cpp(11,17):
+              см. первую ссылку на DirectedGraph<std::string,double>::addVertex "main"
+  
+  graph.cpp
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(278,15): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "graph.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(278,15):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(287,32):
           выполняется компиляция ссылки на экземпляр класс шаблон функции "DirectedGraph<int,double>"
-          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(260,15):
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(273,15):
           во время компиляции функции-члена класс шаблон "std::vector<W,std::allocator<W>> DirectedGraph<int,W>::BellmanFord(const T &) const"
           with
           [
               W=double,
               T=int
           ]
-              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(344,24):
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(506,18):
               см. первую ссылку на DirectedGraph<int,double>::BellmanFord "test_bellman_ford"
   
-C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(129,37): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(102,43): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "graph.cpp")
-      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(129,37):
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(102,43):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(109,10):
-          во время компиляции функции-члена класс шаблон "void DirectedGraph<int,double>::removeVertex(const T &)"
-          with
-          [
-              T=int
-          ]
-              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(364,19):
-              см. первую ссылку на DirectedGraph<int,double>::removeVertex "test_edge_cases_and_large_graphs"
-  
-C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(96,43): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-  (компиляция исходного файла "graph.cpp")
-      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(96,43):
-      контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(91,10):
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(97,10):
           во время компиляции функции-члена класс шаблон "void DirectedGraph<int,double>::addVertex(const T &)"
           with
           [
               T=int
           ]
-              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(339,46):
-              см. первую ссылку на DirectedGraph<int,double>::addVertex "test_bellman_ford"
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(290,22):
+              см. первую ссылку на DirectedGraph<int,double>::addVertex "test_get_neighbors"
   
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(467,55): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "graph.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(467,55):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(21,35):
+          выполняется компиляция ссылки на экземпляр класс шаблон функции "DirectedGraph<std::string,double>"
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(431,10):
+          во время компиляции функции-члена класс шаблон "void DirectedGraph<std::string,double>::loadGraphML(const std::string &)"
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(726,26):
+              см. первую ссылку на DirectedGraph<std::string,double>::loadGraphML "test_loadGraphML"
+  
+C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(136,37): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "graph.cpp")
+      C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(136,37):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.h(116,10):
+          во время компиляции функции-члена класс шаблон "void DirectedGraph<std::string,double>::removeVertex(const T &)"
+          with
+          [
+              T=std::string
+          ]
+              C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\graph.cpp(49,19):
+              см. первую ссылку на DirectedGraph<std::string,double>::removeVertex "test_vertex_operations"
+  
+  Создание кода...
   ClassGraph.vcxproj -> C:\Users\huuma\Documents\DSA\DSA-2\ClassGraph\x64\Debug\ClassGraph.exe

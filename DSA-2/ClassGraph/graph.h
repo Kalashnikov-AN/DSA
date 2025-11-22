@@ -8,6 +8,8 @@
 #include <limits>
 #include <stdexcept>
 #include <iomanip>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -16,10 +18,10 @@ void test_edge_operations();
 void test_bfs();
 void test_dfs();
 void test_bellman_ford();
-void test_edge_cases_and_large_graphs();
 void test_get_neighbors();
 void test_get_weight();
-void test_bellman_ford_vector_one_function();
+void test_saveGraphML();
+void test_loadGraphML();
 
 /*
     Класс DirectedGraph<T, W>
@@ -33,7 +35,9 @@ void test_bellman_ford_vector_one_function();
       - vertices: список вершин (их значения типа T)
       - adj: матрица смежности, где adj[i][j] = вес ребра, направленного из i в j
       - indexMap: хэш-таблица для сопоставления значения вершины - индекса
-      - INF: обозначение отсутствия ребра 
+      - INF: обозначение отсутствия ребра
+
+      В случае несуществования рёбер или вершин при использовании методов, работающих с ними, бросается исключение
 */
 template <typename T, typename W>
 class DirectedGraph {
@@ -44,7 +48,7 @@ private:
     W INF;                               // обозначение "нет ребра"
 
 public:
-    //  Конструктор 
+    //  Конструктор  infinityValue - обозначение "нет ребра"
     DirectedGraph(W infinityValue) : INF(infinityValue) {}
 
     /// Возвращает количество вершин в графе
@@ -67,14 +71,15 @@ public:
     }
 
     /// Возвращает вес ребра (если оно существует), иначе выбрасывает исключение
+    /// Бросает runtime_error, если вершина не существует или ребро не существует
     W getEdge(const T& from, const T& to) const {
         auto it1 = indexMap.find(from);
         auto it2 = indexMap.find(to);
         if (it1 == indexMap.end() || it2 == indexMap.end())
-            throw runtime_error("getEdge: вершина не найдена");
+            throw runtime_error("getEdge: вершина не найдена"); // Бросаем исключение ошибки времени выполнения
         W val = adj[it1->second][it2->second];
         if (val == INF)
-            throw runtime_error("getEdge: ребро не существует");
+            throw runtime_error("getEdge: ребро не существует"); // Бросаем исключение ошибки времени выполнения
         return val;
     }
 
@@ -87,10 +92,11 @@ public:
        1. Проверяем, что вершина ещё не существует.
        2. Добавляем её в список вершин и карту индексов.
        3. Расширяем матрицу смежности: добавляем новый столбец и строку.
+     Бросает runtime_error, если вершина не существует
    */
     void addVertex(const T& value) {
-        if (indexMap.find(value) != indexMap.end()) {
-            throw runtime_error("Вершина уже существует");
+        if (indexMap.find(value) != indexMap.end()) { // если вершина не существует
+            throw runtime_error("Вершина уже существует"); // Бросаем исключение ошибки времени выполнения
         }
         vertices.push_back(value);
         indexMap[value] = vertices.size() - 1;
@@ -106,9 +112,10 @@ public:
 
     /// Удаление вершины
     /// Сложность: O(V^2)
+    /// Бросает runtime_error, если вершина не существует
     void removeVertex(const T& value) {
-        if (indexMap.find(value) == indexMap.end()) {
-            throw runtime_error("Вершина не найдена");
+        if (indexMap.find(value) == indexMap.end()) { // если вершина не существует
+            throw runtime_error("Вершина не найдена"); // Бросаем runtime_error
         }
 
         int idx = indexMap[value];
@@ -129,12 +136,13 @@ public:
             indexMap[vertices[i]] = i;
     }
 
-    // Добавление или редактирование ребра 
-    // Сложность: O(1)
+    /// Добавление или редактирование ребра 
+    /// Сложность: O(1)
+    /// Бросает runtime_error, если одна из вершин не существует
     void addEdge(const T& from, const T& to, W weight) {
 
         if (indexMap.find(from) == indexMap.end() || indexMap.find(to) == indexMap.end())
-            throw runtime_error("Одна из вершин не найдена");
+            throw runtime_error("Одна из вершин не найдена"); // Бросаем исключение ошибки времени выполнения
 
         int u = indexMap[from];
         int v = indexMap[to];
@@ -143,10 +151,11 @@ public:
 
     /// Удаление ребра 
     /// Сложность: O(1)
+    /// Бросает runtime_error, если одна из вершин не существует
     void removeEdge(const T& from, const T& to) {
 
-        if (indexMap.find(from) == indexMap.end() || indexMap.find(to) == indexMap.end())
-            throw runtime_error("Одна из вершин не найдена");
+        if (indexMap.find(from) == indexMap.end() || indexMap.find(to) == indexMap.end()) // если одна из вершин не существует
+            throw runtime_error("Одна из вершин не найдена"); // Бросаем runtime_error
 
         int u = indexMap[from];
         int v = indexMap[to];
@@ -157,6 +166,7 @@ public:
    /*
        Обход в ширину (BFS)
        Сложность: O(V^2)
+       Бросает runtime_error, если начальная вершина не существует
 
        Алгоритм:
          1. Поместить стартовую вершину в очередь.
@@ -165,8 +175,8 @@ public:
    */
     vector<T> BFS(const T& start) const {
         auto it = indexMap.find(start);
-        if (it == indexMap.end())
-            throw runtime_error("BFS: начальная вершина не найдена");
+        if (it == indexMap.end()) // если начальная вершина не существует
+            throw runtime_error("BFS: начальная вершина не найдена"); // Бросаем исключение ошибки времени выполнения
 
         int s = it->second; // индекс стартовой вершины
         int n = size();
@@ -205,12 +215,13 @@ public:
         Сложность: O(V^2)
         Использует стек для итеративной реализации DFS.
         Обходит граф, начиная с заданной вершины, и возвращает порядок обхода.
+        Бросает runtime_error, если начальная вершина не существует
     */
     vector<T> DFS(const T& start) const {
 
         auto it = indexMap.find(start);
-        if (it == indexMap.end())
-            throw runtime_error("DFS: начальная вершина не найдена");
+        if (it == indexMap.end()) // Если начальная вершина не найдена
+            throw runtime_error("DFS: начальная вершина не найдена"); // Бросаем исключение ошибки времени выполнения
         
         int s = it->second; // индекс стартовой вершины
         int n = size();
@@ -256,11 +267,13 @@ public:
           2. Повторяем (V-1) раз:
               для каждого ребра u->v обновляем dist[v] = min(dist[v], dist[u] + w)
           3. Проверяем наличие отрицательных циклов.
+
+        Бросает runtime_error, если вершина не существует
     */
     vector<W> BellmanFord(const T& start) const {
 
-        if (indexMap.find(start) == indexMap.end())
-            throw runtime_error("Вершина не найдена");
+        if (indexMap.find(start) == indexMap.end()) // Если вершина не существует
+            throw runtime_error("Вершина не найдена"); // Бросаем исключение ошибки времени выполнения
 
         int n = vertices.size();
         int s = indexMap.at(start); // индекс стартовой вершины
@@ -318,12 +331,13 @@ public:
        Возвращает список соседей вершины T
        Сложность: O(V)
        Возвращает все вершины, с которыми у данной вершины есть связь в любом направлении
+       Бросает runtime_error, если вершины не существует
    */
     vector<T> GetNeighbors(const T& vertex) const {
 
         auto it = indexMap.find(vertex);
-        if (it == indexMap.end())
-            throw runtime_error("GetNeighbors: вершина не найдена");
+        if (it == indexMap.end()) // если вершины не существует
+            throw runtime_error("GetNeighbors: вершина не найдена"); // Бросаем исключение ошибки времени выполнения
 
         int idx = it->second;
         vector<T> neighbors;
@@ -346,22 +360,160 @@ public:
     /*
         Возвращает вес ребра между двумя вершинами
         Сложность: O(1)
-        Если ребро не существует, выбрасывает исключение.
+        Если ребро не существует, выбрасывает исключение runtime_error
     */
     W GetWeight(const T& from, const T& to) const {
         auto it1 = indexMap.find(from);
         auto it2 = indexMap.find(to);
-        if (it1 == indexMap.end() || it2 == indexMap.end())
-            throw runtime_error("GetWeight: вершина не найдена");
+        if (it1 == indexMap.end() || it2 == indexMap.end()) // если хотя бы одной из вершин не существует
+            throw runtime_error("GetWeight: вершина не найдена"); // Бросаем исключение ошибки времени выполнения
 
         int u = it1->second;
         int v = it2->second;
 
-        if (adj[u][v] == INF)
-            throw runtime_error("GetWeight: ребро отсутствует");
+        if (adj[u][v] == INF) // если ребра не существует
+            throw runtime_error("GetWeight: ребро отсутствует"); // Бросаем исключение ошибки времени выполнения 
 
         return adj[u][v];
     }
+
+    /**
+ * @brief Сохраняет граф в файл формата GraphML
+ *
+ * @param filename Имя файла для сохранения 
+ *
+ * @throws runtime_error в случае невозможности открыть файл
+ */
+    void saveGraphML(const string& filename) const {
+        ofstream file(filename);
+        if (!file.is_open()) // если файл не открывается
+            throw runtime_error("Не удалось открыть файл для записи"); // Бросаем исключение ошибки времени выполнения
+
+        file << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        file << "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\"\n";
+        file << "         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n";
+        file << "         xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns\n";
+        file << "         http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">\n";
+
+        file << "  <graph id=\"G\" edgedefault=\"directed\">\n";
+
+        // Узлы
+        for (size_t i = 0; i < vertices.size(); ++i) {
+            file << "    <node id=\"n" << i << "\"";
+            file << " name = " << "\"" << vertices[i] << "\"";
+            file << "</node>\n";
+        }
+
+        // Рёбра
+        for (size_t u = 0; u < vertices.size(); ++u) {
+            for (size_t v = 0; v < vertices.size(); ++v) {
+                if (adj[u][v] != INF) {
+                    file << "    <edge isDirected=\"true\" source=\"n" << u
+                        << "\" target=\"n" << v << "\"";
+                    file << " weight = " << "\"" << adj[u][v] << "\"";
+                    file << "</edge>\n";
+                }
+            }
+        }
+
+        file << "  </graph>\n";
+        file << "</graphml>\n";
+        file.close();
+    }
+
+    /**
+ * @brief Загружает граф из файла формата GraphML
+ *
+ * @param filename Имя файла для загрузки 
+ *
+ * @throws runtime_error в случае невозможности открыть файл или некорректной записи узлов/рёбер (отсутствует weight у ребра или name у узла)
+ */
+    void loadGraphML(const string& filename) {
+        ifstream file(filename);
+        if (!file.is_open()) // если файл не открывается
+            throw runtime_error("Не удалось открыть файл для чтения"); // Бросаем исключение ошибки времени выполнения
+
+        vertices.clear();
+        adj.clear();
+        indexMap.clear();
+
+        string line;
+        unordered_map<string, int> xmlIdToIndex;
+
+        while (getline(file, line)) {
+
+            //  Узлы 
+            if (line.find("<node") != string::npos) {
+
+                // id="n0"
+                size_t idPos = line.find("id=\"");
+                if (idPos == string::npos)
+                    continue;
+                idPos += 4; // теперь указывает на первый символ значения id
+                size_t idEnd = line.find("\"", idPos);
+                string xmlId = line.substr(idPos, idEnd - idPos);
+
+                // name="A"
+                size_t namePos = line.find("name=\"");
+                if (namePos == string::npos)
+                    throw runtime_error("Ошибка: node без name");
+
+                namePos += 6;
+                size_t nameEnd = line.find("\"", namePos);
+                string value = line.substr(namePos, nameEnd - namePos);
+
+                // Добавляем вершину
+                addVertex(value);
+                xmlIdToIndex[xmlId] = vertices.size() - 1;
+
+                continue;
+            }
+
+            //  Рёбра 
+            if (line.find("<edge") != string::npos) {
+
+                // source="n0"
+                size_t sPos = line.find("source=\"");
+                if (sPos == string::npos)
+                    continue;
+                sPos += 8;
+                size_t sEnd = line.find("\"", sPos);
+                string xmlSource = line.substr(sPos, sEnd - sPos);
+
+                // target="n1"
+                size_t tPos = line.find("target=\"");
+                if (tPos == string::npos)
+                    continue;
+                tPos += 8;
+                size_t tEnd = line.find("\"", tPos);
+                string xmlTarget = line.substr(tPos, tEnd - tPos);
+
+                // weight="5.5"
+                size_t wPos = line.find("weight=\"");
+                if (wPos == string::npos)
+                    throw runtime_error("Ошибка: edge без weight");
+
+                wPos += 8;
+                size_t wEnd = line.find("\"", wPos);
+                string wStr = line.substr(wPos, wEnd - wPos);
+
+                // Конвертация веса
+                W weight{};
+                stringstream ss(wStr);
+                ss >> weight;
+
+                // Индексы
+                int u = xmlIdToIndex.at(xmlSource);
+                int v = xmlIdToIndex.at(xmlTarget);
+
+                addEdge(vertices[u], vertices[v], weight);
+            }
+        }
+
+        file.close();
+    }
+
+
 
 
 };
