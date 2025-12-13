@@ -1,4 +1,4 @@
-// Автор: Калашников А.Н.
+п»ї// РђРІС‚РѕСЂ: РљР°Р»Р°С€РЅРёРєРѕРІ Рђ.Рќ.
 
 #include <iostream>
 #include <vector>
@@ -10,30 +10,30 @@ using namespace std;
 
 
 /*
-    Хеш-таблица
-    Пользователь передаёт произвольную хеш-функцию через function<size_t(const Key&)>.
-    Используется метод цепочек 
+    РҐРµС€-С‚Р°Р±Р»РёС†Р°
+    РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїРµСЂРµРґР°С‘С‚ РїСЂРѕРёР·РІРѕР»СЊРЅСѓСЋ С…РµС€-С„СѓРЅРєС†РёСЋ С‡РµСЂРµР· function<size_t(const Key&)>.
+    РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РјРµС‚РѕРґ С†РµРїРѕС‡РµРє 
 */
 
 template <typename Key>
 class HashTable {
 private:
-    vector<list<Key>> table; // цепочки
-    size_t table_size; // размер массива
-    size_t num_elements; // количество элементов
-    function<size_t(const Key&)> hasher; // пользовательская хеш-функция
+    vector<list<Key>> table; // С†РµРїРѕС‡РєРё
+    size_t table_size; // СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°
+    size_t num_elements; // РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
+    function<size_t(const Key&)> hasher; // РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ С…РµС€-С„СѓРЅРєС†РёСЏ
 
-    // Проверка равенства ключей
+    // РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° РєР»СЋС‡РµР№
     bool key_equality(const Key& a, const Key& b) const {
         return a == b;
     }
 
-    // Индекс бакета
+    // РРЅРґРµРєСЃ Р±Р°РєРµС‚Р°
     size_t index_for(const Key& key) const {
         return hasher(key) % table_size;
     }
 
-    // Перехеширование
+    // РџРµСЂРµС…РµС€РёСЂРѕРІР°РЅРёРµ
     void rehash() {
         if ((double)num_elements / table_size > 0.75) {
             size_t new_size = table_size * 2;
@@ -68,12 +68,12 @@ private:
     }
 
 public:
-    // Конструктор — принимает хеш-функцию
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ вЂ” РїСЂРёРЅРёРјР°РµС‚ С…РµС€-С„СѓРЅРєС†РёСЋ
     HashTable(size_t init_size = 16,
         function<size_t(const Key&)> hash_func = function<size_t(const Key&)>())
         : table_size(init_size), num_elements(0) {
         if (table_size == 0)
-            table_size = 16;  // Минимальный размер, чтобы избежать деления на 0
+            table_size = 16;  // РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ, С‡С‚РѕР±С‹ РёР·Р±РµР¶Р°С‚СЊ РґРµР»РµРЅРёСЏ РЅР° 0
         table.resize(table_size);
         if (hash_func) {
             hasher = hash_func;
@@ -85,11 +85,11 @@ public:
         }
     }
 
-    // Вставка ключа
+    // Р’СЃС‚Р°РІРєР° РєР»СЋС‡Р°
     void insert(const Key& key) {
         size_t idx = index_for(key);
 
-        // проверяем дубликат
+        // РїСЂРѕРІРµСЂСЏРµРј РґСѓР±Р»РёРєР°С‚
         for (const auto& k : table[idx]) {
             if (key_equality(k, key))
                 return;
@@ -98,12 +98,12 @@ public:
         table[idx].push_back(key);
         num_elements++;
         //todo: rehash delete
-        // коэффициент загрузки
+        // РєРѕСЌС„С„РёС†РёРµРЅС‚ Р·Р°РіСЂСѓР·РєРё
         if ((double)num_elements / table_size > 0.75)
             rehash();
     }
 
-    // Поиск ключа
+    // РџРѕРёСЃРє РєР»СЋС‡Р°
     bool find(const Key& key) const {
         size_t idx = index_for(key);
         for (const auto& k : table[idx]) {
@@ -113,7 +113,7 @@ public:
         return false;
     }
 
-    // Удаление
+    // РЈРґР°Р»РµРЅРёРµ
     void remove(const Key& key) {
         size_t idx = index_for(key);
         auto& chain = table[idx];

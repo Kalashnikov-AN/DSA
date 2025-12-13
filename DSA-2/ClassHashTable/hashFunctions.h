@@ -1,7 +1,7 @@
-#pragma once
+п»ї#pragma once
 #include <string>  
 
-//  Хеш-функция по умолчанию для произвольного типа Key
+//  РҐРµС€-С„СѓРЅРєС†РёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ РїСЂРѕРёР·РІРѕР»СЊРЅРѕРіРѕ С‚РёРїР° Key
 template <typename T>
 size_t djb2(const T& key) {
     const unsigned char* data = reinterpret_cast<const unsigned char*>(&key);
@@ -12,6 +12,6 @@ size_t djb2(const T& key) {
     return h;
 }
 
-//  Хеш-функция по умолчанию для string
+//  РҐРµС€-С„СѓРЅРєС†РёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ string
 template<>
 size_t djb2(const std::string& s);

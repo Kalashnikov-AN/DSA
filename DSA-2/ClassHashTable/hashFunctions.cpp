@@ -1,7 +1,7 @@
-#include "hashFunctions.h"
+п»ї#include "hashFunctions.h"
 
 
-//  Хеш-функция по умолчанию для string
+//  РҐРµС€-С„СѓРЅРєС†РёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ string
 template<>
 size_t djb2(const std::string& s) {
     size_t h = 5381;
