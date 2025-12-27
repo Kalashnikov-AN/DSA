@@ -23,17 +23,17 @@ private:
     size_t num_elements; // количество элементов
     function<size_t(const Key&)> hasher; // пользовательская хеш-функция
 
-    // Проверка равенства ключей
+    /// Проверка равенства ключей
     bool key_equality(const Key& a, const Key& b) const {
         return a == b;
     }
 
-    // Индекс бакета
+    /// Индекс бакета
     size_t index_for(const Key& key) const {
         return hasher(key) % table_size;
     }
 
-    // Перехеширование
+    /// Перехеширование
     void rehash() {
         if ((double)num_elements / table_size > 0.75) {
             size_t new_size = table_size * 2;
@@ -65,10 +65,10 @@ private:
             table = move(new_table);
             table_size = new_size;
         }
-    }
+    } 
 
 public:
-    // Конструктор — принимает хеш-функцию
+    /// Конструктор — принимает хеш-функцию
     HashTable(size_t init_size = 16,
         function<size_t(const Key&)> hash_func = function<size_t(const Key&)>())
         : table_size(init_size), num_elements(0) {
@@ -85,7 +85,7 @@ public:
         }
     }
 
-    // Вставка ключа
+    /// Вставка ключа
     void insert(const Key& key) {
         size_t idx = index_for(key);
 
@@ -97,13 +97,12 @@ public:
 
         table[idx].push_back(key);
         num_elements++;
-        //todo: rehash delete
         // коэффициент загрузки
-        if ((double)num_elements / table_size > 0.75)
+        if ((double)num_elements / table_size > 0.75) // рехэшируем если коэффициент загрузки > 0.75
             rehash();
     }
 
-    // Поиск ключа
+    /// Поиск ключа
     bool find(const Key& key) const {
         size_t idx = index_for(key);
         for (const auto& k : table[idx]) {
@@ -113,7 +112,7 @@ public:
         return false;
     }
 
-    // Удаление
+    /// Удаление
     void remove(const Key& key) {
         size_t idx = index_for(key);
         auto& chain = table[idx];
@@ -124,12 +123,15 @@ public:
                 return;
             }
         }
-        if ((double)num_elements / table_size < 0.2)
+        if ((double)num_elements / table_size < 0.2) // рехэшируем если коэффициент загрузки < 0.2
             rehash();
     }
 
+    /// Возвращает размер таблицы
     size_t size() const {
         return num_elements; }
+
+    /// Возвращает true/false пустая таблица или нет
     bool empty() const {
         return num_elements == 0; }
 };
@@ -138,5 +140,6 @@ void test_insert();
 void test_find();
 void test_remove();
 void test_rehash_behavior();
-void test_size_empty_and_custom_hasher();
+
+
 

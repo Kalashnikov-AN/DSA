@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿// Автор: Калашников А.Н.
+#pragma once
 #include <string>  
 
 //  Хеш-функция по умолчанию для произвольного типа Key
@@ -13,5 +14,5 @@ size_t djb2(const T& key) {
 }
 
 //  Хеш-функция по умолчанию для string
-template<>
+template<> // полная специализация, заменяющая первичный шаблон
 size_t djb2(const std::string& s);

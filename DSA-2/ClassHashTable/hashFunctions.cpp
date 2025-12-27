@@ -1,8 +1,9 @@
-﻿#include "hashFunctions.h"
+﻿// Автор: Калашников А.Н.
+#include "hashFunctions.h"
 
 
 //  Хеш-функция по умолчанию для string
-template<>
+template<> // полная специализация, заменяющая первичный шаблон
 size_t djb2(const std::string& s) {
     size_t h = 5381;
     for (unsigned char c : s) {

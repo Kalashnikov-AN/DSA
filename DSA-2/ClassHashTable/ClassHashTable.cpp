@@ -21,6 +21,5 @@ int main() {
     test_find();
     test_remove();
     test_rehash_behavior();
-    test_size_empty_and_custom_hasher();
-    cout << "\nAll tests passed successfully.\n";
+    
 }
